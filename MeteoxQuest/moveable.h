@@ -1,14 +1,15 @@
 #pragma once
 #include "stdafx.h"
-#include "drawable.h"
 
-class Moveable : public Drawable
+class GameObject : sf::Sprite
 {
 public:
-	virtual void update( float delta_time_ );
+	virtual void update(const float delta_time );
 protected:
-	Moveable( sf::Vector2f pos, float angle, sf::Texture* texture ) : Drawable( pos, angle, texture ){}
-	virtual sf::Vector2f getNextMove( float delta_time_ ) = 0;
-	virtual bool isAtEdge();
-	virtual void handleEdge();
+	GameObject(const sf::Vector2f pos, const float angle, sf::Texture* texture);
+	virtual sf::Vector2f get_next_move( float delta_time ) = 0;
+	virtual bool is_at_edge();
+	virtual void handle_edge();
+	sf::Vector2f velocity_;
+	sf::Vector2f half_texture_size_;
 };

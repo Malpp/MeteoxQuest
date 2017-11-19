@@ -2,20 +2,27 @@
 #include "moveable.h"
 #include "Game.h"
 
-void Moveable::update( float delta_time_ )
+void GameObject::update(const float delta_time )
 {
-	sf::Vector2f move_by_pos = getNextMove( delta_time_ ) * delta_time_;
-	sprite_.move( move_by_pos );
+	move(velocity_ * delta_time);
 
-	if(isAtEdge())
+	if(is_at_edge())
 	{
-		handleEdge();
+		handle_edge();
 	}
 }
 
-bool Moveable::isAtEdge()
+GameObject::GameObject(const sf::Vector2f pos, const float angle, sf::Texture* texture)
 {
-	sf::Vector2f current_pos = sprite_.getPosition();
+	setPosition(pos);
+	setRotation(angle);
+	velocity_ = sf::Vector2f(0, 0);
+	half_texture_size_ = static_cast<sf::Vector2f>(texture->getSize()) * 0.5f;
+}
+
+bool GameObject::is_at_edge()
+{
+	const sf::Vector2f current_pos = getPosition();
 	if (current_pos.x > Game::GAME_WIDTH - half_texture_size_.x ||
 		current_pos.x < half_texture_size_.x ||
 		current_pos.y > Game::GAME_HEIGHT - half_texture_size_.y ||
@@ -25,10 +32,10 @@ bool Moveable::isAtEdge()
 	return false;
 }
 
-void Moveable::handleEdge()
+void GameObject::handle_edge()
 {
-	sf::Vector2f current_pos = sprite_.getPosition();
-	sprite_.setPosition( sf::Vector2f(
+	const sf::Vector2f current_pos = getPosition();
+	setPosition( sf::Vector2f(
 		std::max( half_texture_size_.x,
 			std::min( Game::GAME_WIDTH - half_texture_size_.x, current_pos.x ) ),
 

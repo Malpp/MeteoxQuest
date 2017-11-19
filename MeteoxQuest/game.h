@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "resourcehandler.h"
+#include "scene.h"
 
 class Game
 {
@@ -10,6 +11,9 @@ public:
 
 private:
 	//Add new vars here
+	bool running;
+	Scene::Scenes current_scene_;
+	Scene* active_scene_;
 
 //
 //TEMPLATE STUFF BELOW
@@ -44,46 +48,17 @@ public:
 	/// The window height
 	/// </summary>
 	static const int WINDOW_HEIGHT = 720;
-	static ResourceHandler resource_handler_;
 
 private:
 	//Template variables	
 	/// <summary>
 	/// The window
 	/// </summary>
-	sf::RenderWindow* window;	
-	/// <summary>
-	/// The event
-	/// </summary>
-	sf::Event event;	
-	/// <summary>
-	/// The clock
-	/// Used to time the frames
-	/// </summary>
-	sf::Clock clock;	
+	sf::RenderWindow* window;
+
 	/// <summary>
 	/// The view
 	/// Uses the CAMERA_WIDTH and HEIGHT variables
 	/// </summary>
-	sf::View view;	
-	/// <summary>
-	/// Inputs.
-	/// </summary>
-	void input();	
-	/// <summary>
-	/// Updates the game.
-	/// </summary>
-	void update();	
-	/// <summary>
-	/// Draws the game.
-	/// </summary>
-	void draw();	
-	/// <summary>
-	/// The frame time
-	/// </summary>
-	float frame_time_ = 0;	
-	/// <summary>
-	/// The frame counter
-	/// </summary>
-	int frame_counter_ = 0;
+	sf::View view;
 };

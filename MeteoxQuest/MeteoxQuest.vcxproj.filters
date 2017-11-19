@@ -25,6 +25,24 @@
     <Filter Include="Header Files\Base">
       <UniqueIdentifier>{9d5429a3-c75a-4c41-b081-e0db7215cd99}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Menu">
+      <UniqueIdentifier>{5bf92528-e45c-4a9b-9e9c-5d758a6bdf4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scenes">
+      <UniqueIdentifier>{f9e78229-c3f3-4c52-a830-34e050dda7e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Scenes\Base">
+      <UniqueIdentifier>{6078ed81-15f2-489f-9b34-053ef7e4599b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes">
+      <UniqueIdentifier>{e57618b7-e08a-4f7f-a517-f4039c4a79d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menu">
+      <UniqueIdentifier>{b0b12659-81c0-453f-b858-1c6bf0eb87c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes\Base">
+      <UniqueIdentifier>{22d44231-ad90-4d34-927e-5aa72e56a178}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -42,14 +60,38 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files\Other</Filter>
     </ClInclude>
-    <ClInclude Include="drawable.h">
-      <Filter>Header Files\Base</Filter>
-    </ClInclude>
     <ClInclude Include="moveable.h">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="resourcehandler.h">
       <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="label.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="menu_element.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="textbox.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="menu_base.h">
+      <Filter>Header Files\Scenes\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="scene.h">
+      <Filter>Header Files\Scenes\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="menu_manager.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="level_base.h">
+      <Filter>Header Files\Scenes\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="level1.h">
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -62,14 +104,38 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>Source Files\Other</Filter>
     </ClCompile>
-    <ClCompile Include="drawable.cpp">
-      <Filter>Source Files\Base</Filter>
-    </ClCompile>
     <ClCompile Include="moveable.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
     <ClCompile Include="resourcehandler.cpp">
       <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="label.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="menu_element.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="menu_manager.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="textbox.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="menu_base.cpp">
+      <Filter>Source Files\Scenes\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="scene.cpp">
+      <Filter>Source Files\Scenes\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="level_base.cpp">
+      <Filter>Source Files\Scenes\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="level1.cpp">
+      <Filter>Source Files\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
