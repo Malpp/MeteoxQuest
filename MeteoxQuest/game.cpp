@@ -13,6 +13,7 @@ Game::Game()
 	srand(time(nullptr));
 	rand();
 
+
 	running = true;
 	current_scene_ = Scene::GAME;
 }
