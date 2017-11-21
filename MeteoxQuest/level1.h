@@ -8,5 +8,4 @@ public:
 	Level1(sf::RenderWindow* window);
 
 	void update(float delta_time) override;
-	void draw() override;
 };

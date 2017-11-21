@@ -3,11 +3,11 @@
 
 ResourceHandler::ResourceHandler()
 {
-
 }
 
 ResourceHandler::~ResourceHandler()
 {
+	std::cout << textures_.size() << " DELETED TEXTURES\n";
 	for (sf::Texture* texture : textures_)
 	{
 		delete texture;
@@ -16,6 +16,7 @@ ResourceHandler::~ResourceHandler()
 
 sf::Texture* ResourceHandler::add_texture(std::string path)
 {
+	
 	sf::Texture* texture_to_load_ = new sf::Texture;
 	if (!texture_to_load_->loadFromFile( "Assets/" + path ))
 	{
