@@ -12,7 +12,5 @@ public:
 	void update(float delta_time) override;
 private:
 	Button* play_button_;
-	Button* whatever_button_;
-	Button* cool_button_;
 };
 
