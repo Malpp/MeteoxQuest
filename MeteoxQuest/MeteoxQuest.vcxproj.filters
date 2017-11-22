@@ -105,6 +105,12 @@
     <ClInclude Include="player.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="projectile.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="heart_projectile.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
     <ClInclude Include="main_menu.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
@@ -156,6 +162,12 @@
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="player.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="protectile.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="heart_projectile.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="main_menu.cpp">

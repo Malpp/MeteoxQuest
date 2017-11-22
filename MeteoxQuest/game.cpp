@@ -6,6 +6,8 @@
 
 sf::Font Game::font;
 
+ResourceHandler Game::resource_handler_;
+
 Game::Game()
 {
 	//Init window and view
