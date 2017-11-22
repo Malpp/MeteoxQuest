@@ -2,12 +2,13 @@
 #include "menu_base.h"
 #include "menu_element.h"
 #include "Game.h"
-
+#include <archives/binary.hpp>
 
 MenuBase::MenuBase(sf::RenderWindow* window, const Scene::Scenes scene_to_exit)
 	: Scene(window)
 {
 	MenuElement::focused_element_ = nullptr;
+	background_sprite_.setTexture(*resource_handler_.add_texture("menu_background.jpg"));
 	exit_scene_ = scene_to_exit;
 	error_string_ = "";
 }
@@ -40,6 +41,8 @@ void MenuBase::input()
 void MenuBase::draw()
 {
 	window_->clear();
+
+	window_->draw(background_sprite_);
 
 	menu_manager_.draw(window_);
 

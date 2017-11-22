@@ -16,4 +16,5 @@
 		std::string error_string_;
 	private:
 		Scenes exit_scene_;
+		sf::Sprite background_sprite_;
 	};
