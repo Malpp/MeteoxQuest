@@ -3,7 +3,7 @@
 #include "Game.h"
 
 LevelBase::LevelBase( sf::RenderWindow* window, const std::string& background_texture, float scroll_speed )
-	: Scene( window ), player_( sf::Vector2f( 100, 100 ), 0, resource_handler_.add_texture( "player.png" ) )
+	: Scene( window ), player_( sf::Vector2f( 100, Game::GAME_HEIGHT * 0.5f ), 0, resource_handler_.add_texture( "player.png" ) )
 {
 	scroll_speed_ = scroll_speed;
 	sf::Texture* bg_texture = resource_handler_.add_texture( background_texture );
@@ -12,6 +12,14 @@ LevelBase::LevelBase( sf::RenderWindow* window, const std::string& background_te
 		background_sprites_[i] = sf::Sprite( *bg_texture );
 	}
 	background_sprites_[1].setPosition( Game::GAME_WIDTH, 0 );
+}
+
+LevelBase::~LevelBase()
+{
+	for (Projectile* projectile : projectiles_)
+	{
+		delete projectile;
+	}
 }
 
 void LevelBase::input()
@@ -52,7 +60,20 @@ void LevelBase::update( float delta_time )
 	if (sf::Keyboard::isKeyPressed( sf::Keyboard::D ))
 		player_.right();
 
+	if (sf::Keyboard::isKeyPressed( sf::Keyboard::Space ))
+		player_.fire(this);
+
 	player_.update( delta_time );
+
+	for (int i = projectiles_.size() - 1; i >= 0; --i)
+	{
+		projectiles_[i]->update( delta_time );
+		if(projectiles_[i]->get_despawn())
+		{
+			delete projectiles_[i];
+			projectiles_.erase( projectiles_.begin() + i );
+		}
+	}
 
 	for (int i = 0; i < 2; ++i)
 	{
@@ -73,6 +94,10 @@ void LevelBase::draw()
 	{
 		window_->draw( background_sprites_[i] );
 	}
+	for (Projectile* projectile : projectiles_)
+	{
+		window_->draw( *projectile );
+	}
 	window_->draw( player_ );
 
 	window_->display();
@@ -80,3 +105,8 @@ void LevelBase::draw()
 
 void LevelBase::manage_input( sf::Event event )
 {}
+
+void LevelBase::add_projectile(Projectile* projectile)
+{
+	projectiles_.push_back( projectile );
+}

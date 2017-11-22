@@ -49,6 +49,8 @@ public:
 	/// </summary>
 	static const int WINDOW_HEIGHT = 720;
 
+	static ResourceHandler resource_handler_;
+
 private:
 	//Template variables	
 	/// <summary>

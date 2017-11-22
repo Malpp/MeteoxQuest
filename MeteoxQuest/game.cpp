@@ -3,6 +3,8 @@
 #include "scene.h"
 #include "level1.h"
 
+ResourceHandler Game::resource_handler_;
+
 Game::Game()
 {
 	//Init window and view

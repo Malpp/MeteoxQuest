@@ -23,6 +23,16 @@ void GameObject::update( const float delta_time )
 	velocity_.y = 0;
 }
 
+void GameObject::despawn()
+{
+	should_despawn = true;
+}
+
+bool GameObject::get_despawn() const
+{
+	return should_despawn;
+}
+
 GameObject::GameObject( const sf::Vector2f pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay )
 {
 	setPosition( pos );
@@ -34,6 +44,7 @@ GameObject::GameObject( const sf::Vector2f pos, const float angle, sf::Texture* 
 	max_frame_ = no_frames;
 	frame_time_ = frame_delay;
 	frame_timer_ = 0;
+	should_despawn = false;
 	velocity_ = sf::Vector2f( 0, 0 );
 	half_texture_size_ = size * 0.5f;
 	player_animations_ = new sf::IntRect*[no_states];
