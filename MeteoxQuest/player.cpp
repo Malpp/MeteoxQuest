@@ -58,6 +58,6 @@ void Player::fire(LevelBase* level)
 	if (can_fire_)
 	{
 		can_fire_ = false;
-		level->add_projectile(new HeartProjectile(getPosition(), 0, sf::Vector2f(1,0)));
+		level->add_game_object(new HeartProjectile(getPosition(), 0, sf::Vector2f(1,0)));
 	}
 }

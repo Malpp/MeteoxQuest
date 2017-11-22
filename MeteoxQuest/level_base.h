@@ -2,7 +2,6 @@
 #include "stdafx.h"
 #include "scene.h"
 #include "player.h"
-#include "projectile.h"
 
 class LevelBase : public Scene
 {
@@ -13,10 +12,10 @@ public:
 	void update(float delta_time) override;
 	void draw() override;
 	virtual void manage_input(sf::Event event);
-	void add_projectile( Projectile* projectile );
+	void add_game_object( GameObject* projectile );
 private:
 	Player player_;
 	float scroll_speed_;
 	sf::Sprite background_sprites_[2];
-	std::vector<Projectile*> projectiles_;
+	std::vector<GameObject*> objects_;
 };

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "level_base.h"
 #include "Game.h"
+#include "GC_enemy.h"
 
 LevelBase::LevelBase( sf::RenderWindow* window, const std::string& background_texture, float scroll_speed )
 	: Scene( window ), player_( sf::Vector2f( 100, Game::GAME_HEIGHT * 0.5f ), 0, resource_handler_.add_texture( "player.png" ) )
@@ -12,13 +13,14 @@ LevelBase::LevelBase( sf::RenderWindow* window, const std::string& background_te
 		background_sprites_[i] = sf::Sprite( *bg_texture );
 	}
 	background_sprites_[1].setPosition( Game::GAME_WIDTH, 0 );
+	add_game_object( new GCEnemy( sf::Vector2f(1300, 300 ), 0) );
 }
 
 LevelBase::~LevelBase()
 {
-	for (Projectile* projectile : projectiles_)
+	for (GameObject* object : objects_)
 	{
-		delete projectile;
+		delete object;
 	}
 }
 
@@ -65,13 +67,13 @@ void LevelBase::update( float delta_time )
 
 	player_.update( delta_time );
 
-	for (int i = projectiles_.size() - 1; i >= 0; --i)
+	for (int i = objects_.size() - 1; i >= 0; --i)
 	{
-		projectiles_[i]->update( delta_time );
-		if(projectiles_[i]->get_despawn())
+		objects_[i]->update( delta_time );
+		if(objects_[i]->get_despawn())
 		{
-			delete projectiles_[i];
-			projectiles_.erase( projectiles_.begin() + i );
+			delete objects_[i];
+			objects_.erase( objects_.begin() + i );
 		}
 	}
 
@@ -94,9 +96,9 @@ void LevelBase::draw()
 	{
 		window_->draw( background_sprites_[i] );
 	}
-	for (Projectile* projectile : projectiles_)
+	for (GameObject* object : objects_)
 	{
-		window_->draw( *projectile );
+		window_->draw( *object );
 	}
 	window_->draw( player_ );
 
@@ -106,7 +108,7 @@ void LevelBase::draw()
 void LevelBase::manage_input( sf::Event event )
 {}
 
-void LevelBase::add_projectile(Projectile* projectile)
+void LevelBase::add_game_object(GameObject* object )
 {
-	projectiles_.push_back( projectile );
+	objects_.push_back( object );
 }
