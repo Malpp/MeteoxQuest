@@ -23,5 +23,7 @@ MainMenu::~MainMenu()
 void MainMenu::update(float delta_time)
 {
 	menu_manager_.update(delta_time);
+	if (play_button_->get_active())
+		change_scene(Scene::Scenes::GAME);
 	MenuBase::update(delta_time);
 }
