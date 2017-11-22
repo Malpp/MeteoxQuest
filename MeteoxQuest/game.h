@@ -49,6 +49,8 @@ public:
 	/// </summary>
 	static const int WINDOW_HEIGHT = 720;
 
+	static sf::Font font;
+
 private:
 	//Template variables	
 	/// <summary>

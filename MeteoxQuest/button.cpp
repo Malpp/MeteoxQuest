@@ -7,12 +7,12 @@ sf::Color Button::button_color_ = sf::Color( 200, 200, 200 );
 const sf::Vector2f Button::button_size = sf::Vector2f(70, 12);
 
 Button::Button( sf::Vector2f& pos, sf::Vector2f& size, std::string button_text )
-	: MenuElement( pos, size, true )//, text_( button_text, Game::font, Textbox::textbox_font_size )
+	: MenuElement( pos, size, true ), text_( button_text, Game::font, Textbox::textbox_font_size )
 {
 	box_ = sf::RectangleShape( size );
 	box_.setPosition( pos );
 	box_.setFillColor( button_color_ );
-	box_.setOutlineThickness( 2 );
+	box_.setOutlineThickness( 6 );
 	box_.setOutlineColor( default_color_ );
 	text_.setFillColor( sf::Color::Black );
 	text_.setOrigin( button_text.size() * Textbox::textbox_font_size * 0.5f, Textbox::textbox_font_size * 0.5f );

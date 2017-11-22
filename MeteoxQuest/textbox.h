@@ -10,7 +10,7 @@ public:
 	void draw(sf::RenderWindow* window) override;
 	void handle_input(sf::Event& event, sf::RenderWindow* window) override;
 	std::string get_text() const;
-	static const int textbox_font_size = 8;
+	static const int textbox_font_size = 24;
 	static sf::Color back_text_color_;
 	static sf::Vector2f textbox_size_;
 	void set_text(const std::string& text);
