@@ -13,8 +13,7 @@ public:
 	void right() override;
 private:
 	static const sf::Vector2f size_;
-	static const int no_frames_ = 2;
-	static const int no_states_ = 4;
+	static const int no_frames_ = 4;
 	static const float movespeed_;
 	static const float frame_delay_;
 };
