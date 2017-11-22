@@ -10,6 +10,7 @@
 		MenuBase(sf::RenderWindow* window, Scene::Scenes scene_to_exit );
 		void input() override;
 		void draw() override;
+		virtual void update(float delta_time) override;
 	protected:
 		MenuManager menu_manager_;
 		std::string error_string_;

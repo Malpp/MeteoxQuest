@@ -45,3 +45,8 @@ void MenuBase::draw()
 
 	window_->display();
 }
+
+void MenuBase::update(float delta_time)
+{
+
+}

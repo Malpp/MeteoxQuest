@@ -15,6 +15,7 @@ public:
 		EXIT,
 		SPLASH,
 		GAME,
+		MENU,
 		END
 	};
 

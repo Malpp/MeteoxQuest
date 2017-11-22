@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "scene.h"
 #include "level1.h"
+#include "main_menu.h"
 
 ResourceHandler Game::resource_handler_;
 
@@ -17,7 +18,7 @@ Game::Game()
 
 
 	running = true;
-	current_scene_ = Scene::GAME;
+	current_scene_ = Scene::MENU;
 }
 
 Game::~Game()
@@ -39,6 +40,9 @@ void Game::run()
 			active_scene_ = new Level1(window);
 			current_scene_ = active_scene_->run();
 			break;
+		case Scene::MENU:
+			active_scene_ = new MainMenu(window);
+			current_scene_ = active_scene_->run();
 		}
 
 		delete active_scene_;
