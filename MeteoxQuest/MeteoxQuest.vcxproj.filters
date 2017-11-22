@@ -105,6 +105,9 @@
     <ClInclude Include="player.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="main_menu.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -154,6 +157,9 @@
     </ClCompile>
     <ClCompile Include="player.cpp">
       <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="main_menu.cpp">
+      <Filter>Source Files\Scenes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

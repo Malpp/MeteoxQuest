@@ -114,6 +114,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="label.h" />
     <ClInclude Include="level1.h" />
     <ClInclude Include="level_base.h" />
+    <ClInclude Include="main_menu.h" />
     <ClInclude Include="menu_base.h" />
     <ClInclude Include="menu_element.h" />
     <ClInclude Include="menu_manager.h" />
@@ -134,6 +135,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="level1.cpp" />
     <ClCompile Include="level_base.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="main_menu.cpp" />
     <ClCompile Include="menu_base.cpp" />
     <ClCompile Include="menu_element.cpp" />
     <ClCompile Include="menu_manager.cpp" />
