@@ -1,0 +1,30 @@
+{
+  "Enemies": {
+    "Wave1": {
+      "enemies_to_spawn": [
+        {
+          "type": "GC",
+          "pos": "100 100"
+        },
+        {
+          "type": "GC",
+          "pos": "200 100"
+        }
+      ],
+      "delay": 0
+    },
+    "Wave2": {
+      "enemies_to_spawn": [
+        {
+          "type": "GC",
+          "pos":  "100 100"
+        },
+        {
+          "type": "GC",
+          "pos":  "200 100"
+        }
+      ],
+      "delay": 20
+    }
+  }
+}
