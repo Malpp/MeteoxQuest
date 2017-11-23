@@ -1,14 +1,28 @@
 #include "stdafx.h"
 #include "character.h"
 
-Character::Character(const sf::Vector2f& pos, float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay, float move_speed )
+Character::Character(const sf::Vector2f& pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, const int no_frames, const int no_states, const float frame_delay, const float move_speed, const float fire_speed )
 	: GameObject(pos, angle, texture, size, no_frames, no_states, frame_delay)
 {
 	movespeed_ = move_speed;
+	can_fire_ = true;
+	fire_timer_ = 0;
+	fire_speed_ = fire_speed;
 }
 
-void Character::update(const float delta_time)
+void Character::update(const float delta_time, LevelBase* level)
 {
+
+	if (!can_fire_)
+	{
+		fire_timer_ += delta_time;
+		if (fire_timer_ > fire_speed_)
+		{
+			can_fire_ = true;
+			fire_timer_ = 0;
+		}
+	}
+
 	if (velocity_.x != 0 && velocity_.y != 0)
 	{
 		velocity_.x *= 0.7071;
@@ -18,7 +32,7 @@ void Character::update(const float delta_time)
 	if (velocity_.x == 0 && velocity_.y == 0)
 		state_ = IDLE;
 	
-	GameObject::update( delta_time );
+	GameObject::update( delta_time, level);
 }
 
 void Character::up()
@@ -39,4 +53,13 @@ void Character::left()
 void Character::right()
 {
 	velocity_.x += movespeed_;
+}
+
+void Character::fire(LevelBase* level)
+{
+	if (can_fire_)
+	{
+		can_fire_ = false;
+		handle_fire(level);
+	}
 }

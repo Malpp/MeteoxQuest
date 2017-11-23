@@ -9,24 +9,28 @@ const float Player::frame_delay_ = 0.1f;
 const float Player::fire_speed_ = 0.25f;
 
 Player::Player(const sf::Vector2f& pos, float angle, sf::Texture* texture)
-	: Character( pos, angle, texture, size_, no_frames_, COUNT, frame_delay_, movespeed_ )
+	: Character( pos, angle, texture, size_, no_frames_, COUNT, frame_delay_, movespeed_, fire_speed_ )
 {
-	can_fire_ = true;
-	fire_timer_ = 0;
 }
 
-void Player::update(const float delta_time)
+void Player::update(const float delta_time, LevelBase* level)
 {
-	if(!can_fire_)
-	{
-		fire_timer_ += delta_time;
-		if(fire_timer_ > fire_speed_)
-		{
-			can_fire_ = true;
-			fire_timer_ = 0;
-		}
-	}
-	Character::update( delta_time );
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		up();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		left();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+		down();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		right();
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+		fire(level);
+
+	Character::update( delta_time, level);
 }
 
 void Player::up()
@@ -53,11 +57,7 @@ void Player::right()
 	Character::right();
 }
 
-void Player::fire(LevelBase* level)
+void Player::handle_fire(LevelBase* level)
 {
-	if (can_fire_)
-	{
-		can_fire_ = false;
-		level->add_game_object(new HeartProjectile(getPosition(), 0, sf::Vector2f(1,0)));
-	}
+	level->add_game_object(new HeartProjectile(getPosition(), 0, sf::Vector2f(1, 0)));
 }

@@ -1,8 +1,9 @@
 #include "stdafx.h"
 #include "game_object.h"
 #include "Game.h"
+#include "level_base.h"
 
-void GameObject::update( const float delta_time )
+void GameObject::update(const float delta_time, LevelBase* level)
 {
 	move( velocity_ * delta_time );
 

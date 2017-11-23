@@ -3,6 +3,8 @@
 #include "scene.h"
 #include "player.h"
 
+class GameObject;
+
 class LevelBase : public Scene
 {
 public:
@@ -18,4 +20,6 @@ private:
 	float scroll_speed_;
 	sf::Sprite background_sprites_[2];
 	std::vector<GameObject*> objects_;
+	float fps_timer_;
+	int fps_;
 };

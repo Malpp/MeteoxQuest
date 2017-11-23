@@ -1,10 +1,12 @@
 #pragma once
 #include "stdafx.h"
 
+class LevelBase;
+
 class GameObject : public  sf::Sprite
 {
 public:
-	virtual void update( const float delta_time );
+	virtual void update(const float delta_time, LevelBase* level);
 	void despawn();
 	bool get_despawn() const;
 	GameObject( const sf::Vector2f pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay );

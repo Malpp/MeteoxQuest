@@ -18,7 +18,6 @@ Scene::Scenes Scene::run()
 		update(delta_time);
 		draw();
 	}
-
 	return returned_scene_;
 }
 

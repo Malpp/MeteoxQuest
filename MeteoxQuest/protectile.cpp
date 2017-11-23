@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "projectile.h"
 #include "Game.h"
+#include "character.h"
 
 Projectile::Projectile(const sf::Vector2f& pos, float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay, const sf::Vector2f& direction )
 	: GameObject( pos, angle, texture, size, no_frames, no_states, frame_delay )
@@ -8,10 +9,10 @@ Projectile::Projectile(const sf::Vector2f& pos, float angle, sf::Texture* textur
 	direction_ = direction;
 }
 
-void Projectile::update(const float delta_time)
+void Projectile::update(const float delta_time, LevelBase* level)
 {
 	velocity_ = direction_;
-	GameObject::update( delta_time );
+	GameObject::update( delta_time, level);
 }
 
 bool Projectile::is_at_edge()
