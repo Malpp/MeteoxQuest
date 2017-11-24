@@ -66,7 +66,7 @@
     <PostBuildEvent>
       <Command>xcopy /y /d  "$(ProjectDir)SFML-2.4.2\bin\Debug\*.dll" "$(OutDir)"
 mkdir "$(OutDir)Assets"
-xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
+xcopy /y /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     </PostBuildEvent>
     <PreLinkEvent>
       <Command>
