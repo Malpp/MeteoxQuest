@@ -8,7 +8,7 @@ class GameObject;
 class LevelBase : public Scene
 {
 public:
-	LevelBase(sf::RenderWindow* window, const std::string& background_texture , float scroll_speed);
+	LevelBase(sf::RenderWindow* window, sf::Texture* texture , float scroll_speed);
 	virtual ~LevelBase();
 	void input() override;
 	void update(float delta_time) override;
@@ -24,4 +24,5 @@ private:
 	int fps_;
 protected:
 	static bool loadLevel(const std::string path);
+	sf::Vector2f background_size_;
 };

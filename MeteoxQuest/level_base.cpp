@@ -4,16 +4,16 @@
 #include "GC_enemy.h"
 #include <sstream>
 
-LevelBase::LevelBase(sf::RenderWindow* window, const std::string& background_texture, float scroll_speed)
+LevelBase::LevelBase(sf::RenderWindow* window, sf::Texture* texture, float scroll_speed)
 	: Scene(window), player_(sf::Vector2f(100, Game::GAME_HEIGHT * 0.5f), 0)
 {
 	scroll_speed_ = scroll_speed;
-	sf::Texture* bg_texture = resource_handler_.add_texture(background_texture);
+	background_size_ = static_cast<sf::Vector2f>(texture->getSize());
 	for (int i = 0; i < 2; ++i)
 	{
-		background_sprites_[i] = sf::Sprite(*bg_texture);
+		background_sprites_[i] = sf::Sprite(*texture );
 	}
-	background_sprites_[1].setPosition(Game::GAME_WIDTH, 0);
+	background_sprites_[1].setPosition( background_size_.x - 1, 0);
 }
 
 LevelBase::~LevelBase()
@@ -66,8 +66,11 @@ void LevelBase::update(float delta_time)
 	{
 
 		sf::Vector2f pos = background_sprites_[i].getPosition();
-		if (pos.x < -Game::GAME_WIDTH)
-			pos.x += Game::GAME_WIDTH * 2;
+		if (pos.x < -background_size_.x)
+		{
+			sf::Vector2f other_pos = background_sprites_[!i].getPosition();
+			pos.x = other_pos.x + background_size_.x - 1;			
+		}
 		pos.x -= scroll_speed_ * delta_time;
 		background_sprites_[i].setPosition(pos);
 	}

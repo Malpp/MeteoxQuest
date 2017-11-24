@@ -6,6 +6,6 @@ class Level1 : public LevelBase
 {
 public:
 	Level1(sf::RenderWindow* window);
-
 	void update(float delta_time) override;
+	static sf::Texture* texture_;
 };
