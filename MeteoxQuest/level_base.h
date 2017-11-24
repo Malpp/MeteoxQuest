@@ -22,4 +22,6 @@ private:
 	std::vector<GameObject*> objects_;
 	float fps_timer_;
 	int fps_;
+protected:
+	static bool loadLevel(const std::string path);
 };
