@@ -9,7 +9,8 @@ public:
 	virtual void update(const float delta_time, LevelBase* level);
 	void despawn();
 	bool get_despawn() const;
-	GameObject( const sf::Vector2f pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay );
+	void take_damage(const int damage);
+	GameObject( const sf::Vector2f pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay, const int life );
 	~GameObject();
 protected:
 	virtual bool is_at_edge();
@@ -24,4 +25,6 @@ protected:
 	float frame_timer_;
 	float frame_time_;
 	bool should_despawn;
+	int life;
+	virtual void on_death() = 0;
 };

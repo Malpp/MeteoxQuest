@@ -10,7 +10,7 @@ const float Player::movespeed_ = 600;
 const float Player::frame_delay_ = 0.1f;
 
 Player::Player(const sf::Vector2f& pos, const float angle)
-	: Character( pos, angle, texture_, size_, no_frames_, COUNT, frame_delay_, movespeed_ )
+	: Character( pos, angle, texture_, size_, no_frames_, COUNT, frame_delay_, movespeed_, base_life_ )
 {
 	weapon_ = new HeartWeapon;
 }
@@ -60,4 +60,9 @@ void Player::right()
 {
 	state_ = RIGHT;
 	Character::right();
+}
+
+void Player::on_death()
+{
+	
 }

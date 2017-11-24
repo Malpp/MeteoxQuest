@@ -10,7 +10,7 @@ const float KenEnemy::movespeed_ = 200;
 const float KenEnemy::frame_delay_ = 0.1f;
 
 KenEnemy::KenEnemy( const sf::Vector2f& pos, const float angle )
-	: Enemy( pos, angle, texture_, size_, no_frames_, COUNT, frame_delay_, movespeed_ )
+	: Enemy( pos, angle, texture_, size_, no_frames_, COUNT, frame_delay_, movespeed_, base_life_ )
 {
 	weapon_ = new KenWeapon;
 	state_ = WALKING;

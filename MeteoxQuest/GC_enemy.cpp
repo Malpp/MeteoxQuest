@@ -11,7 +11,7 @@ const float GCEnemy::movespeed_ = 600;
 const float GCEnemy::frame_delay_ = 0.1f;
 
 GCEnemy::GCEnemy( const sf::Vector2f& pos, const float angle )
-	: Enemy( pos, angle, texture_, size_, no_frames_, no_states_, frame_delay_, movespeed_)
+	: Enemy( pos, angle, texture_, size_, no_frames_, no_states_, frame_delay_, movespeed_, base_life_)
 {
 	weapon_ = new GCWeapon;
 }

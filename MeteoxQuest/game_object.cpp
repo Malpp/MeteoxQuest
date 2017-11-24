@@ -34,11 +34,12 @@ bool GameObject::get_despawn() const
 	return should_despawn;
 }
 
-GameObject::GameObject( const sf::Vector2f pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay )
+GameObject::GameObject( const sf::Vector2f pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay, int life )
 {
 	setPosition( pos );
 	setRotation( angle );
 	setTexture( *texture );
+	this->life = life;
 	state_ = 0;
 	frame_ = 0;
 	max_state_ = no_states;
@@ -96,4 +97,9 @@ void GameObject::handle_edge()
 		std::max( half_texture_size_.y,
 			std::min( Game::GAME_HEIGHT - half_texture_size_.y, current_pos.y ) )
 	) );
+}
+
+void GameObject::take_damage(const int damage)
+{
+	life -= damage;
 }
