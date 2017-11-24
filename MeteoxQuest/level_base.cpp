@@ -5,7 +5,7 @@
 #include <sstream>
 
 LevelBase::LevelBase(sf::RenderWindow* window, const std::string& background_texture, float scroll_speed)
-	: Scene(window), player_(sf::Vector2f(100, Game::GAME_HEIGHT * 0.5f), 0, resource_handler_.add_texture("player.png"))
+	: Scene(window), player_(sf::Vector2f(100, Game::GAME_HEIGHT * 0.5f), 0)
 {
 	scroll_speed_ = scroll_speed;
 	sf::Texture* bg_texture = resource_handler_.add_texture(background_texture);

@@ -10,7 +10,6 @@ Scene::Scene(sf::RenderWindow* window)
 
 Scene::Scenes Scene::run()
 {
-
 	while (isRunning)
 	{
 		input();

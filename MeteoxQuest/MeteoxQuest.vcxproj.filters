@@ -49,6 +49,18 @@
     <Filter Include="Header Files\Game">
       <UniqueIdentifier>{ed788f59-ae94-4031-8376-60d8f18917ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\weapons">
+      <UniqueIdentifier>{54a53300-d497-449e-b293-5e2685baccb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\projectiles">
+      <UniqueIdentifier>{52aa8e9b-2115-42d8-ba07-e867f1ab543c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\projectiles">
+      <UniqueIdentifier>{b9f2a2db-c333-4cf8-9e03-cf7abe00738b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\weapons">
+      <UniqueIdentifier>{a3917e08-bac3-4609-b715-74b758cf7f51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -105,12 +117,6 @@
     <ClInclude Include="player.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="projectile.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="heart_projectile.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="main_menu.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
@@ -121,7 +127,22 @@
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="gc_projectile.h">
-      <Filter>Header Files\Game</Filter>
+      <Filter>Header Files\Game\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="heart_projectile.h">
+      <Filter>Header Files\Game\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="projectile.h">
+      <Filter>Header Files\Game\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="gc_weapon.h">
+      <Filter>Header Files\Game\weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="heart_weapon.h">
+      <Filter>Header Files\Game\weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="weapon.h">
+      <Filter>Header Files\Game\weapons</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -173,12 +194,6 @@
     <ClCompile Include="player.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="protectile.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="heart_projectile.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="main_menu.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
@@ -188,8 +203,23 @@
     <ClCompile Include="GC_enemy.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="gc_weapon.cpp">
+      <Filter>Source Files\Game\weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="heart_weapon.cpp">
+      <Filter>Source Files\Game\weapons</Filter>
+    </ClCompile>
     <ClCompile Include="gc_projectile.cpp">
-      <Filter>Source Files\Game</Filter>
+      <Filter>Source Files\Game\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="heart_projectile.cpp">
+      <Filter>Source Files\Game\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="protectile.cpp">
+      <Filter>Source Files\Game\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="weapon.cpp">
+      <Filter>Source Files\Game\weapons</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -113,7 +113,9 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="game.h" />
     <ClInclude Include="GC_enemy.h" />
     <ClInclude Include="gc_projectile.h" />
+    <ClInclude Include="gc_weapon.h" />
     <ClInclude Include="heart_projectile.h" />
+    <ClInclude Include="heart_weapon.h" />
     <ClInclude Include="helper.h" />
     <ClInclude Include="label.h" />
     <ClInclude Include="level1.h" />
@@ -131,6 +133,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="textbox.h" />
+    <ClInclude Include="weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="button.cpp" />
@@ -139,7 +142,9 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GC_enemy.cpp" />
     <ClCompile Include="gc_projectile.cpp" />
+    <ClCompile Include="gc_weapon.cpp" />
     <ClCompile Include="heart_projectile.cpp" />
+    <ClCompile Include="heart_weapon.cpp" />
     <ClCompile Include="label.cpp" />
     <ClCompile Include="level1.cpp" />
     <ClCompile Include="level_base.cpp" />
@@ -158,6 +163,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="textbox.cpp" />
+    <ClCompile Include="weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SFML_Template.rc" />

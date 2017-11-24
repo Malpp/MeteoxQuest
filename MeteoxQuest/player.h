@@ -7,15 +7,15 @@ class LevelBase;
 class Player : public Character
 {
 public:
-	Player( const sf::Vector2f& pos, float angle, sf::Texture* texture );
+	Player( const sf::Vector2f& pos, const float angle);
 
 	void update(const float delta_time, LevelBase* level) override;
 	void up() override;
 	void down() override;
 	void left() override;
 	void right() override;
-	void handle_fire(LevelBase* level) override;
 private:
+	static sf::Texture* texture_;
 	static const sf::Vector2f size_;
 	static const int no_frames_ = 4;
 	static const float movespeed_;

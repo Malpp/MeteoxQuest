@@ -8,7 +8,6 @@ public:
 	GCEnemy( const sf::Vector2f& pos, const float angle );
 	void update(const float delta_time, LevelBase* level) override;
 	static sf::Texture* texture_;
-	void handle_fire(LevelBase* level) override;
 private:
 	static const sf::Vector2f size_;
 	static const int no_frames_ = 1;

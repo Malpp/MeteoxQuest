@@ -8,20 +8,18 @@ Character::Character(const sf::Vector2f& pos, const float angle, sf::Texture* te
 	can_fire_ = true;
 	fire_timer_ = 0;
 	fire_speed_ = fire_speed;
+	weapon_ = nullptr;
+}
+
+Character::~Character()
+{
+	delete weapon_;
 }
 
 void Character::update(const float delta_time, LevelBase* level)
 {
 
-	if (!can_fire_)
-	{
-		fire_timer_ += delta_time;
-		if (fire_timer_ > fire_speed_)
-		{
-			can_fire_ = true;
-			fire_timer_ = 0;
-		}
-	}
+	weapon_->update(delta_time);
 
 	if (velocity_.x != 0 && velocity_.y != 0)
 	{
@@ -57,9 +55,5 @@ void Character::right()
 
 void Character::fire(LevelBase* level)
 {
-	if (can_fire_)
-	{
-		can_fire_ = false;
-		handle_fire(level);
-	}
+	weapon_->fire(level, this);
 }
