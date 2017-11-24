@@ -39,3 +39,8 @@ int Weapon::get_ammo() const
 		return -1;
 	return ammo_;
 }
+
+bool Weapon::can_fire() const
+{
+	return can_fire_;
+}

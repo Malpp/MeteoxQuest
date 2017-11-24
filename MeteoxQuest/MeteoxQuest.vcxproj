@@ -118,6 +118,8 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="heart_weapon.h" />
     <ClInclude Include="helper.h" />
     <ClInclude Include="ken_enemy.h" />
+    <ClInclude Include="ken_projectile.h" />
+    <ClInclude Include="ken_weapon.h" />
     <ClInclude Include="label.h" />
     <ClInclude Include="level1.h" />
     <ClInclude Include="level_base.h" />
@@ -150,6 +152,8 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="heart_projectile.cpp" />
     <ClCompile Include="heart_weapon.cpp" />
     <ClCompile Include="ken_enemy.cpp" />
+    <ClCompile Include="ken_projectile.cpp" />
+    <ClCompile Include="ken_weapon.cpp" />
     <ClCompile Include="label.cpp" />
     <ClCompile Include="level1.cpp" />
     <ClCompile Include="level_base.cpp" />

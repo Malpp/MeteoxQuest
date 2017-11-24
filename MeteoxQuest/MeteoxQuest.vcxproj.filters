@@ -162,6 +162,12 @@
     <ClInclude Include="ken_enemy.h">
       <Filter>Header Files\Game\enemies</Filter>
     </ClInclude>
+    <ClInclude Include="ken_weapon.h">
+      <Filter>Header Files\Game\weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="ken_projectile.h">
+      <Filter>Header Files\Game\projectiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -250,6 +256,12 @@
     </ClCompile>
     <ClCompile Include="ken_enemy.cpp">
       <Filter>Source Files\Game\enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ken_weapon.cpp">
+      <Filter>Source Files\Game\weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="ken_projectile.cpp">
+      <Filter>Source Files\Game\projectiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
