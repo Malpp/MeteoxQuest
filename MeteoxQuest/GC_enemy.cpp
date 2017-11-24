@@ -8,11 +8,10 @@
 sf::Texture* GCEnemy::texture_ = Game::resource_handler_.add_texture("gc_enemy.png");
 const sf::Vector2f GCEnemy::size_ = sf::Vector2f( 105, 75 );
 const float GCEnemy::movespeed_ = 600;
-const float GCEnemy::fire_speed_ = 1;
 const float GCEnemy::frame_delay_ = 0.1f;
 
 GCEnemy::GCEnemy( const sf::Vector2f& pos, const float angle )
-	: Enemy( pos, angle, texture_, size_, no_frames_, no_states_, frame_delay_, movespeed_, fire_speed_)
+	: Enemy( pos, angle, texture_, size_, no_frames_, no_states_, frame_delay_, movespeed_)
 {
 	weapon_ = new GCWeapon;
 }

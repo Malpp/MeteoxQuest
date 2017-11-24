@@ -13,6 +13,5 @@ private:
 	static const int no_frames_ = 1;
 	static const int no_states_ = 1;
 	static const float movespeed_;
-	static const float fire_speed_;
 	static const float frame_delay_;
 };

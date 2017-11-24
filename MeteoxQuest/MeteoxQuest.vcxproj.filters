@@ -159,6 +159,9 @@
     <ClInclude Include="orc_projectile.h">
       <Filter>Header Files\Game\projectiles</Filter>
     </ClInclude>
+    <ClInclude Include="ken_enemy.h">
+      <Filter>Header Files\Game\enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -244,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="orc_projectile.cpp">
       <Filter>Source Files\Game\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="ken_enemy.cpp">
+      <Filter>Source Files\Game\enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
