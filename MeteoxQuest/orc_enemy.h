@@ -2,11 +2,11 @@
 #include "stdafx.h"
 #include "enemy.h"
 
-class GCEnemy : public Enemy
+class OrcEnemy : public Enemy
 {
 public:
-	GCEnemy( const sf::Vector2f& pos, const float angle );
-	void update(const float delta_time, LevelBase* level) override;
+	OrcEnemy( const sf::Vector2f& pos, const float angle );
+	void update( const float delta_time, LevelBase* level ) override;
 	static sf::Texture* texture_;
 private:
 	static const sf::Vector2f size_;

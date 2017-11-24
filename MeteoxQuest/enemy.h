@@ -5,7 +5,7 @@
 class Enemy : public Character
 {
 public:
-	Enemy(const sf::Vector2f& pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, const int no_frames, const int no_states, const float frame_delay, const float move_speed, const float fire_speed);
+	Enemy(const sf::Vector2f& pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, const int no_frames, const int no_states, const float frame_delay, const float move_speed);
 
 protected:
 	bool is_at_edge() override;

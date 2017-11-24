@@ -14,7 +14,6 @@ LevelBase::LevelBase(sf::RenderWindow* window, const std::string& background_tex
 		background_sprites_[i] = sf::Sprite(*bg_texture);
 	}
 	background_sprites_[1].setPosition(Game::GAME_WIDTH, 0);
-	add_game_object(new GCEnemy(sf::Vector2f(1300, rand() % (Game::GAME_HEIGHT + 1)), 0));
 }
 
 LevelBase::~LevelBase()

@@ -61,6 +61,12 @@
     <Filter Include="Header Files\Game\weapons">
       <UniqueIdentifier>{a3917e08-bac3-4609-b715-74b758cf7f51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\enemies">
+      <UniqueIdentifier>{ea743a42-13d9-44c5-9bda-9add127fc773}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\enemies">
+      <UniqueIdentifier>{80735262-a6bb-4a0f-9950-791ad5971136}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -120,12 +126,6 @@
     <ClInclude Include="main_menu.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="enemy.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GC_enemy.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="gc_projectile.h">
       <Filter>Header Files\Game\projectiles</Filter>
     </ClInclude>
@@ -143,6 +143,30 @@
     </ClInclude>
     <ClInclude Include="weapon.h">
       <Filter>Header Files\Game\weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>Header Files\Game\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="GC_enemy.h">
+      <Filter>Header Files\Game\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="orc_enemy.h">
+      <Filter>Header Files\Game\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="orc_weapon.h">
+      <Filter>Header Files\Game\weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="orc_projectile.h">
+      <Filter>Header Files\Game\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="ken_enemy.h">
+      <Filter>Header Files\Game\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ken_weapon.h">
+      <Filter>Header Files\Game\weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="ken_projectile.h">
+      <Filter>Header Files\Game\projectiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -197,12 +221,6 @@
     <ClCompile Include="main_menu.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="enemy.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GC_enemy.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="gc_weapon.cpp">
       <Filter>Source Files\Game\weapons</Filter>
     </ClCompile>
@@ -220,6 +238,30 @@
     </ClCompile>
     <ClCompile Include="weapon.cpp">
       <Filter>Source Files\Game\weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="enemy.cpp">
+      <Filter>Source Files\Game\enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="GC_enemy.cpp">
+      <Filter>Source Files\Game\enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="orc_enemy.cpp">
+      <Filter>Source Files\Game\enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="orc_weapon.cpp">
+      <Filter>Source Files\Game\weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="orc_projectile.cpp">
+      <Filter>Source Files\Game\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="ken_enemy.cpp">
+      <Filter>Source Files\Game\enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ken_weapon.cpp">
+      <Filter>Source Files\Game\weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="ken_projectile.cpp">
+      <Filter>Source Files\Game\projectiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@
 #include "level_base.h"
 #include "character.h"
 
-const float GCWeapon::fire_speed_ = 1;
+const float GCWeapon::fire_speed_ = 0.3f;
 
 GCWeapon::GCWeapon()
 	: Weapon(ammo_, fire_speed_)

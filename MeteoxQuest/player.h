@@ -7,6 +7,15 @@ class LevelBase;
 class Player : public Character
 {
 public:
+	enum PlayerState
+	{
+		IDLE,
+		LEFT,
+		RIGHT,
+		UP,
+		DOWN,
+		COUNT
+	};
 	Player( const sf::Vector2f& pos, const float angle);
 
 	void update(const float delta_time, LevelBase* level) override;
@@ -20,5 +29,4 @@ private:
 	static const int no_frames_ = 4;
 	static const float movespeed_;
 	static const float frame_delay_;
-	static const float fire_speed_;
 };
