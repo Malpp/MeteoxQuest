@@ -112,5 +112,5 @@ void LevelBase::add_game_object(GameObject* object)
 
 bool LevelBase::loadLevel(const std::string path )
 {
-	
+	return true;
 }
