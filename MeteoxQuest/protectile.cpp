@@ -4,7 +4,7 @@
 #include "character.h"
 
 Projectile::Projectile(const sf::Vector2f& pos, float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay, const sf::Vector2f& direction )
-	: GameObject( pos, angle, texture, size, no_frames, no_states, frame_delay )
+	: GameObject( pos, angle, texture, size, no_frames, no_states, frame_delay, base_life_ )
 {
 	direction_ = direction;
 }
@@ -28,6 +28,11 @@ bool Projectile::is_at_edge()
 }
 
 void Projectile::handle_edge()
+{
+	despawn();
+}
+
+void Projectile::on_death()
 {
 	despawn();
 }

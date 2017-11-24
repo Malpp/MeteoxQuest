@@ -23,10 +23,12 @@ public:
 	void down() override;
 	void left() override;
 	void right() override;
+	void on_death() override;
 private:
 	static sf::Texture* texture_;
 	static const sf::Vector2f size_;
 	static const int no_frames_ = 4;
 	static const float movespeed_;
 	static const float frame_delay_;
+	static const int base_life_ = 3;
 };

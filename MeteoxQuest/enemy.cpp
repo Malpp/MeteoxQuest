@@ -2,8 +2,8 @@
 #include "enemy.h"
 #include "Game.h"
 
-Enemy::Enemy(const sf::Vector2f& pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, const int no_frames, const int no_states, const float frame_delay, const float move_speed)
-	: Character( pos, angle, texture, size, no_frames, no_states, frame_delay, move_speed )
+Enemy::Enemy(const sf::Vector2f& pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, const int no_frames, const int no_states, const float frame_delay, const float move_speed, const int base_life)
+	: Character( pos, angle, texture, size, no_frames, no_states, frame_delay, move_speed, base_life )
 {
 
 }
@@ -32,4 +32,9 @@ void Enemy::handle_edge()
 		std::max( half_texture_size_.y,
 			std::min( Game::GAME_HEIGHT - half_texture_size_.y, current_pos.y ) )
 	) );
+}
+
+void Enemy::on_death()
+{
+	despawn();
 }

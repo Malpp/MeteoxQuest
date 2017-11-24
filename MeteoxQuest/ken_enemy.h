@@ -20,4 +20,5 @@ private:
 	static const float movespeed_;
 	static const float frame_delay_;
 	float fire_timer_;
+	static const int base_life_ = 5;
 };
