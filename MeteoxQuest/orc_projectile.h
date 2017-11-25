@@ -1,7 +1,7 @@
 #pragma once
-#include "projectile.h"
+#include "enemy_projectile.h"
 
-class OrcProjectile : public Projectile
+class OrcProjectile : public EnemyProjectile
 {
 public:
 	OrcProjectile( const sf::Vector2f& pos, float angle, const sf::Vector2f& direction );

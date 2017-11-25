@@ -9,7 +9,7 @@ namespace Helper
 		return M_PI * degree / 180;
 	}
 
-	inline float distanceBetweenTwoPoints( sf::Vector2f& p1, sf::Vector2f& p2 )
+	inline float distanceBetweenTwoPoints( const sf::Vector2f& p1, const sf::Vector2f& p2 )
 	{
 		return sqrt( pow( p2.x - p1.x, 2 ) + pow( p2.y - p1.y, 2 ) );
 	}

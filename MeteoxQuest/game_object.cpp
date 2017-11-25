@@ -2,6 +2,8 @@
 #include "game_object.h"
 #include "Game.h"
 #include "level_base.h"
+#include "helper.h"
+#include "collision.h"
 
 void GameObject::update(const float delta_time, LevelBase* level)
 {
@@ -64,6 +66,7 @@ GameObject::GameObject( const sf::Vector2f pos, const float angle, sf::Texture* 
 	}
 	setTextureRect( player_animations_[0][0] );
 	setOrigin( half_texture_size_.x, half_texture_size_.y );
+	biggest_texture_side_ = std::max( half_texture_size_.x, half_texture_size_.y );
 }
 
 GameObject::~GameObject()
@@ -73,6 +76,18 @@ GameObject::~GameObject()
 		delete[] player_animations_[state];
 	}
 	delete[] player_animations_;
+}
+
+void GameObject::collision_test(GameObject* other)
+{
+	if(Helper::distanceBetweenTwoPoints(getPosition(), other->getPosition()) < biggest_texture_side_ + other->biggest_texture_side_)
+	{
+		if(Collision::PixelPerfectTest( *this, *other ))
+		{
+			handle_collision( other );
+			other->handle_collision( this );
+		}
+	}
 }
 
 bool GameObject::is_at_edge()

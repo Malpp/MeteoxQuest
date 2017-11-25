@@ -5,8 +5,10 @@
 #include <sstream>
 
 LevelBase::LevelBase(sf::RenderWindow* window, sf::Texture* texture, float scroll_speed)
-	: Scene(window), player_(sf::Vector2f(100, Game::GAME_HEIGHT * 0.5f), 0)
+	: Scene(window)
 {
+	player_ = new Player( sf::Vector2f( 100, Game::GAME_HEIGHT * 0.5f ), 0 );
+	add_game_object( player_ );
 	scroll_speed_ = scroll_speed;
 	background_size_ = static_cast<sf::Vector2f>(texture->getSize());
 	for (int i = 0; i < 2; ++i)
@@ -50,11 +52,16 @@ void LevelBase::input()
 
 void LevelBase::update(float delta_time)
 {
-	player_.update(delta_time, this);
 
 	for (int i = objects_.size() - 1; i >= 0; --i)
 	{
 		objects_[i]->update(delta_time, this);
+
+		for (int j = i - 1; j >= 0; --j)
+		{
+			objects_[i]->collision_test( objects_[j] );
+		}
+
 		if (objects_[i]->get_despawn())
 		{
 			delete objects_[i];
@@ -100,7 +107,6 @@ void LevelBase::draw()
 	{
 		window_->draw(*object);
 	}
-	window_->draw(player_);
 
 	window_->display();
 }

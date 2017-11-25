@@ -8,7 +8,7 @@ const float HeartProjectile::movespeed_ = 1000;
 const float HeartProjectile::frame_delay_ = 0.2f;
 
 HeartProjectile::HeartProjectile(const sf::Vector2f& pos, float angle, const sf::Vector2f& direction)
-	: Projectile( pos, angle, texture_, size_, no_frames_, no_states_, frame_delay_, direction * movespeed_ )
+	: PlayerProjectile( pos, angle, texture_, size_, no_frames_, no_states_, frame_delay_, direction * movespeed_ )
 {
 
 }

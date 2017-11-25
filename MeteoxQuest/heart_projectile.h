@@ -1,8 +1,8 @@
 #pragma once
 #include "stdafx.h"
-#include "projectile.h"
+#include "player_projectile.h"
 
-class HeartProjectile : public Projectile
+class HeartProjectile : public PlayerProjectile
 {
 public:
 	HeartProjectile( const sf::Vector2f& pos, float angle, const sf::Vector2f& direction );

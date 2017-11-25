@@ -66,3 +66,7 @@ void Player::on_death()
 {
 	
 }
+
+void Player::handle_collision(GameObject* other)
+{
+}

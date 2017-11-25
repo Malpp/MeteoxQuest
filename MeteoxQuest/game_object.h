@@ -12,7 +12,9 @@ public:
 	void take_damage(const int damage);
 	GameObject( const sf::Vector2f pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay, const int life );
 	~GameObject();
+	void collision_test( GameObject* other );
 protected:
+	virtual void handle_collision( GameObject* other ) = 0;
 	virtual bool is_at_edge();
 	virtual void handle_edge();
 	sf::Vector2f velocity_;
@@ -27,4 +29,5 @@ protected:
 	bool should_despawn;
 	int life;
 	virtual void on_death() = 0;
+	float biggest_texture_side_;
 };

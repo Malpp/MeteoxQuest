@@ -1,8 +1,8 @@
 #pragma once
 #include "stdafx.h"
-#include "projectile.h"
+#include "enemy_projectile.h"
 
-class KenProjectile : public Projectile
+class KenProjectile : public EnemyProjectile
 {
 public:
 	KenProjectile( const sf::Vector2f& pos, float angle, const sf::Vector2f& direction );

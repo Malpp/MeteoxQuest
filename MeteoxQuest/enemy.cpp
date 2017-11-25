@@ -38,3 +38,8 @@ void Enemy::on_death()
 {
 	despawn();
 }
+
+void Enemy::handle_collision(GameObject* other)
+{
+
+}

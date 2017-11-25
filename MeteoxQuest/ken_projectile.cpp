@@ -8,7 +8,7 @@ const float KenProjectile::movespeed_ = 2500;
 const float KenProjectile::frame_delay_ = 0.2f;
 
 KenProjectile::KenProjectile( const sf::Vector2f& pos, const float angle, const sf::Vector2f& direction )
-	: Projectile( pos, angle, texture_, size_, no_frames_, no_states_, frame_delay_, direction * movespeed_ )
+	: EnemyProjectile( pos, angle, texture_, size_, no_frames_, no_states_, frame_delay_, direction * movespeed_ )
 {
 	
 }

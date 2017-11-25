@@ -168,6 +168,15 @@
     <ClInclude Include="ken_projectile.h">
       <Filter>Header Files\Game\projectiles</Filter>
     </ClInclude>
+    <ClInclude Include="collision.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="player_projectile.h">
+      <Filter>Header Files\Game\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy_projectile.h">
+      <Filter>Header Files\Game\projectiles</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -262,6 +271,9 @@
     </ClCompile>
     <ClCompile Include="ken_projectile.cpp">
       <Filter>Source Files\Game\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="collision.cpp">
+      <Filter>Source Files\Other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

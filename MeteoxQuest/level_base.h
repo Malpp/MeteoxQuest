@@ -17,7 +17,7 @@ public:
 	void add_game_object( GameObject* projectile );
 	
 private:
-	Player player_;
+	Player* player_;
 	float scroll_speed_;
 	sf::Sprite background_sprites_[2];
 	std::vector<GameObject*> objects_;

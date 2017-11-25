@@ -17,13 +17,14 @@ public:
 		COUNT
 	};
 	Player( const sf::Vector2f& pos, const float angle);
-
 	void update(const float delta_time, LevelBase* level) override;
 	void up() override;
 	void down() override;
 	void left() override;
 	void right() override;
 	void on_death() override;
+protected:
+	void handle_collision(GameObject* other) override;
 private:
 	static sf::Texture* texture_;
 	static const sf::Vector2f size_;

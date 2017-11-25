@@ -8,6 +8,6 @@ const float GCProjectile::movespeed_ = 1000;
 const float GCProjectile::frame_delay_ = 0.2f;
 
 GCProjectile::GCProjectile(const sf::Vector2f& pos, const float angle, const sf::Vector2f& direction)
-	: Projectile(pos, angle, texture_, size_, no_frames_, no_states_, frame_delay_, direction * movespeed_)
+	: EnemyProjectile(pos, angle, texture_, size_, no_frames_, no_states_, frame_delay_, direction * movespeed_)
 {
 }

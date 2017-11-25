@@ -2,11 +2,14 @@
 #include "projectile.h"
 #include "Game.h"
 #include "character.h"
+#include "player.h"
+#include "enemy.h"
 
-Projectile::Projectile(const sf::Vector2f& pos, float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay, const sf::Vector2f& direction )
+Projectile::Projectile(const sf::Vector2f& pos, float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay, const sf::Vector2f& direction, ProjectileType type )
 	: GameObject( pos, angle, texture, size, no_frames, no_states, frame_delay, base_life_ )
 {
 	direction_ = direction;
+	type_ = type;
 }
 
 void Projectile::update(const float delta_time, LevelBase* level)
@@ -35,4 +38,17 @@ void Projectile::handle_edge()
 void Projectile::on_death()
 {
 	despawn();
+}
+
+void Projectile::handle_collision(GameObject* other)
+{
+	if(dynamic_cast<Player*>(other) && type_ == ENEMY)
+	{
+		despawn();
+	}
+		
+	if(dynamic_cast<Enemy*>(other) && type_ == PLAYER )
+	{
+		despawn();
+	}
 }
