@@ -30,7 +30,7 @@
         {
           "type": "GC",
           "posX": 1,
-            "posY": -1
+          "posY": -1
         },
         {
           "type": "SMORC",
@@ -85,5 +85,10 @@
       ],
       "delay": 75
     }
-  }
+  },
+  "test": [
+    "value",
+    "value2",
+    "value3"
+  ]
 }

@@ -3,6 +3,9 @@
 #include "Game.h"
 #include "GC_enemy.h"
 #include <sstream>
+#include <fstream>
+#include "src\json.hpp"
+
 
 LevelBase::LevelBase(sf::RenderWindow* window, sf::Texture* texture, float scroll_speed)
 	: Scene(window)
@@ -121,5 +124,15 @@ void LevelBase::add_game_object(GameObject* object)
 
 bool LevelBase::loadLevel(const std::string path )
 {
+	std::ifstream filestream(path);
+	nlohmann::json data;
+	filestream >> data;
+	
+	for (int i = 0; i < data["test"].size(); ++i)
+	{
+		std::string type = data["test"][i];
+		std::cout << type << '\n';
+	}
+	
 	return true;
 }
