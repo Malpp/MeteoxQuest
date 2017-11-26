@@ -8,14 +8,17 @@ class GameObject;
 class LevelBase : public Scene
 {
 public:
-	LevelBase(sf::RenderWindow* window, sf::Texture* texture , float scroll_speed);
+	LevelBase(
+		sf::RenderWindow* window,
+		sf::Texture* texture,
+		float scroll_speed);
 	virtual ~LevelBase();
 	void input() override;
 	void update(float delta_time) override;
 	void draw() override;
 	virtual void manage_input(sf::Event event);
-	void add_game_object( GameObject* projectile );
-	
+	void add_game_object(GameObject* projectile);
+
 private:
 	Player* player_;
 	float scroll_speed_;

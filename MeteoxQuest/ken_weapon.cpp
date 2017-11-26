@@ -6,11 +6,15 @@
 
 const float KenWeapon::fire_speed_ = 3;
 
-KenWeapon::KenWeapon()
-	: Weapon( ammo_, fire_speed_ )
-{}
-
-void KenWeapon::handle_fire( LevelBase* level, Character* character )
+KenWeapon::KenWeapon(const GameObject::Color color)
+	: Weapon(ammo_, fire_speed_, color)
 {
-	level->add_game_object( new KenProjectile( character->getPosition(), 0, sf::Vector2f( -1, 0 ) ) );
+}
+
+void KenWeapon::handle_fire(LevelBase* level, Character* character)
+{
+	level->add_game_object(new KenProjectile(character->getPosition(),
+	                                         0,
+	                                         sf::Vector2f(-1, 0),
+	                                         color_));
 }

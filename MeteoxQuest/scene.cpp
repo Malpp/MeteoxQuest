@@ -10,7 +10,7 @@ Scene::Scene(sf::RenderWindow* window)
 
 Scene::Scenes Scene::run()
 {
-	while (isRunning)
+	while(isRunning)
 	{
 		input();
 		const float delta_time = std::min(0.025f, clock.restart().asSeconds());

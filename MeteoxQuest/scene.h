@@ -20,8 +20,10 @@ public:
 	};
 
 	Scene(sf::RenderWindow* window);
+
 	virtual ~Scene()
-	{}  //Pour que le destructeur de l'objet en mémoire soit apellé
+	{
+	} //Pour que le destructeur de l'objet en mémoire soit apellé
 	virtual Scenes run();
 
 	//La boucle de jeu est maintenant gérée par la scène

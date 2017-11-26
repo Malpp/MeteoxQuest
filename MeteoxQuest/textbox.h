@@ -2,11 +2,13 @@
 #include "stdafx.h"
 #include "menu_element.h"
 
-
 class Textbox : public MenuElement
 {
 public:
-	Textbox(sf::Vector2f& pos, sf::Vector2f& size, std::string back_text = "");
+	Textbox(
+		sf::Vector2f& pos,
+		sf::Vector2f& size,
+		std::string back_text = "");
 	void draw(sf::RenderWindow* window) override;
 	void handle_input(sf::Event& event, sf::RenderWindow* window) override;
 	std::string get_text() const;

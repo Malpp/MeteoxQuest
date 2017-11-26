@@ -13,7 +13,7 @@ namespace Collision
 	/// downloading the textures from the graphics card to memory -> SLOW!
 	/// You can avoid this by using the "CreateTextureAndBitmask" function
 	//////
-	bool PixelPerfectTest( const sf::Sprite& Object1, const sf::Sprite& Object2, sf::Uint8 AlphaLimit = 0 );
+	bool PixelPerfectTest(const sf::Sprite& Object1, const sf::Sprite& Object2, sf::Uint8 AlphaLimit = 0);
 
 	//////
 	/// Replaces Texture::loadFromFile
@@ -22,18 +22,18 @@ namespace Collision
 	///
 	/// The function returns false if the file could not be opened for some reason
 	//////
-	bool CreateTextureAndBitmask( sf::Texture &LoadInto, const std::string& Filename );
+	bool CreateTextureAndBitmask(sf::Texture &LoadInto, const std::string& Filename);
 
 	//////
 	/// Test for collision using circle collision dection
 	/// Radius is averaged from the dimensions of the sprite so
 	/// roughly circular objects will be much more accurate
 	//////
-	bool CircleTest( const sf::Sprite& Object1, const sf::Sprite& Object2 );
+	bool CircleTest(const sf::Sprite& Object1, const sf::Sprite& Object2);
 
 	//////
 	/// Test for bounding box collision using the Separating Axis Theorem
 	/// Supports scaling and rotation
 	//////
-	bool BoundingBoxTest( const sf::Sprite& Object1, const sf::Sprite& Object2 );
+	bool BoundingBoxTest(const sf::Sprite& Object1, const sf::Sprite& Object2);
 }

@@ -16,7 +16,7 @@ public:
 		DOWN,
 		COUNT
 	};
-	Player( const sf::Vector2f& pos, const float angle);
+	Player(const sf::Vector2f& pos, const float angle);
 	void update(const float delta_time, LevelBase* level) override;
 	void up() override;
 	void down() override;

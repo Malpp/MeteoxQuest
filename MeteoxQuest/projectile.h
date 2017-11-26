@@ -11,7 +11,18 @@ public:
 		PLAYER,
 		ENEMY
 	};
-	Projectile( const sf::Vector2f& pos, float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay, const sf::Vector2f& direction, ProjectileType type );
+
+	Projectile(
+		const sf::Vector2f& pos,
+		float angle,
+		sf::Texture* texture,
+		const sf::Vector2f& size,
+		int no_frames,
+		int no_states,
+		float frame_delay,
+		const sf::Vector2f& direction,
+		ProjectileType type,
+		Color color);
 	void update(const float delta_time, LevelBase* level) override;
 	void on_death() override;
 protected:

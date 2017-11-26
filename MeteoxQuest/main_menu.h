@@ -4,7 +4,7 @@
 #include "textbox.h"
 #include "menu_manager.h"
 
-class MainMenu : public MenuBase 
+class MainMenu : public MenuBase
 {
 public:
 	MainMenu(sf::RenderWindow* window);
@@ -13,4 +13,3 @@ public:
 private:
 	Button* play_button_;
 };
-

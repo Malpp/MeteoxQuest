@@ -7,11 +7,12 @@
 const float HeartWeapon::fire_speed_ = 0.25f;
 
 HeartWeapon::HeartWeapon()
-	: Weapon(ammo_, fire_speed_)
+	: Weapon(ammo_, fire_speed_, GameObject::NONE)
 {
 }
 
 void HeartWeapon::handle_fire(LevelBase* level, Character* character)
 {
-	level->add_game_object(new HeartProjectile(character->getPosition(), 0, sf::Vector2f(1, 0)));
+	level->add_game_object(
+		new HeartProjectile(character->getPosition(), 0, sf::Vector2f(1, 0)));
 }

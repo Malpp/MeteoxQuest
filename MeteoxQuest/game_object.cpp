@@ -7,7 +7,7 @@
 
 void GameObject::update(const float delta_time, LevelBase* level)
 {
-	move( velocity_ * delta_time );
+	move(velocity_ * delta_time);
 
 	frame_timer_ += delta_time;
 	if(frame_timer_ > frame_time_)
@@ -16,9 +16,9 @@ void GameObject::update(const float delta_time, LevelBase* level)
 		++frame_;
 	}
 
-	setTextureRect( player_animations_[state_][frame_ % max_frame_] );
+	setTextureRect(player_animations_[state_][frame_ % max_frame_]);
 
-	if (is_at_edge())
+	if(is_at_edge())
 	{
 		handle_edge();
 	}
@@ -36,11 +36,21 @@ bool GameObject::get_despawn() const
 	return should_despawn;
 }
 
-GameObject::GameObject( const sf::Vector2f pos, const float angle, sf::Texture* texture, const sf::Vector2f& size, int no_frames, int no_states, float frame_delay, int life )
+GameObject::GameObject(
+	const sf::Vector2f pos,
+	const float angle,
+	sf::Texture* texture,
+	const sf::Vector2f& size,
+	int no_frames,
+	int no_states,
+	float frame_delay,
+	int life,
+	Color color)
 {
-	setPosition( pos );
-	setRotation( angle );
-	setTexture( *texture );
+	color_ = color;
+	setPosition(pos);
+	setRotation(angle);
+	setTexture(*texture);
 	this->life = life;
 	state_ = 0;
 	frame_ = 0;
@@ -49,29 +59,30 @@ GameObject::GameObject( const sf::Vector2f pos, const float angle, sf::Texture* 
 	frame_time_ = frame_delay;
 	frame_timer_ = 0;
 	should_despawn = false;
-	velocity_ = sf::Vector2f( 0, 0 );
+	velocity_ = sf::Vector2f(0, 0);
 	half_texture_size_ = size * 0.5f;
 	player_animations_ = new sf::IntRect*[no_states];
-	for (int state = 0; state < no_states; ++state)
+	for(int state = 0; state < no_states; ++state)
 	{
 		player_animations_[state] = new sf::IntRect[no_frames];
-		for (int frame = 0; frame < no_frames; ++frame)
+		for(int frame = 0; frame < no_frames; ++frame)
 		{
 			player_animations_[state][frame] = sf::IntRect(
 				size.x * frame,
 				size.y * state,
 				size.x,
-				size.y );
+				size.y);
 		}
 	}
-	setTextureRect( player_animations_[0][0] );
-	setOrigin( half_texture_size_.x, half_texture_size_.y );
-	biggest_texture_side_ = std::max( half_texture_size_.x, half_texture_size_.y );
+	setTextureRect(player_animations_[0][0]);
+	setOrigin(half_texture_size_.x, half_texture_size_.y);
+	biggest_texture_side_ = std::max(half_texture_size_.x,
+	                                 half_texture_size_.y);
 }
 
 GameObject::~GameObject()
 {
-	for (int state = 0; state < max_state_; ++state)
+	for(int state = 0; state < max_state_; ++state)
 	{
 		delete[] player_animations_[state];
 	}
@@ -80,20 +91,26 @@ GameObject::~GameObject()
 
 void GameObject::collision_test(GameObject* other)
 {
-	if(Helper::distanceBetweenTwoPoints(getPosition(), other->getPosition()) < biggest_texture_side_ + other->biggest_texture_side_)
+	if(Helper::distanceBetweenTwoPoints(getPosition(), other->getPosition()) <
+		biggest_texture_side_ + other->biggest_texture_side_)
 	{
-		if(Collision::PixelPerfectTest( *this, *other ))
+		if(Collision::PixelPerfectTest(*this, *other))
 		{
-			handle_collision( other );
-			other->handle_collision( this );
+			handle_collision(other);
+			other->handle_collision(this);
 		}
 	}
+}
+
+GameObject::Color GameObject::generate_random_color()
+{
+	return static_cast<Color>(Helper::generateRandInt(RED, GREEN));
 }
 
 bool GameObject::is_at_edge()
 {
 	const sf::Vector2f current_pos = getPosition();
-	if (current_pos.x > Game::GAME_WIDTH - half_texture_size_.x ||
+	if(current_pos.x > Game::GAME_WIDTH - half_texture_size_.x ||
 		current_pos.x < half_texture_size_.x ||
 		current_pos.y > Game::GAME_HEIGHT - half_texture_size_.y ||
 		current_pos.y < half_texture_size_.y)
@@ -105,13 +122,15 @@ bool GameObject::is_at_edge()
 void GameObject::handle_edge()
 {
 	const sf::Vector2f current_pos = getPosition();
-	setPosition( sf::Vector2f(
-		std::max( half_texture_size_.x,
-			std::min( Game::GAME_WIDTH - half_texture_size_.x, current_pos.x ) ),
+	setPosition(sf::Vector2f(
+		std::max(half_texture_size_.x,
+		         std::min(Game::GAME_WIDTH - half_texture_size_.x,
+		                  current_pos.x)),
 
-		std::max( half_texture_size_.y,
-			std::min( Game::GAME_HEIGHT - half_texture_size_.y, current_pos.y ) )
-	) );
+		std::max(half_texture_size_.y,
+		         std::min(Game::GAME_HEIGHT - half_texture_size_.y,
+		                  current_pos.y))
+	));
 }
 
 void GameObject::take_damage(const int damage)

@@ -2,8 +2,6 @@
 #include "stdafx.h"
 #include "menu_element.h"
 
-
-
 class MenuManager
 {
 public:

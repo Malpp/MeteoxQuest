@@ -10,4 +10,3 @@ public:
 private:
 	std::vector<sf::Texture*> textures_;
 };
-

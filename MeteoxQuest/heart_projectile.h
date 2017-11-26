@@ -5,7 +5,7 @@
 class HeartProjectile : public PlayerProjectile
 {
 public:
-	HeartProjectile( const sf::Vector2f& pos, float angle, const sf::Vector2f& direction );
+	HeartProjectile(const sf::Vector2f& pos, float angle, const sf::Vector2f& direction);
 	static sf::Texture* texture_;
 	static const sf::Vector2f size_;
 	static const int no_frames_ = 2;

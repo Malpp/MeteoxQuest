@@ -5,7 +5,6 @@
 
 class Game
 {
-
 public:
 	//Add new vars here
 
@@ -15,35 +14,35 @@ private:
 	Scene::Scenes current_scene_;
 	Scene* active_scene_;
 
-//
-//TEMPLATE STUFF BELOW
-//
+	//
+	//TEMPLATE STUFF BELOW
+	//
 
 public:
 	//Template variables
 	Game();
 	~Game();
-	void run();	
+	void run();
 	/// <summary>
 	/// The Game width
 	/// </summary>
-	static const int GAME_WIDTH = 1920;	
+	static const int GAME_WIDTH = 1920;
 	/// <summary>
 	/// The Game height
 	/// </summary>
-	static const int GAME_HEIGHT = 1080;	
+	static const int GAME_HEIGHT = 1080;
 	/// <summary>
 	/// The camara width
 	/// </summary>
-	static const int CAMARA_WIDTH = 1920;	
+	static const int CAMARA_WIDTH = 1920;
 	/// <summary>
 	/// The camera height
 	/// </summary>
-	static const int CAMERA_HEIGHT = 1080;	
+	static const int CAMERA_HEIGHT = 1080;
 	/// <summary>
 	/// The window width
 	/// </summary>
-	static const int WINDOW_WIDTH = 1280;	
+	static const int WINDOW_WIDTH = 1280;
 	/// <summary>
 	/// The window height
 	/// </summary>
@@ -54,7 +53,7 @@ public:
 	static sf::Font font;
 
 private:
-	//Template variables	
+	//Template variables
 	/// <summary>
 	/// The window
 	/// </summary>
