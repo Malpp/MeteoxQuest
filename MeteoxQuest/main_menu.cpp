@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "main_menu.h"
+#include "deque.h"
 
 MainMenu::MainMenu(sf::RenderWindow* window)
 	: MenuBase(window, Scene::Scenes::EXIT)
@@ -17,6 +18,7 @@ MainMenu::~MainMenu()
 
 void MainMenu::update(float delta_time)
 {
+	Deque<int> test;
 	menu_manager_.update(delta_time);
 	if(play_button_->get_active())
 		change_scene(Scene::Scenes::GAME);

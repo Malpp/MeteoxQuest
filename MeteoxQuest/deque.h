@@ -9,9 +9,7 @@ public:
 
 	//Constructeur & destructeur
 	Deque();
-	Deque(const Deque& other);
 	~Deque();
-
 
 	Deque& operator=(const Deque&);
 
@@ -39,6 +37,7 @@ public:
 	void resize(size_type);
 
 private:
+	Deque(const Deque& other) = delete;
 	T* tab;
 	size_type size_;
 	size_type cap_;
@@ -53,20 +52,7 @@ Deque<T>::Deque()
 	cap_ = 0;
 	size_of_ = sizeof( T);
 	reserve(1);
-}
-
-template <class T>
-Deque<T>::Deque(const Deque<T>& other)
-{
-	size_ = 0;
-	cap_ = 0;
-	size_of_ = sizeof( T);
-	reserve(1);
-	resize(other.size());
-	for (size_t i = 0; i < size_; i++)
-	{
-		tab[i] = other.at(i);
-	}
+	head_ = 0;
 }
 
 template <class T>
@@ -118,21 +104,31 @@ const T& Deque<T>::back() const
 }
 
 template <class T>
-void Deque<T>::push_front(const T&)
+void Deque<T>::push_front(const T& val)
 {
+	size_++;
+	--head_;
+	head_ = (head_ + cap_) % cap_;
+	tab[head_] = val;
 }
 
 template <class T>
-void Deque<T>::push_back( const T& val )
+void Deque<T>::push_back(const T& val)
 {
 	size_++;
-	resize( size_ );
-	tab[size_ - 1] = val;
+	resize(size_);
+	tab[(head_ + size_) % cap_] = val;
 }
 
 template <class T>
 void Deque<T>::pop_front()
 {
+	if (size_ > 0)
+	{
+		--size_;
+		++head_;
+		head_ = (head_ + cap_) % cap_;
+	}
 }
 
 template <class T>
@@ -147,7 +143,7 @@ void Deque<T>::pop_back()
 template <class T>
 bool Deque<T>::empty() const
 {
-	return size_ == 0 ? true : false;
+	return size_ == 0;
 }
 
 template <class T>
@@ -165,13 +161,18 @@ void Deque<T>::reserve(size_type size)
 		{
 			++cap_;
 		}
+		int old_cap = cap_;
 
 		while (cap_ < size)
 		{
 			cap_ *= 2;
 		}
 		T* newArray = new T[cap_];
-		memcpy(newArray, tab, size_ * size_of_);
+		for (int i = 0; i < size_; ++i)
+		{
+			newArray[i] = tab[(head_ + i) % old_cap];
+		}
+		head_ = 0;
 		delete[] tab;
 		tab = newArray;
 	}
@@ -189,6 +190,7 @@ void Deque<T>::clear()
 	delete[] tab;
 	cap_ = 0;
 	size_ = 0;
+	head_ = 0;
 }
 
 template <class T>
