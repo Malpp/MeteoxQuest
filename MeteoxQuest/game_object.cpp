@@ -104,7 +104,7 @@ void GameObject::collision_test(GameObject* other)
 
 GameObject::Color GameObject::generate_random_color()
 {
-	return static_cast<Color>(Helper::generateRandInt(RED, GREEN));
+	return static_cast<Color>(Helper::generateRandInt(RED, BLUE));
 }
 
 bool GameObject::is_at_edge()

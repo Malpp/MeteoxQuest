@@ -67,6 +67,9 @@
     <Filter Include="Source Files\Game\enemies">
       <UniqueIdentifier>{80735262-a6bb-4a0f-9950-791ad5971136}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Algo">
+      <UniqueIdentifier>{a60ce5e8-499a-48dc-ba64-b30f704d3a5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -176,6 +179,15 @@
     </ClInclude>
     <ClInclude Include="enemy_projectile.h">
       <Filter>Header Files\Game\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="queue.h">
+      <Filter>Header Files\Algo</Filter>
+    </ClInclude>
+    <ClInclude Include="stack.h">
+      <Filter>Header Files\Algo</Filter>
+    </ClInclude>
+    <ClInclude Include="deque.h">
+      <Filter>Header Files\Algo</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
