@@ -64,6 +64,9 @@
       <AdditionalLibraryDirectories>..\$(SolutionName)\SFML-2.4.2\lib\Debug;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-system-d.lib;sfml-network-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;../$(SolutionName)/Debug/*.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d  "$(SolutionDir)$(SolutionName)\SFML-2.4.2\bin\Debug\*.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -83,6 +86,9 @@
       <AdditionalLibraryDirectories>..\$(SolutionName)\SFML-2.4.2\lib\Release;$(VCInstallDir)UnitTest\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-system.lib;sfml-network.lib;sfml-window.lib;sfml-graphics.lib;sfml-audio.lib;../$(SolutionName)/Release/*.obj;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d  "$(SolutionDir)$(SolutionName)\SFML-2.4.2\bin\Release\*.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -96,6 +102,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="queue_tests.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MeteoxQuest\MeteoxQuest.vcxproj">
+      <Project>{aa84487a-6dfc-4629-8ca6-6ada52222d77}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

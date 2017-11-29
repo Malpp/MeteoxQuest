@@ -132,7 +132,7 @@ bool LevelBase::loadLevel(const std::string path)
 	for(int i = 0; i < data["test"].size(); ++i)
 	{
 		std::string type = data["test"][i];
-		std::cout << type << '\n';
+		//std::cout << type << '\n';
 	}
 
 	return true;

@@ -5,7 +5,6 @@ class Deque
 {
 public:
 	//Ici je me définis un type non signé pour les indices et grandeurs.
-	using size_type = unsigned long;
 
 	//Constructeur & destructeur
 	Deque();
@@ -14,7 +13,7 @@ public:
 	Deque& operator=(const Deque&);
 
 	//Accesseur
-	T& at(size_type) const;
+	T& at(int) const;
 	T& operator[](const unsigned int index);
 
 	T& front();
@@ -24,9 +23,9 @@ public:
 
 	//Capacité
 	bool empty() const;
-	size_type size() const;
-	void reserve(size_type);
-	size_type capacity() const;
+	int size() const;
+	void reserve(int);
+	int capacity() const;
 
 	//Modificateur
 	void clear();
@@ -34,25 +33,24 @@ public:
 	void push_back(const T&);
 	void pop_front();
 	void pop_back();
-	void resize(size_type);
+	void resize(int);
 
 private:
 	Deque(const Deque& other) = delete;
 	T* tab;
-	size_type size_;
-	size_type cap_;
-	size_type size_of_;
-	size_type head_;
+	int size_;
+	int cap_;
+	int head_;
 };
 
 template <class T>
 Deque<T>::Deque()
+	: size_(0),
+	cap_(0),
+	head_(0),
+	tab(nullptr)
 {
-	size_ = 0;
-	cap_ = 0;
-	size_of_ = sizeof( T);
 	reserve(1);
-	head_ = 0;
 }
 
 template <class T>
@@ -68,7 +66,7 @@ Deque<T>& Deque<T>::operator=(const Deque<T>& other)
 }
 
 template <class T>
-T& Deque<T>::at(size_type index) const
+T& Deque<T>::at(int index) const
 {
 	return tab[index];
 }
@@ -94,30 +92,31 @@ const T& Deque<T>::front() const
 template <class T>
 T& Deque<T>::back()
 {
-	return tab[(head_ + size_) % cap_];
+	return tab[(head_ + size_ - 1) % size_];
 }
 
 template <class T>
 const T& Deque<T>::back() const
 {
-	return tab[(head_ + size_) % cap_];
+	return tab[(head_ + size_ - 1) % size_];
 }
 
 template <class T>
 void Deque<T>::push_front(const T& val)
 {
-	size_++;
+	++size_;
+	resize( size_ );
 	--head_;
-	head_ = (head_ + cap_) % cap_;
+	head_ = (head_ + cap_ - 1) % cap_;
 	tab[head_] = val;
 }
 
 template <class T>
 void Deque<T>::push_back(const T& val)
 {
-	size_++;
+	++size_;
 	resize(size_);
-	tab[(head_ + size_) % cap_] = val;
+	tab[(head_ + size_ - 1) % cap_] = val;
 }
 
 template <class T>
@@ -127,7 +126,7 @@ void Deque<T>::pop_front()
 	{
 		--size_;
 		++head_;
-		head_ = (head_ + cap_) % cap_;
+		head_ = (head_ + cap_ - 1) % cap_;
 	}
 }
 
@@ -147,21 +146,21 @@ bool Deque<T>::empty() const
 }
 
 template <class T>
-typename Deque<T>::size_type Deque<T>::size() const
+int Deque<T>::size() const
 {
 	return size_;
 }
 
 template <class T>
-void Deque<T>::reserve(size_type size)
+void Deque<T>::reserve(int size)
 {
 	if (cap_ < size)
 	{
+		int old_cap = cap_;
 		if (cap_ == 0)
 		{
 			++cap_;
 		}
-		int old_cap = cap_;
 
 		while (cap_ < size)
 		{
@@ -173,13 +172,14 @@ void Deque<T>::reserve(size_type size)
 			newArray[i] = tab[(head_ + i) % old_cap];
 		}
 		head_ = 0;
-		delete[] tab;
+		if (tab != nullptr)
+			delete[] tab;
 		tab = newArray;
 	}
 }
 
 template <class T>
-typename Deque<T>::size_type Deque<T>::capacity() const
+int Deque<T>::capacity() const
 {
 	return cap_;
 }
@@ -194,7 +194,7 @@ void Deque<T>::clear()
 }
 
 template <class T>
-void Deque<T>::resize(size_type new_size)
+void Deque<T>::resize(int new_size)
 {
 	if (new_size > cap_)
 	{
