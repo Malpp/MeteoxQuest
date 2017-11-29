@@ -4,6 +4,8 @@
 #include "orc_enemy.h"
 #include "ken_enemy.h"
 #include "Game.h"
+#include "deque.h"
+#include <deque>
 
 sf::Texture* Level1::texture_ = Game::resource_handler_.add_texture(
 	"level1.png");
@@ -25,5 +27,6 @@ Level1::Level1(sf::RenderWindow* window)
 
 void Level1::update(const float delta_time)
 {
+
 	LevelBase::update(delta_time);
 }
