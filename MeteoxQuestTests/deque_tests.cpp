@@ -134,9 +134,9 @@ namespace MeteoxQuestTests
 			{
 				deque.push_front( i );
 			}
-			Assert::AreEqual( 7, deque.size() );
-			Assert::AreEqual( 8, deque.front() );
-			Assert::AreEqual( 1, deque.back() );
+			Assert::AreEqual( 20, deque.size() );
+			Assert::AreEqual( 10, deque.front() );
+			Assert::AreEqual( 10, deque.back() );
 		}
 		
 	};
