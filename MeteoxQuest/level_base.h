@@ -2,6 +2,8 @@
 #include "stdafx.h"
 #include "scene.h"
 #include "player.h"
+#include "wave.h"
+#include <queue>
 
 class GameObject;
 
@@ -26,7 +28,9 @@ private:
 	std::vector<GameObject*> objects_;
 	float fps_timer_;
 	int fps_;
+	std::queue<Wave*> waves_;
 protected:
-	static bool loadLevel(const std::string path);
+	bool load_level(const std::string path);
 	sf::Vector2f background_size_;
+
 };
