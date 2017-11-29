@@ -2,6 +2,8 @@
 #include "level_base.h"
 #include "Game.h"
 #include "GC_enemy.h"
+#include "orc_enemy.h"
+#include "ken_enemy.h"
 #include <sstream>
 #include <fstream>
 #include "src\json.hpp"
@@ -28,6 +30,12 @@ LevelBase::~LevelBase()
 	for(GameObject* object : objects_)
 	{
 		delete object;
+	}
+
+	while(waves_.size() != 0)
+	{
+		delete waves_.front();
+		waves_.pop();
 	}
 }
 
@@ -57,6 +65,21 @@ void LevelBase::input()
 
 void LevelBase::update(float delta_time)
 {
+	
+	if (!waves_.empty())
+	{
+		Wave* current_wave = waves_.front();
+		current_wave->update(delta_time);
+
+		if (current_wave->delay() <= 0)
+		{
+			//std::cout << "waves_.size() : " << waves_.size() << std::endl;
+			current_wave->spawn_enemies(this);
+			delete waves_.front();
+			waves_.pop();
+		}
+	}
+
 	for(int i = objects_.size() - 1; i >= 0; --i)
 	{
 		objects_[i]->update(delta_time, this);
@@ -123,16 +146,38 @@ void LevelBase::add_game_object(GameObject* object)
 	objects_.push_back(object);
 }
 
-bool LevelBase::loadLevel(const std::string path)
+bool LevelBase::load_level(const std::string path)
 {
 	std::ifstream filestream(path);
 	nlohmann::json data;
 	filestream >> data;
-
-	for(int i = 0; i < data["test"].size(); ++i)
+	
+	for (auto i : data["Enemies"])
 	{
-		std::string type = data["test"][i];
-		std::cout << type << '\n';
+
+		int delay = i["delay"];
+		size_t size = i["enemies_to_spawn"].size();
+
+		Wave* wave = new Wave(size, delay);
+
+		for (int j = 0; j < size; ++j)
+		{
+			std::string type = i["enemies_to_spawn"][j]["type"];
+			float posX = i["enemies_to_spawn"][j]["posX"];
+			float posY = i["enemies_to_spawn"][j]["posY"];
+
+			if (posY == -1)
+				posY = (float)rand() / RAND_MAX;		
+
+			if (type == "GC")
+				wave->add_enemy(new GCEnemy(sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT), 0, GameObject::generate_random_color()));
+			else if (type == "SMORC")
+				wave->add_enemy(new OrcEnemy(sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT), 0, GameObject::generate_random_color()));
+			else if (type == "KEN")
+				wave->add_enemy(new KenEnemy(sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT), 0, GameObject::generate_random_color()));
+		}
+
+		waves_.push(wave);
 	}
 
 	return true;
