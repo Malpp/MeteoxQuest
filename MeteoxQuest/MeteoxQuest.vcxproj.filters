@@ -195,12 +195,6 @@
     <ClInclude Include="stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cloud9_enemy.h">
-      <Filter>Header Files\Game\enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="cloud9_weapon.h">
-      <Filter>Header Files\Game\weapons</Filter>
-    </ClInclude>
     <ClInclude Include="lol_enemy.h">
       <Filter>Header Files\Game\enemies</Filter>
     </ClInclude>
@@ -218,6 +212,15 @@
     </ClInclude>
     <ClInclude Include="subject.h">
       <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="cloud9_enemy.h">
+      <Filter>Header Files\Game\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="cloud9_weapon.h">
+      <Filter>Header Files\Game\weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="colliable_object.h">
+      <Filter>Header Files\Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -320,12 +323,6 @@
     <ClCompile Include="wave.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="cloud9_enemy.cpp">
-      <Filter>Source Files\Game\enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="cloud9_weapon.cpp">
-      <Filter>Source Files\Game\weapons</Filter>
-    </ClCompile>
     <ClCompile Include="lol_enemy.cpp">
       <Filter>Source Files\Game\enemies</Filter>
     </ClCompile>
@@ -340,6 +337,15 @@
     </ClCompile>
     <ClCompile Include="subject.cpp">
       <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="cloud9_enemy.cpp">
+      <Filter>Source Files\Game\enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="cloud9_weapon.cpp">
+      <Filter>Source Files\Game\weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="collidable_object.cpp">
+      <Filter>Source Files\Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

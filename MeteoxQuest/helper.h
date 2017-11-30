@@ -12,7 +12,8 @@ namespace Helper
 		const sf::Vector2f& p1,
 		const sf::Vector2f& p2)
 	{
-		return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
+		return sqrt((p2.x - p1.x) * (p2.x - p1.x) +
+			(p2.y - p1.y) * (p2.y - p1.y));
 	}
 
 	inline sf::Vector2f movePointByAngle(float distance, float angle)

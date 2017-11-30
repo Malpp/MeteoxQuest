@@ -27,7 +27,8 @@ Enemy::Enemy(
 				move_speed,
 				base_life,
 				color,
-				base_damage_)
+				base_damage_,
+				ENEMY)
 {
 	score_worth_ = score_worth;
 }

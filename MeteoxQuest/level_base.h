@@ -3,9 +3,8 @@
 #include "scene.h"
 #include "player.h"
 #include "wave.h"
-#include <queue>
-#include "deque.h"
 #include "hud.h"
+#include "deque.h"
 
 class GameObject;
 

@@ -12,7 +12,8 @@ Character::Character(
 	const float move_speed,
 	const int life,
 	Color color,
-	const int damage)
+	const int damage,
+	const GameType type)
 	: GameObject(pos,
 				angle,
 				texture,
@@ -22,7 +23,8 @@ Character::Character(
 				frame_delay,
 				life,
 				color,
-				damage)
+				damage,
+				 type)
 {
 	movespeed_ = move_speed;
 	weapon_ = nullptr;

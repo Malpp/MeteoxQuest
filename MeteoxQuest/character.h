@@ -17,7 +17,8 @@ public:
 		const float move_speed,
 		const int life,
 		Color color,
-		const int damage);
+		const int damage,
+		const GameType type);
 	~Character();
 	void update(const float delta_time, LevelBase* level) override;
 	virtual void down();

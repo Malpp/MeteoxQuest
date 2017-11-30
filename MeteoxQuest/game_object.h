@@ -1,9 +1,10 @@
 #pragma once
 #include "stdafx.h"
+#include "colliable_object.h"
 
 class LevelBase;
 
-class GameObject : public sf::Sprite
+class GameObject : public CollidableObject
 {
 public:
 	enum Color
@@ -13,6 +14,12 @@ public:
 		BLUE,
 		NONE,
 		RANDOM
+	};
+
+	enum GameType
+	{
+		PLAYER,
+		ENEMY
 	};
 
 	virtual void update(const float delta_time, LevelBase* level);
@@ -29,10 +36,12 @@ public:
 		const float frame_delay,
 		const int life,
 		Color color,
-		const int damage);
+		const int damage,
+		const GameType type);
 	~GameObject();
 	void collision_test(GameObject* other, LevelBase* level);
 	static Color generate_random_color();
+	GameType get_type() const;
 protected:
 	virtual void handle_collision(GameObject* other, LevelBase* level) = 0;
 	virtual bool is_at_edge();
@@ -52,4 +61,5 @@ protected:
 	virtual void on_death(LevelBase* level) = 0;
 	float biggest_texture_side_;
 	Color color_;
+	GameType type_;
 };
