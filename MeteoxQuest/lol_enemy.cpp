@@ -28,7 +28,8 @@ LOLEnemy::LOLEnemy(const sf::Vector2f& pos, const float angle, const Color color
 		frame_delay_,
 		movespeed_,
 		base_life_,
-		color)
+		color,
+		score_worth_)
 {
 	weapon_ = new LOLWeapon(color);
 }

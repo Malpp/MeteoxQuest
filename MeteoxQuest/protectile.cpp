@@ -17,14 +17,15 @@ Projectile::Projectile(
 	ProjectileType type,
 	Color color)
 	: GameObject(pos,
-	             angle,
-	             texture,
-	             size,
-	             no_frames,
-	             no_states,
-	             frame_delay,
-	             base_life_,
-	             color)
+				angle,
+				texture,
+				size,
+				no_frames,
+				no_states,
+				frame_delay,
+				base_life_,
+				color,
+				base_damage_)
 {
 	direction_ = direction;
 	type_ = type;
@@ -39,7 +40,7 @@ void Projectile::update(const float delta_time, LevelBase* level)
 bool Projectile::is_at_edge()
 {
 	const sf::Vector2f current_pos = getPosition();
-	if(current_pos.x > Game::GAME_WIDTH + half_texture_size_.x ||
+	if (current_pos.x > Game::GAME_WIDTH + half_texture_size_.x ||
 		current_pos.x < -half_texture_size_.x ||
 		current_pos.y > Game::GAME_HEIGHT + half_texture_size_.y ||
 		current_pos.y < -half_texture_size_.y)
@@ -53,20 +54,25 @@ void Projectile::handle_edge()
 	despawn();
 }
 
-void Projectile::on_death()
+void Projectile::on_death(LevelBase* level)
 {
 	despawn();
 }
 
-void Projectile::handle_collision(GameObject* other)
+Projectile::ProjectileType Projectile::get_type() const
 {
-	if(dynamic_cast<Player*>(other) && type_ == ENEMY)
+	return type_;
+}
+
+void Projectile::handle_collision(GameObject* other, LevelBase* level)
+{
+	if (dynamic_cast<Player*>(other) && type_ == ENEMY)
 	{
-		despawn();
+		take_damage( other, level);
 	}
 
-	if(dynamic_cast<Enemy*>(other) && type_ == PLAYER)
+	if (dynamic_cast<Enemy*>(other) && type_ == PLAYER)
 	{
-		despawn();
+		take_damage( other, level);
 	}
 }

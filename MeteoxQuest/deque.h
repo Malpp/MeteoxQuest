@@ -92,30 +92,28 @@ const T& Deque<T>::front() const
 template <class T>
 T& Deque<T>::back()
 {
-	return tab[(head_ + size_ - 1) % size_];
+	return tab[(head_ + size_ - 1) % cap_];
 }
 
 template <class T>
 const T& Deque<T>::back() const
 {
-	return tab[(head_ + size_ - 1) % size_];
+	return tab[(head_ + size_ - 1) % cap_];
 }
 
 template <class T>
 void Deque<T>::push_front(const T& val)
 {
-	++size_;
-	resize( size_ );
+	resize(size_ + 1);
 	--head_;
-	head_ = (head_ + cap_ - 1) % cap_;
+	head_ = (head_ + cap_) % cap_;
 	tab[head_] = val;
 }
 
 template <class T>
 void Deque<T>::push_back(const T& val)
 {
-	++size_;
-	resize(size_);
+	resize(size_ + 1);
 	tab[(head_ + size_ - 1) % cap_] = val;
 }
 
@@ -126,7 +124,7 @@ void Deque<T>::pop_front()
 	{
 		--size_;
 		++head_;
-		head_ = (head_ + cap_ - 1) % cap_;
+		head_ = (head_ + cap_) % cap_;
 	}
 }
 
