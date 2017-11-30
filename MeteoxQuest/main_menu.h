@@ -1,8 +1,6 @@
 #pragma once
 #include "menu_base.h"
 #include "button.h"
-#include "textbox.h"
-#include "menu_manager.h"
 
 class MainMenu : public MenuBase
 {
