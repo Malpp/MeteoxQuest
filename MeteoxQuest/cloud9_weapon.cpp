@@ -3,6 +3,8 @@
 #include "level_base.h"
 #include "lol_enemy.h"
 
+const float Cloud9Weapon::fire_speed_ = 3;
+
 Cloud9Weapon::Cloud9Weapon(const GameObject::Color color)
 	:Weapon( ammo_, fire_speed_, color)
 {

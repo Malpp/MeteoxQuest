@@ -28,7 +28,8 @@ Cloud9Enemy::Cloud9Enemy(const sf::Vector2f& pos, const float angle, const Color
 		frame_delay_,
 		movespeed_,
 		base_life_,
-		color)
+		color,
+		score_worth_ )
 {
 	weapon_ = new Cloud9Weapon(color);
 }
