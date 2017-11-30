@@ -1,13 +1,7 @@
 #include "stdafx.h"
 #include "level1.h"
-#include "GC_enemy.h"
-#include "orc_enemy.h"
-#include "ken_enemy.h"
-#include "lol_enemy.h"
-#include "cloud9_enemy.h"
 #include "Game.h"
-#include "deque.h"
-#include <deque>
+#include "cloud9_enemy.h"
 
 sf::Texture* Level1::texture_ = Game::resource_handler_.add_texture(
 	"level1.png");

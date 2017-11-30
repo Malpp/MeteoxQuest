@@ -111,6 +111,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="character.h" />
     <ClInclude Include="cloud9_enemy.h" />
     <ClInclude Include="cloud9_weapon.h" />
+    <ClInclude Include="colliable_object.h" />
     <ClInclude Include="collision.h" />
     <ClInclude Include="deque.h" />
     <ClInclude Include="enemy.h" />
@@ -161,6 +162,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="character.cpp" />
     <ClCompile Include="cloud9_enemy.cpp" />
     <ClCompile Include="cloud9_weapon.cpp" />
+    <ClCompile Include="collidable_object.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="game.cpp" />

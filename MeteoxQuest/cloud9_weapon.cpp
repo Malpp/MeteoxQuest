@@ -6,13 +6,13 @@
 const float Cloud9Weapon::fire_speed_ = 3;
 
 Cloud9Weapon::Cloud9Weapon(const GameObject::Color color)
-	:Weapon( ammo_, fire_speed_, color)
+	: Weapon(ammo_, fire_speed_, color)
 {
 }
 
 void Cloud9Weapon::handle_fire(LevelBase* level, Character* character)
 {
 	level->add_game_object(new LOLEnemy(character->getPosition(),
-		0,
-		color_));
+	                                    0,
+	                                    color_));
 }

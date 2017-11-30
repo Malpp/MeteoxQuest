@@ -19,7 +19,6 @@ unsigned Player::get_score() const
 void Player::add_score(const int score_to_add)
 {
 	score_ += score_to_add;
-	std::cout << "Current score: " << score_ << "\n";
 }
 
 int Player::get_life() const
@@ -38,7 +37,8 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 				movespeed_,
 				base_life_,
 				NONE,
-				base_damage_),
+				base_damage_,
+				PLAYER),
 	Subject()
 {
 	weapon_ = new HeartWeapon;

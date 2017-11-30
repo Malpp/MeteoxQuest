@@ -4,9 +4,8 @@
 #include "GC_enemy.h"
 #include "orc_enemy.h"
 #include "ken_enemy.h"
-#include <sstream>
 #include <fstream>
-#include "src\json.hpp"
+#include "src/json.hpp"
 
 LevelBase::LevelBase(
 	sf::RenderWindow* window,
@@ -66,14 +65,13 @@ void LevelBase::input()
 
 void LevelBase::update(const float delta_time)
 {
-	if (!waves_.empty())
+	if(!waves_.empty())
 	{
 		Wave* current_wave = waves_.front();
 		current_wave->update(delta_time);
 
-		if (current_wave->delay() <= 0)
+		if(current_wave->delay() <= 0)
 		{
-			//std::cout << "waves_.size() : " << waves_.size() << std::endl;
 			current_wave->spawn_enemies(this);
 			delete waves_.front();
 			waves_.pop_front();
@@ -153,30 +151,38 @@ bool LevelBase::load_level(const std::string path)
 	std::ifstream filestream(path);
 	nlohmann::json data;
 	filestream >> data;
-	
-	for (auto i : data["Enemies"])
-	{
 
+	for(auto i : data["Enemies"])
+	{
 		int delay = i["delay"];
 		size_t size = i["enemies_to_spawn"].size();
 
 		Wave* wave = new Wave(size, delay);
 
-		for (int j = 0; j < size; ++j)
+		for(int j = 0; j < size; ++j)
 		{
 			std::string type = i["enemies_to_spawn"][j]["type"];
 			float posX = i["enemies_to_spawn"][j]["posX"];
 			float posY = i["enemies_to_spawn"][j]["posY"];
 
-			if (posY == -1)
-				posY = (float)rand() / RAND_MAX;		
+			if(posY == -1)
+				posY = (float)rand() / RAND_MAX;
 
-			if (type == "GC")
-				wave->add_enemy(new GCEnemy(sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT), 0, GameObject::generate_random_color()));
-			else if (type == "SMORC")
-				wave->add_enemy(new OrcEnemy(sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT), 0, GameObject::generate_random_color()));
-			else if (type == "KEN")
-				wave->add_enemy(new KenEnemy(sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT), 0, GameObject::generate_random_color()));
+			if(type == "GC")
+				wave->add_enemy(new GCEnemy(
+					sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT),
+					0,
+					GameObject::generate_random_color()));
+			else if(type == "SMORC")
+				wave->add_enemy(new OrcEnemy(
+					sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT),
+					0,
+					GameObject::generate_random_color()));
+			else if(type == "KEN")
+				wave->add_enemy(new KenEnemy(
+					sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT),
+					0,
+					GameObject::generate_random_color()));
 		}
 
 		waves_.push_back(wave);
@@ -187,5 +193,5 @@ bool LevelBase::load_level(const std::string path)
 
 void LevelBase::add_score(const int score_to_add) const
 {
-	player_->add_score( score_to_add );
+	player_->add_score(score_to_add);
 }

@@ -4,9 +4,8 @@
 #include "level1.h"
 #include "main_menu.h"
 
-sf::Font Game::font;
-
 ResourceHandler Game::resource_handler_;
+sf::Font Game::font;
 
 Game::Game()
 {
