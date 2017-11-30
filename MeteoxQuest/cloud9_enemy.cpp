@@ -14,7 +14,7 @@ sf::Texture* Cloud9Enemy::textures_[] = {
 	Game::resource_handler_.
 	add_texture(texture_name_ + "blue.png")
 };
-const sf::Vector2f Cloud9Enemy::size_ = sf::Vector2f(140, 89);
+const sf::Vector2f Cloud9Enemy::size_ = sf::Vector2f(200, 127);
 const float	Cloud9Enemy::movespeed_ = 100;
 const float Cloud9Enemy::frame_delay_ = 0.1f;
 
