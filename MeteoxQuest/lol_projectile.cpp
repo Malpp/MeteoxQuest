@@ -2,7 +2,7 @@
 #include "lol_projectile.h"
 #include "Game.h"
 
-const std::string LOLProjectile::texture_name_ = "Projectiles/LOL/";
+const std::string LOLProjectile::texture_name_ = "Projectiles/Orc/";
 sf::Texture* LOLProjectile::textures_[] = {
 	Game::resource_handler_.
 	add_texture(texture_name_ + "red.png"),

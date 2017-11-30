@@ -5,7 +5,7 @@
 #include "level_base.h"
 
 
-const std::string Cloud9Enemy::texture_name_ = "Enemies/Cloud9/";
+const std::string Cloud9Enemy::texture_name_ = "Enemies/Orc/";
 sf::Texture* Cloud9Enemy::textures_[] = {
 	Game::resource_handler_.
 	add_texture(texture_name_ + "red.png"),
