@@ -109,7 +109,10 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
   <ItemGroup>
     <ClInclude Include="button.h" />
     <ClInclude Include="character.h" />
+    <ClInclude Include="cloud9_enemy.h" />
+    <ClInclude Include="cloud9_weapon.h" />
     <ClInclude Include="collision.h" />
+    <ClInclude Include="deque.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemy_projectile.h" />
     <ClInclude Include="game.h" />
@@ -119,12 +122,17 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="heart_projectile.h" />
     <ClInclude Include="heart_weapon.h" />
     <ClInclude Include="helper.h" />
+    <ClInclude Include="hud.h" />
+    <ClInclude Include="iobserver.h" />
     <ClInclude Include="ken_enemy.h" />
     <ClInclude Include="ken_projectile.h" />
     <ClInclude Include="ken_weapon.h" />
     <ClInclude Include="label.h" />
     <ClInclude Include="level1.h" />
     <ClInclude Include="level_base.h" />
+    <ClInclude Include="lol_enemy.h" />
+    <ClInclude Include="lol_projectile.h" />
+    <ClInclude Include="lol_weapon.h" />
     <ClInclude Include="main_menu.h" />
     <ClInclude Include="menu_base.h" />
     <ClInclude Include="menu_element.h" />
@@ -136,17 +144,23 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="player.h" />
     <ClInclude Include="player_projectile.h" />
     <ClInclude Include="projectile.h" />
+    <ClInclude Include="queue.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="resourcehandler.h" />
     <ClInclude Include="scene.h" />
+    <ClInclude Include="stack.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="subject.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="textbox.h" />
+    <ClInclude Include="wave.h" />
     <ClInclude Include="weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="button.cpp" />
     <ClCompile Include="character.cpp" />
+    <ClCompile Include="cloud9_enemy.cpp" />
+    <ClCompile Include="cloud9_weapon.cpp" />
     <ClCompile Include="collision.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="game.cpp" />
@@ -155,12 +169,16 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="gc_weapon.cpp" />
     <ClCompile Include="heart_projectile.cpp" />
     <ClCompile Include="heart_weapon.cpp" />
+    <ClCompile Include="hud.cpp" />
     <ClCompile Include="ken_enemy.cpp" />
     <ClCompile Include="ken_projectile.cpp" />
     <ClCompile Include="ken_weapon.cpp" />
     <ClCompile Include="label.cpp" />
     <ClCompile Include="level1.cpp" />
     <ClCompile Include="level_base.cpp" />
+    <ClCompile Include="lol_enemy.cpp" />
+    <ClCompile Include="lol_projectile.cpp" />
+    <ClCompile Include="lol_weapon.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main_menu.cpp" />
     <ClCompile Include="menu_base.cpp" />
@@ -178,7 +196,9 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="subject.cpp" />
     <ClCompile Include="textbox.cpp" />
+    <ClCompile Include="wave.cpp" />
     <ClCompile Include="weapon.cpp" />
   </ItemGroup>
   <ItemGroup>

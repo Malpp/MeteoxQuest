@@ -11,16 +11,18 @@ Character::Character(
 	const float frame_delay,
 	const float move_speed,
 	const int life,
-	Color color)
+	Color color,
+	const int damage)
 	: GameObject(pos,
-	             angle,
-	             texture,
-	             size,
-	             no_frames,
-	             no_states,
-	             frame_delay,
-	             life,
-	             color)
+				angle,
+				texture,
+				size,
+				no_frames,
+				no_states,
+				frame_delay,
+				life,
+				color,
+				damage)
 {
 	movespeed_ = move_speed;
 	weapon_ = nullptr;
@@ -35,7 +37,7 @@ void Character::update(const float delta_time, LevelBase* level)
 {
 	weapon_->update(delta_time);
 
-	if(velocity_.x != 0 && velocity_.y != 0)
+	if (velocity_.x != 0 && velocity_.y != 0)
 	{
 		velocity_.x *= 0.7071;
 		velocity_.y *= 0.7071;

@@ -15,10 +15,14 @@ public:
 		const float frame_delay,
 		const float move_speed,
 		const int base_life,
-		const Color color);
-	void on_death() override;
+		const Color color,
+		const unsigned int score_worth);
+	void on_death(LevelBase* level) override;
 protected:
-	void handle_collision(GameObject* other) override;
+	void handle_collision(GameObject* other, LevelBase* level) override;
 	bool is_at_edge() override;
 	void handle_edge() override;
+private:
+	static const int base_damage_ = 1;
+	unsigned int score_worth_;
 };

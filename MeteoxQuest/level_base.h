@@ -2,6 +2,9 @@
 #include "stdafx.h"
 #include "scene.h"
 #include "player.h"
+#include "wave.h"
+#include <queue>
+#include "deque.h"
 
 class GameObject;
 
@@ -18,7 +21,7 @@ public:
 	void draw() override;
 	virtual void manage_input(sf::Event event);
 	void add_game_object(GameObject* projectile);
-
+	void add_score( const int score_to_add ) const;
 private:
 	Player* player_;
 	float scroll_speed_;
@@ -26,7 +29,9 @@ private:
 	std::vector<GameObject*> objects_;
 	float fps_timer_;
 	int fps_;
+	Deque<Wave*> waves_;
 protected:
-	static bool loadLevel(const std::string path);
+	bool load_level(const std::string path);
 	sf::Vector2f background_size_;
+
 };

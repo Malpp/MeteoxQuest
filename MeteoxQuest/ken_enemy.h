@@ -23,4 +23,5 @@ private:
 	static const float frame_delay_;
 	float fire_timer_;
 	static const int base_life_ = 5;
+	static const unsigned int score_worth_ = 200;
 };

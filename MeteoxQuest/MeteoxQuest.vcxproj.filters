@@ -67,6 +67,12 @@
     <Filter Include="Source Files\Game\enemies">
       <UniqueIdentifier>{80735262-a6bb-4a0f-9950-791ad5971136}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\hud">
+      <UniqueIdentifier>{12bb458f-f2ac-48bd-b2d0-2b0fd3dd928c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\hud">
+      <UniqueIdentifier>{e9a0598e-d6e3-49a6-9bdc-6b307d5eab37}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -177,6 +183,42 @@
     <ClInclude Include="enemy_projectile.h">
       <Filter>Header Files\Game\projectiles</Filter>
     </ClInclude>
+    <ClInclude Include="wave.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="deque.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="queue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stack.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cloud9_enemy.h">
+      <Filter>Header Files\Game\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="cloud9_weapon.h">
+      <Filter>Header Files\Game\weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="lol_enemy.h">
+      <Filter>Header Files\Game\enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="lol_weapon.h">
+      <Filter>Header Files\Game\weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="lol_projectile.h">
+      <Filter>Header Files\Game\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="hud.h">
+      <Filter>Header Files\Game\hud</Filter>
+    </ClInclude>
+    <ClInclude Include="iobserver.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="subject.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -273,6 +315,30 @@
       <Filter>Source Files\Game\projectiles</Filter>
     </ClCompile>
     <ClCompile Include="collision.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="wave.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="cloud9_enemy.cpp">
+      <Filter>Source Files\Game\enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="cloud9_weapon.cpp">
+      <Filter>Source Files\Game\weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="lol_enemy.cpp">
+      <Filter>Source Files\Game\enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="lol_weapon.cpp">
+      <Filter>Source Files\Game\weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="lol_projectile.cpp">
+      <Filter>Source Files\Game\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="hud.cpp">
+      <Filter>Source Files\Game\hud</Filter>
+    </ClCompile>
+    <ClCompile Include="subject.cpp">
       <Filter>Source Files\Other</Filter>
     </ClCompile>
   </ItemGroup>

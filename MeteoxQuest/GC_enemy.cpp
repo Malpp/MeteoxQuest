@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "GC_enemy.h"
 #include "Game.h"
-#include "gc_projectile.h"
 #include "level_base.h"
 #include "gc_weapon.h"
 
@@ -23,15 +22,16 @@ GCEnemy::GCEnemy(
 	const float angle,
 	const Color color)
 	: Enemy(pos,
-	        angle,
-	        textures_[color],
-	        size_,
-	        no_frames_,
-	        no_states_,
-	        frame_delay_,
-	        movespeed_,
-	        base_life_,
-	        color)
+			angle,
+			textures_[color],
+			size_,
+			no_frames_,
+			no_states_,
+			frame_delay_,
+			movespeed_,
+			base_life_,
+			color,
+			score_worth_)
 {
 	weapon_ = new GCWeapon(color_);
 }

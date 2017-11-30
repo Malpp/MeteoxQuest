@@ -24,9 +24,11 @@ public:
 		ProjectileType type,
 		Color color);
 	void update(const float delta_time, LevelBase* level) override;
-	void on_death() override;
+	void on_death(LevelBase* level) override;
+	ProjectileType get_type() const;
 protected:
-	void handle_collision(GameObject* other) override;
+	static const int base_damage_ = 1;
+	void handle_collision(GameObject* other, LevelBase* level) override;
 	sf::Vector2f direction_;
 	bool is_at_edge() override;
 	void handle_edge() override;
