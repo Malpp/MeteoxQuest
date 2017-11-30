@@ -16,4 +16,5 @@ private:
 	static const float movespeed_;
 	static const float frame_delay_;
 	static const int base_life_ = 1;
+	static const unsigned int score_worth_ = 150;
 };

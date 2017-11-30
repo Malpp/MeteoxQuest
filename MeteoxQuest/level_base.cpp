@@ -35,7 +35,7 @@ LevelBase::~LevelBase()
 	while(waves_.size() != 0)
 	{
 		delete waves_.front();
-		waves_.pop();
+		waves_.pop_front();
 	}
 }
 
@@ -65,7 +65,6 @@ void LevelBase::input()
 
 void LevelBase::update(float delta_time)
 {
-	
 	if (!waves_.empty())
 	{
 		Wave* current_wave = waves_.front();
@@ -76,7 +75,7 @@ void LevelBase::update(float delta_time)
 			//std::cout << "waves_.size() : " << waves_.size() << std::endl;
 			current_wave->spawn_enemies(this);
 			delete waves_.front();
-			waves_.pop();
+			waves_.pop_front();
 		}
 	}
 
@@ -86,7 +85,7 @@ void LevelBase::update(float delta_time)
 
 		for(int j = i - 1; j >= 0; --j)
 		{
-			objects_[i]->collision_test(objects_[j]);
+			objects_[i]->collision_test(objects_[j], this);
 		}
 
 		if(objects_[i]->get_despawn())
@@ -177,8 +176,13 @@ bool LevelBase::load_level(const std::string path)
 				wave->add_enemy(new KenEnemy(sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT), 0, GameObject::generate_random_color()));
 		}
 
-		waves_.push(wave);
+		waves_.push_back(wave);
 	}
 
 	return true;
+}
+
+void LevelBase::add_score(const int score_to_add) const
+{
+	player_->add_score( score_to_add );
 }

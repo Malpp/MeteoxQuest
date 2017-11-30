@@ -19,15 +19,16 @@ const float OrcEnemy::frame_delay_ = 0.1f;
 
 OrcEnemy::OrcEnemy(const sf::Vector2f& pos, const float angle, const Color color)
 	: Enemy(pos,
-	        angle,
-	        textures_[color],
-	        size_,
-	        no_frames_,
-	        no_states_,
-	        frame_delay_,
-	        movespeed_,
-	        base_life_,
-			color)
+			angle,
+			textures_[color],
+			size_,
+			no_frames_,
+			no_states_,
+			frame_delay_,
+			movespeed_,
+			base_life_,
+			color,
+			score_worth_)
 {
 	weapon_ = new OrcWeapon(color_);
 }

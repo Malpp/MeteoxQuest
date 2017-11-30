@@ -16,7 +16,8 @@ public:
 		const float frame_delay,
 		const float move_speed,
 		const int life,
-		Color color);
+		Color color,
+		const int damage);
 	~Character();
 	void update(const float delta_time, LevelBase* level) override;
 	virtual void down();

@@ -22,15 +22,16 @@ KenEnemy::KenEnemy(
 	const float angle,
 	const Color color)
 	: Enemy(pos,
-	        angle,
-	        textures_[color],
-	        size_,
-	        no_frames_,
-	        COUNT,
-	        frame_delay_,
-	        movespeed_,
-	        base_life_,
-	        color)
+			angle,
+			textures_[color],
+			size_,
+			no_frames_,
+			COUNT,
+			frame_delay_,
+			movespeed_,
+			base_life_,
+			color,
+			score_worth_)
 {
 	weapon_ = new KenWeapon(color_);
 	state_ = WALKING;
@@ -39,22 +40,22 @@ KenEnemy::KenEnemy(
 
 void KenEnemy::update(const float delta_time, LevelBase* level)
 {
-	if(state_ == WALKING)
+	if (state_ == WALKING)
 	{
 		left();
-		if(weapon_->can_fire())
+		if (weapon_->can_fire())
 		{
 			frame_ = 0;
 			state_ = FIRING;
 		}
 	}
 
-	if(state_ == FIRING)
+	if (state_ == FIRING)
 	{
-		if(frame_ == 4)
+		if (frame_ == 4)
 			fire(level);
 
-		if(frame_ == 5)
+		if (frame_ == 5)
 			state_ = WALKING;
 	}
 	Enemy::update(delta_time, level);
