@@ -1,10 +1,11 @@
 #pragma once
 #include "stdafx.h"
 #include "character.h"
+#include "subject.h"
 
 class LevelBase;
 
-class Player : public Character
+class Player : public Character, public Subject
 {
 public:
 	enum PlayerState
@@ -18,6 +19,7 @@ public:
 	};
 	unsigned get_score() const;
 	void add_score(const int score_to_add);
+	int get_life() const;
 	Player(const sf::Vector2f& pos, const float angle);
 	void update(const float delta_time, LevelBase* level) override;
 	void up() override;

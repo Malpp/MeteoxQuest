@@ -22,6 +22,11 @@ void Player::add_score(const int score_to_add)
 	std::cout << "Current score: " << score_ << "\n";
 }
 
+int Player::get_life() const
+{
+	return life_;
+}
+
 Player::Player(const sf::Vector2f& pos, const float angle)
 	: Character(pos,
 				angle,
@@ -33,7 +38,8 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 				movespeed_,
 				base_life_,
 				NONE,
-				base_damage_)
+				base_damage_),
+	Subject()
 {
 	weapon_ = new HeartWeapon;
 	score_ = 0;
@@ -54,6 +60,7 @@ void Player::update(const float delta_time, LevelBase* level)
 	if (velocity_.x == 0 && velocity_.y == 0)
 		state_ = IDLE;
 	Character::update(delta_time, level);
+	notify_all_observers();
 }
 
 void Player::up()
