@@ -11,10 +11,11 @@
 LevelBase::LevelBase(
 	sf::RenderWindow* window,
 	sf::Texture* texture,
-	float scroll_speed)
+	const float scroll_speed)
 	: Scene(window)
 {
 	player_ = new Player(sf::Vector2f(100, Game::GAME_HEIGHT * 0.5f), 0);
+	player_->add_observer(&hud);
 	add_game_object(player_);
 	scroll_speed_ = scroll_speed;
 	background_size_ = static_cast<sf::Vector2f>(texture->getSize());
@@ -63,7 +64,7 @@ void LevelBase::input()
 	}
 }
 
-void LevelBase::update(float delta_time)
+void LevelBase::update(const float delta_time)
 {
 	if (!waves_.empty())
 	{
@@ -132,6 +133,8 @@ void LevelBase::draw()
 	{
 		window_->draw(*object);
 	}
+
+	hud.draw(window_);
 
 	window_->display();
 }

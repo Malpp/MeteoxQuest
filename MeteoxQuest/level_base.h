@@ -5,6 +5,7 @@
 #include "wave.h"
 #include <queue>
 #include "deque.h"
+#include "hud.h"
 
 class GameObject;
 
@@ -30,6 +31,7 @@ private:
 	float fps_timer_;
 	int fps_;
 	Deque<Wave*> waves_;
+	Hud hud;
 protected:
 	bool load_level(const std::string path);
 	sf::Vector2f background_size_;

@@ -15,5 +15,6 @@
 #include <random>
 #include <time.h>
 #include <vector>
+#include <sstream>
 
 #include <vld.h>
