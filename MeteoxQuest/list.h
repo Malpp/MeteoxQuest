@@ -5,19 +5,19 @@
 Description de la representation
 
 Chaine double de boites
-Une boite supplementaire a la fin,
-nommee apres en memoire automatique (non dynamique)
-Une boite supplementaire au debut nommee avant
+Une box supplementaire a la fin,
+nommee after_ en memoire automatique (non dynamique)
+Une box supplementaire au debut nommee before_
 en memoire automatique (non dynamique) dont le suivant
-pointe sur la premiere boite
-size contient le nombre d'elements dans la liste
+pointe sur la premiere box
+size_ contient le nombre d'elements dans la liste
 
 
-iterator: pointeur sur la boite concernee,
-la fin est un pointeur sur la boite de queue (apres)
+iterator: pointeur sur la box concernee,
+la fin est un pointeur sur la box de queue (after_)
 
-reverse_iterator: pointeur sur la boite qui concernee
-(rbegin: celle pointe par le precedent de apres, rend: avant)
+reverse_iterator: pointeur sur la box qui concernee
+(rbegin: celle pointe par le precedent de after_, rend: before_)
 
 RESTRICTION par rapport a la SL
 pas de const_iterator, donc pas d'iteration possible
@@ -25,28 +25,28 @@ sur une list const.
 
 **********************************************************/
 
-template <class TYPE>
+template <class T>
 class list {
 
 private:
-	struct boite {
-		TYPE valeur;
-		boite *suiv, *prec;
-		boite(const TYPE& C, boite*S = nullptr, boite*P = nullptr) 
+	struct box {
+		T value;
+		box *next, *prev;
+		box(const T& C, box*S = nullptr, box*P = nullptr) 
 		{
-			valeur = C;
-			suiv = S;
-			prec = P;
+			value = C;
+			next = S;
+			prev = P;
 		} //a implanter
-		~boite() { prec = suiv = nullptr; } //je vous le donne en cadeau
+		~box() { prev = next = nullptr; } //je vous le donne en cadeau
 	};
-	boite avant;
-	boite apres;
-	size_t size;
+	box before_;
+	box after_;
+	size_t size_;
 
 	//fonctions generatrices privees
-	boite* insert(boite*, const TYPE&); //inserer avant cette boite 
-	boite* erase(boite*); //enlever cette boite
+	box* insert_(box*, const T&); //inserer before_ cette box 
+	box* erase_(box*); //enlever cette box
 
 public:
 	class iterator;
@@ -57,237 +57,225 @@ public:
 	list(); //constructeur
 	~list(); //destructeur
 	list(const list&); //copie constructeur
-	list(std::initializer_list<TYPE>);
+	list(std::initializer_list<T>);
 	list& operator=(const list& other);  //affectateur. copie les elements de other dans la file courante. O(n) 
 	void swap(list& other); //echange les element des files courante et other O(1);
 
-	iterator insert(iterator pos, const TYPE& value); //ajoute un element AVANT la boite en position pos. retourne un iterateur sur la nouvelle boite. O(1)
+	iterator insert(iterator pos, const T& value); //ajoute un element AVANT la box en position pos. retourne un iterateur sur la nouvelle box. O(1)
 	iterator erase(iterator pos); //enleve l'element a la position pos. retourne un iterateur sur l'element suivant celui qui est retire. O(1)
-								  //reverse_iterator insert(reverse_iterator, const TYPE&); //Optionnel, comme les methodes precedentes mais avec un reverse iterator
+								  //reverse_iterator insert(reverse_iterator, const T&); //Optionnel, comme les methodes precedentes mais avec un reverse iterator
 								  //reverse_iterator erase(reverse_iterator);  //Optionnel, comme les methodes precedentes mais avec un reverse iterator
 
-	void push_back(const TYPE& elem);  //Ajoute un element a la fin de la liste. O(1)
+	void push_back(const T& elem);  //Ajoute un element a la fin de la liste. O(1)
 	void pop_back();			  //Enleve un element a la fin de la liste. O(1)
-	void push_front(const TYPE& elem); //Ajoute un element au debut de la liste. O(1)
+	void push_front(const T& elem); //Ajoute un element au debut de la liste. O(1)
 	void pop_front();			  //Enleve un element au debut de la liste. O(1)
 
-	TYPE& back(); //Retourne une reference sur le dernier element de la liste. O(1)
-	TYPE& front(); //Retourne une reference sur le premier element de la liste. O(1)
-	TYPE& back() const;	//Optionnel version const de la precedente
-	TYPE& front() const; //Optionnel version const de la precedente
+	T& back(); //Retourne une reference sur le dernier element de la liste. O(1)
+	T& front(); //Retourne une reference sur le premier element de la liste. O(1)
+	T& back() const;	//Optionnel version const de la precedente
+	T& front() const; //Optionnel version const de la precedente
 
 	void clear();
 	size_t size() const;
 	bool empty() const;
 
-	iterator begin(); //Retourne un iterateur sur la boite suivant avant.
-	iterator end(); //Retourne un iterateur sur la boite apres.
+	iterator begin(); //Retourne un iterateur sur la box suivant before_.
+	iterator end(); //Retourne un iterateur sur la box after_.
 					//reverse_iterator rbegin(); //Optionnel version inverse des methodes precedentes
 					//reverse_iterator rend(); //Optionnel version inverse des methodes precedentes
 
 					//algorithmes
 	void reverse(); //Inverse l'ordre des elements de la liste. O(n)
-	void splice(iterator pos, list& other); //Transfere les elements contenu dans other vers la liste courante. les element sont ajouter avant la boite en position pos. O(1)
-											//void resize(size_t newSize, const TYPE& valeur= TYPE()); //Optionnel permet d'ajuster le nombre d'element de la liste. initialise les nouveaux element a valeur. Potentiellement O(n)
+	void splice(iterator pos, list& other); //Transfere les elements contenu dans other vers la liste courante. les element sont ajouter before_ la box en position pos. O(1)
+											//void resize(size_t newSize, const T& value= T()); //Optionnel permet d'ajuster le nombre d'element de la liste. initialise les nouveaux element a value. Potentiellement O(n)
 };
 
 ///////////////////////////////////////////////////////////
 //la classe iterator
 ///////////////////////////////////////////////////////////
 
-template <typename TYPE>
-class list<TYPE>::iterator {
-	friend class list<TYPE>;
+template <typename T>
+class list<T>::iterator {
+	friend class list<T>;
 private:
-	boite* POINTEUR;
+	box* pointer_;
 public:
-	iterator(boite*c = nullptr) :POINTEUR(c) {} // cadeau
-	TYPE& operator*()const //Dereference l'iterateur
+	iterator(box*c = nullptr) :pointer_(c) {} // cadeau
+	T& operator*()const //Dereference l'iterateur
 	{
-		return POINTEUR->CONTENU;
+		return pointer_->value;
 	}
 
-	TYPE* operator->()const { return &(POINTEUR->CONTENU); } //Autre dereference en cadeau.
+	T* operator->()const { return &(pointer_->value); } //Autre dereference en cadeau.
 
 	iterator& operator++() //++i
 	{
-		POINTEUR = POINTEUR->CONTENU->suiv;
+		pointer_ = pointer_->next;
 		return *this;
 	}
 
 	iterator operator++(int) 
 	{							 //i++
 		iterator i(*this);
-		POINTEUR = POINTEUR->CONTENU->suiv;
+		pointer_ = pointer_->next;
 		return i;
 	}
 
 	iterator& operator--() //--i
 	{
-		POINTEUR = POINTEUR->CONTENU->prec;
+		pointer_ = pointer_->prev;
 		return *this;
 	}
 	iterator operator--(int) 
 	{							 //i--
 		iterator i(*this);
-		POINTEUR = POINTEUR->CONTENU->prec;
+		pointer_ = pointer_->prev;
 		return i;
 	}
 
 	bool operator==(const iterator&droite)const { //Cadeau! comparaison d'iterateur
-		return POINTEUR == droite.POINTEUR;
+		return pointer_ == droite.pointer_;
 	}
 	bool operator!=(const iterator&droite)const { //Cadeau! comparaison d'iterateur
-		return POINTEUR != droite.POINTEUR;
+		return pointer_ != droite.pointer_;
 	}
 };
 #endif //_LIST_H
 
-template <class TYPE>
-list<TYPE>::list()
+template <class T>
+list<T>::list()
 {
-	avant, apres = new boite(0, nullptr, nullptr);
-	size = 0;
+	before_, after_ = new box(0, nullptr, nullptr);
+	size_ = 0;
 }
 
-template <class TYPE>
-list<TYPE>::~list()
+template <class T>
+list<T>::~list()
 {
-	while (avant->suiv != nullptr)
+	while (before_->next != nullptr)
 	{
-		boite* temp = avant->suiv;
-		avant->suiv = temp->suiv;
+		box* temp = before_->next;
+		before_->next = temp->next;
 		delete temp;
 	}
 
-	size = 0;
+	size_ = 0;
 }
 
-template <class TYPE>
-list<TYPE>::list(const list& other)
+template <class T>
+list<T>::list(const list& other)
 {
 	clear();
 
 	return *this;
 }
 
-template <class TYPE>
-void list<TYPE>::push_back(const TYPE& elem)
+template <class T>
+void list<T>::push_back(const T& elem)
 {
-	if (apres->prec == nullptr)
+	if (after_->prev == nullptr)
 	{
-		apres->prec = new boite(elem, nullptr, nullptr);
-		avant->suiv = apres->prec;
+		after_->prev = new box(elem, nullptr, nullptr);
+		before_->next = after_->prev;
 	}
 	else
 	{
-		apres->prec->suiv = new boite(elem, apres->prec, nullptr);
-		apres->prec = apres->prec->suiv;
+		after_->prev->next = new box(elem, after_->prev, nullptr);
+		after_->prev = after_->prev->next;
 	}	
 }
 
-template <class TYPE>
-void list<TYPE>::push_front(const TYPE& elem)
+template <class T>
+void list<T>::push_front(const T& elem)
 {
-	if (avant->suiv == nullptr)
+	if (before_->next == nullptr)
 	{
-		avant->suiv = new boite(elem, nullptr, nullptr);
-		apres->prec = avant->suiv;
+		before_->next = new box(elem, nullptr, nullptr);
+		after_->prev = before_->next;
 	}
 	else
 	{
-		avant->suiv->prec = new boite(elem, avant->suiv, nullptr);
-		avant->suiv = avant->suiv->prec;
+		before_->next->prev = new box(elem, before_->next, nullptr);
+		before_->next = before_->next->prev;
 	}
 }
 
-template <class TYPE>
-void list<TYPE>::pop_back()
+template <class T>
+void list<T>::pop_back()
 {
-	boite* temp = apres->prec;
-	apres->prec = temp->prec;
+	box* temp = after_->prev;
+	after_->prev = temp->prev;
 	delete temp;
 }
 
-template <class TYPE>
-void list<TYPE>::pop_front()
+template <class T>
+void list<T>::pop_front()
 {
-	boite* temp = avant->suiv;
-	avant->suiv = temp->suiv;
+	box* temp = before_->next;
+	before_->next = temp->next;
 	delete temp;
 }
 
-template <class TYPE>
-TYPE& list<TYPE>::front()
+template <class T>
+T& list<T>::front()
 {
-	return avant->suiv;
+	return before_->next;
 }
 
-template <class TYPE>
-TYPE& list<TYPE>::front() const
+template <class T>
+T& list<T>::front() const
 {
-	return avant->suiv;
+	return before_->next;
 }
 
-template <class TYPE>
-TYPE& list<TYPE>::back()
+template <class T>
+T& list<T>::back()
 {
-	return apres->prec;
+	return after_->prev;
 }
 
-template <class TYPE>
-TYPE& list<TYPE>::back() const
+template <class T>
+T& list<T>::back() const
 {
-	return apres->prec;
+	return after_->prev;
 }
 
-template <class TYPE>
-void list<TYPE>::clear()
+template <class T>
+void list<T>::clear()
 {
-	while (avant->suiv != nullptr)
+	while (before_->next != nullptr)
 	{
-		boite* temp = avant->suiv;
-		avant->suiv = temp->suiv;
+		box* temp = before_->next;
+		before_->next = temp->next;
 		delete temp;
 	}
 
-	size = 0;
+	size_ = 0;
 }
 
-template <class TYPE>
-size_t list<TYPE>::size() const
+template <class T>
+size_t list<T>::size() const
 {
-	return size;
+	return size_;
 }
 
-template <class TYPE>
-bool list<TYPE>::empty() const
+template <class T>
+bool list<T>::empty() const
 {
-	return size == 0;
+	return size_ == 0;
 }
 
-template <class TYPE>
-list<TYPE>::iterator list<TYPE>::begin()
+template <class T>
+list<T>::iterator list<T>::begin()
 {
-	iterator i(avant->suiv);
+	iterator i(before_->next);
 	return i;
 }
 
-template <class TYPE>
-list<TYPE>::iterator list<TYPE>::end()
+template <class T>
+list<T>::iterator list<T>::end()
 {
-	iterator i(apres->prec);
+	iterator i(after_->prev);
 	return i;
-}
-
-template <class TYPE>
-void list<TYPE>::erase(list<TYPE>::iterator pos)
-{
-	
-}
-
-template <class TYPE>
-void list<TYPE>::insert(list<TYPE>::iterator pos, const TYPE& value)
-{
-	
 }
