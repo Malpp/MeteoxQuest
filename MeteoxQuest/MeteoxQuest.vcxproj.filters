@@ -222,6 +222,9 @@
     <ClInclude Include="colliable_object.h">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
+    <ClInclude Include="list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
