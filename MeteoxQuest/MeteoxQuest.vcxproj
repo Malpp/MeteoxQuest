@@ -131,6 +131,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="label.h" />
     <ClInclude Include="level1.h" />
     <ClInclude Include="level_base.h" />
+    <ClInclude Include="list.h" />
     <ClInclude Include="lol_enemy.h" />
     <ClInclude Include="lol_projectile.h" />
     <ClInclude Include="lol_weapon.h" />
