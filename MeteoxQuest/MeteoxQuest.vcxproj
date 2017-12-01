@@ -139,11 +139,13 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="menu_element.h" />
     <ClInclude Include="menu_manager.h" />
     <ClInclude Include="game_object.h" />
+    <ClInclude Include="non_character.h" />
     <ClInclude Include="orc_enemy.h" />
     <ClInclude Include="orc_projectile.h" />
     <ClInclude Include="orc_weapon.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="player_projectile.h" />
+    <ClInclude Include="powerup.h" />
     <ClInclude Include="projectile.h" />
     <ClInclude Include="queue.h" />
     <ClInclude Include="resource.h" />
@@ -187,10 +189,12 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="menu_element.cpp" />
     <ClCompile Include="menu_manager.cpp" />
     <ClCompile Include="game_object.cpp" />
+    <ClCompile Include="non_character.cpp" />
     <ClCompile Include="orc_enemy.cpp" />
     <ClCompile Include="orc_projectile.cpp" />
     <ClCompile Include="orc_weapon.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="powerup.cpp" />
     <ClCompile Include="protectile.cpp" />
     <ClCompile Include="resourcehandler.cpp" />
     <ClCompile Include="scene.cpp" />

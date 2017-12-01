@@ -54,7 +54,7 @@ GameObject::GameObject(
 	color_ = color;
 	setPosition(pos);
 	setRotation(angle);
-	setTexture(*texture);
+	setTexture( *texture );
 	life_ = life;
 	damage_ = damage;
 	state_ = 0;
