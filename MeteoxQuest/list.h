@@ -267,27 +267,27 @@ bool list<TYPE>::empty() const
 }
 
 template <class TYPE>
-list<TYPE>::iterator list<TYPE>::begin()
+iterator list<TYPE>::begin()
 {
 	iterator i(avant->suiv);
 	return i;
 }
 
 template <class TYPE>
-list<TYPE>::iterator list<TYPE>::end()
+iterator list<TYPE>::end()
 {
 	iterator i(apres->prec);
 	return i;
 }
 
 template <class TYPE>
-void list<TYPE>::erase(list<TYPE>::iterator pos)
+iterator list<TYPE>::erase(list<TYPE>::iterator pos)
 {
 	
 }
 
 template <class TYPE>
-void list<TYPE>::insert(list<TYPE>::iterator pos, const TYPE& value)
+iterator list<TYPE>::insert(list<TYPE>::iterator pos, const TYPE& value)
 {
 	
 }
