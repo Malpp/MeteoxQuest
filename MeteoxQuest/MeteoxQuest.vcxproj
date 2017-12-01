@@ -148,7 +148,6 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="player_projectile.h" />
     <ClInclude Include="powerup.h" />
     <ClInclude Include="projectile.h" />
-    <ClInclude Include="queue.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="resourcehandler.h" />
     <ClInclude Include="scene.h" />

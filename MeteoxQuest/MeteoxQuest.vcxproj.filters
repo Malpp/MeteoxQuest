@@ -79,6 +79,9 @@
     <Filter Include="Source Files\Game\powerups">
       <UniqueIdentifier>{466a9e35-2b35-4b30-91ad-d0e30bfb4799}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ALGO">
+      <UniqueIdentifier>{dcfedf9d-2363-4e72-b6eb-ff3a9ed6c022}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -192,15 +195,6 @@
     <ClInclude Include="wave.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="deque.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="queue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="lol_enemy.h">
       <Filter>Header Files\Game\enemies</Filter>
     </ClInclude>
@@ -228,14 +222,20 @@
     <ClInclude Include="colliable_object.h">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
-    <ClInclude Include="list.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="powerup.h">
       <Filter>Header Files\Game\powerups</Filter>
     </ClInclude>
     <ClInclude Include="non_character.h">
       <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="deque.h">
+      <Filter>Header Files\ALGO</Filter>
+    </ClInclude>
+    <ClInclude Include="list.h">
+      <Filter>Header Files\ALGO</Filter>
+    </ClInclude>
+    <ClInclude Include="stack.h">
+      <Filter>Header Files\ALGO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
