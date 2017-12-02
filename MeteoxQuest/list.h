@@ -45,8 +45,8 @@ private:
 	size_t size_;
 
 	//fonctions generatrices privees
-	box* insert_(box*, const T&); //inserer before_ cette box 
-	box* erase_(box*); //enlever cette box
+	box* insert(box*, const T&); //inserer avant cette box 
+	box* erase(box*); //enlever cette box
 
 public:
 	class iterator;
@@ -96,18 +96,23 @@ public:
 ///////////////////////////////////////////////////////////
 
 template <typename T>
-class list<T>::iterator {
+class list<T>::iterator 
+{
 	friend class list<T>;
 private:
 	box* pointer_;
 public:
 	iterator(box*c = nullptr) :pointer_(c) {} // cadeau
+
 	T& operator*()const //Dereference l'iterateur
 	{
 		return pointer_->value;
 	}
 
-	T* operator->()const { return &(pointer_->value); } //Autre dereference en cadeau.
+	T* operator->()const //Autre dereference en cadeau.
+	{
+		return &(pointer_->value);
+	} 
 
 	iterator& operator++() //++i
 	{
@@ -127,6 +132,7 @@ public:
 		pointer_ = pointer_->prev;
 		return *this;
 	}
+
 	iterator operator--(int) 
 	{							 //i--
 		iterator i(*this);
@@ -134,10 +140,12 @@ public:
 		return i;
 	}
 
-	bool operator==(const iterator&droite)const { //Cadeau! comparaison d'iterateur
+	bool operator==(const iterator&droite)const 
+	{ //Cadeau! comparaison d'iterateur
 		return pointer_ == droite.pointer_;
 	}
-	bool operator!=(const iterator&droite)const { //Cadeau! comparaison d'iterateur
+	bool operator!=(const iterator&droite)const 
+	{ //Cadeau! comparaison d'iterateur
 		return pointer_ != droite.pointer_;
 	}
 };
@@ -145,18 +153,18 @@ public:
 
 template <class T>
 list<T>::list()
+	: before_(NULL, nullptr, nullptr), after_(NULL, nullptr, nullptr)
 {
-	before_, after_ = new box(0, nullptr, nullptr);
 	size_ = 0;
 }
 
 template <class T>
 list<T>::~list()
 {
-	while (before_->next != nullptr)
+	while (before_.next != nullptr)
 	{
-		box* temp = before_->next;
-		before_->next = temp->next;
+		box* temp = before_.next;
+		before_.next = temp->next;
 		delete temp;
 	}
 
@@ -174,80 +182,80 @@ list<T>::list(const list& other)
 template <class T>
 void list<T>::push_back(const T& elem)
 {
-	if (after_->prev == nullptr)
+	if (after_.prev == nullptr)
 	{
-		after_->prev = new box(elem, nullptr, nullptr);
-		before_->next = after_->prev;
+		after_.prev = new box(elem, nullptr, nullptr);
+		before_.next = after_.prev;
 	}
 	else
 	{
-		after_->prev->next = new box(elem, after_->prev, nullptr);
-		after_->prev = after_->prev->next;
+		after_.prev->next = new box(elem, after_.prev, nullptr);
+		after_.prev = after_.prev->next;
 	}	
 }
 
 template <class T>
 void list<T>::push_front(const T& elem)
 {
-	if (before_->next == nullptr)
+	if (before_.next == nullptr)
 	{
-		before_->next = new box(elem, nullptr, nullptr);
-		after_->prev = before_->next;
+		before_.next = new box(elem, nullptr, nullptr);
+		after_.prev = before_.next;
 	}
 	else
 	{
-		before_->next->prev = new box(elem, before_->next, nullptr);
-		before_->next = before_->next->prev;
+		before_.next->prev = new box(elem, before_.next, nullptr);
+		before_.next = before_.next->prev;
 	}
 }
 
 template <class T>
 void list<T>::pop_back()
 {
-	box* temp = after_->prev;
-	after_->prev = temp->prev;
+	box* temp = after_.prev;
+	after_.prev = temp->prev;
 	delete temp;
 }
 
 template <class T>
 void list<T>::pop_front()
 {
-	box* temp = before_->next;
-	before_->next = temp->next;
+	box* temp = before_.next;
+	before_.next = temp->next;
 	delete temp;
 }
 
 template <class T>
 T& list<T>::front()
 {
-	return before_->next;
+	return before_.next->value;
 }
 
 template <class T>
 T& list<T>::front() const
 {
-	return before_->next;
+	return before_.next->value;
 }
 
 template <class T>
 T& list<T>::back()
 {
-	return after_->prev;
+	return after_.prev->value;
 }
 
 template <class T>
 T& list<T>::back() const
 {
-	return after_->prev;
+	return after_.prev->value;
 }
 
 template <class T>
 void list<T>::clear()
 {
-	while (before_->next != nullptr)
+	while (before_.next != nullptr)
 	{
-		box* temp = before_->next;
-		before_->next = temp->next;
+		box* temp = before_.next;
+		before_.next = temp->next;
 		delete temp;
 	}
 
@@ -267,15 +275,49 @@ bool list<T>::empty() const
 }
 
 template <class T>
-list<T>::iterator list<T>::begin()
+typename list<T>::iterator list<T>::begin()
 {
-	iterator i(before_->next);
+	iterator i(before_.next);
 	return i;
 }
 
 template <class T>
-list<T>::iterator list<T>::end()
+typename list<T>::iterator list<T>::end()
 {
-	iterator i(after_->prev);
+	iterator i(after_);
 	return i;
+}
+
+template <class T>
+typename list<T>::iterator list<T>::insert(iterator pos, const T& value)
+{
+	insert(pos.pointer_, value);
+}
+
+template <class T>
+typename list<T>::iterator list<T>::erase(iterator pos)
+{
+	erase(pos.pointer_);
+}
+
+template <class T>
+typename list<T>::box* list<T>::insert(box* box, const T& value)
+{
+	list<T>::box* temp = list<T>::box->prev;
+	list<T>::box* new_box = new list<T>::box(value, temp, box);
+	list<T>::box->prev = new_box;
+	temp->next = new_box;
+	return new_box;
+}
+
+template <class T>
+typename list<T>::box* list<T>::erase(box* box)
+{
+	list<T>::box* temp = box->next;
+	box->prev->next = box->next;
+	box->next->prev = box->prev;
+
+	delete box;
+
+	return temp;
 }
