@@ -237,6 +237,9 @@
     <ClInclude Include="stack.h">
       <Filter>Header Files\ALGO</Filter>
     </ClInclude>
+    <ClInclude Include="emp_bomb.h">
+      <Filter>Header Files\Game\powerups</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -367,6 +370,9 @@
     </ClCompile>
     <ClCompile Include="non_character.cpp">
       <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="emp_bomb.cpp">
+      <Filter>Source Files\Game\powerups</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
