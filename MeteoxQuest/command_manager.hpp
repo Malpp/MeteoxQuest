@@ -16,7 +16,7 @@ public:
 
 	void update(const float delta_time)
 	{
-		for(int i = commands_.size() - 1; i -- > 0;)
+		for(int i = commands_.size() - 1; i >= 0; --i)
 		{
 			commands_[i]->time_remaining_ -= delta_time;
 

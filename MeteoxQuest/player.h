@@ -41,5 +41,6 @@ private:
 	static const int base_life_ = 3;
 	unsigned int score_;
 	CommandManager command_manager_;
-	PlayerState las_state_;
+	unsigned last_state_;
+	unsigned last_last_state_;
 };
