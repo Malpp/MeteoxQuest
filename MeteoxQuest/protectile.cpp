@@ -16,7 +16,7 @@ Projectile::Projectile(
 	const sf::Vector2f& direction,
 	const GameType type,
 	const Color color)
-	: GameObject(pos,
+	: NonCharacter(pos,
 	             angle,
 	             texture,
 	             size,
@@ -29,29 +29,6 @@ Projectile::Projectile(
 	             type)
 {
 	direction_ = direction;
-}
-
-void Projectile::update(const float delta_time, LevelBase* level)
-{
-	velocity_ = direction_;
-	GameObject::update(delta_time, level);
-}
-
-bool Projectile::is_at_edge()
-{
-	const sf::Vector2f current_pos = getPosition();
-	if(current_pos.x > Game::GAME_WIDTH + half_texture_size_.x ||
-		current_pos.x < -half_texture_size_.x ||
-		current_pos.y > Game::GAME_HEIGHT + half_texture_size_.y ||
-		current_pos.y < -half_texture_size_.y)
-		return true;
-
-	return false;
-}
-
-void Projectile::handle_edge()
-{
-	despawn();
 }
 
 void Projectile::on_death(LevelBase* level)

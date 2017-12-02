@@ -7,6 +7,7 @@ class LevelBase;
 
 class Player : public Character, public Subject
 {
+	friend class PowerUp;
 public:
 	enum PlayerState
 	{

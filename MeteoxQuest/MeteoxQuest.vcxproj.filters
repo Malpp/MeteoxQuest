@@ -73,6 +73,15 @@
     <Filter Include="Header Files\Game\hud">
       <UniqueIdentifier>{e9a0598e-d6e3-49a6-9bdc-6b307d5eab37}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\powerups">
+      <UniqueIdentifier>{d88ba4c2-e9d0-416b-b6d8-2c98997c1d3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\powerups">
+      <UniqueIdentifier>{466a9e35-2b35-4b30-91ad-d0e30bfb4799}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ALGO">
+      <UniqueIdentifier>{dcfedf9d-2363-4e72-b6eb-ff3a9ed6c022}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -186,15 +195,6 @@
     <ClInclude Include="wave.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="deque.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="queue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="stack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="lol_enemy.h">
       <Filter>Header Files\Game\enemies</Filter>
     </ClInclude>
@@ -222,8 +222,20 @@
     <ClInclude Include="colliable_object.h">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
+    <ClInclude Include="powerup.h">
+      <Filter>Header Files\Game\powerups</Filter>
+    </ClInclude>
+    <ClInclude Include="non_character.h">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="deque.h">
+      <Filter>Header Files\ALGO</Filter>
+    </ClInclude>
     <ClInclude Include="list.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ALGO</Filter>
+    </ClInclude>
+    <ClInclude Include="stack.h">
+      <Filter>Header Files\ALGO</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -348,6 +360,12 @@
       <Filter>Source Files\Game\weapons</Filter>
     </ClCompile>
     <ClCompile Include="collidable_object.cpp">
+      <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="powerup.cpp">
+      <Filter>Source Files\Game\powerups</Filter>
+    </ClCompile>
+    <ClCompile Include="non_character.cpp">
       <Filter>Source Files\Base</Filter>
     </ClCompile>
   </ItemGroup>

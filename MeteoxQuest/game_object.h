@@ -35,7 +35,7 @@ public:
 		const int no_states,
 		const float frame_delay,
 		const int life,
-		Color color,
+		const Color color,
 		const int damage,
 		const GameType type);
 	~GameObject();

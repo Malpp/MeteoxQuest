@@ -1,9 +1,8 @@
 #pragma once
 #include "stdafx.h"
-#include "game_object.h"
-#include "character.h"
+#include "non_character.h"
 
-class Projectile : public GameObject
+class Projectile : public NonCharacter
 {
 public:
 	Projectile(
@@ -17,13 +16,9 @@ public:
 		const sf::Vector2f& direction,
 		GameType type,
 		Color color);
-	void update(const float delta_time, LevelBase* level) override;
 	void on_death(LevelBase* level) override;	
 protected:
-	static const int base_damage_ = 1;
 	void handle_collision(GameObject* other, LevelBase* level) override;
-	sf::Vector2f direction_;
-	bool is_at_edge() override;
-	void handle_edge() override;
+	static const int base_damage_ = 1;
 	static const int base_life_ = 1;
 };

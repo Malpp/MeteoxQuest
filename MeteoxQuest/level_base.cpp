@@ -99,6 +99,8 @@ void LevelBase::update(const float delta_time)
 		sf::Vector2f pos = background_sprites_[i].getPosition();
 		if(pos.x < -background_size_.x)
 		{
+			//											Look at this, !i
+			//											It's legit
 			sf::Vector2f other_pos = background_sprites_[!i].getPosition();
 			pos.x = other_pos.x + background_size_.x - 1;
 		}
@@ -170,19 +172,22 @@ bool LevelBase::load_level(const std::string path)
 
 			if(type == "GC")
 				wave->add_enemy(new GCEnemy(
-					sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT),
-					0,
-					GameObject::generate_random_color()));
+											 sf::Vector2f(posX * Game::GAME_WIDTH,
+														posY * Game::GAME_HEIGHT),
+											 0,
+											 GameObject::generate_random_color()));
 			else if(type == "SMORC")
 				wave->add_enemy(new OrcEnemy(
-					sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT),
-					0,
-					GameObject::generate_random_color()));
+											 sf::Vector2f(posX * Game::GAME_WIDTH,
+														posY * Game::GAME_HEIGHT),
+											 0,
+											 GameObject::generate_random_color()));
 			else if(type == "KEN")
 				wave->add_enemy(new KenEnemy(
-					sf::Vector2f(posX * Game::GAME_WIDTH, posY * Game::GAME_HEIGHT),
-					0,
-					GameObject::generate_random_color()));
+											 sf::Vector2f(posX * Game::GAME_WIDTH,
+														posY * Game::GAME_HEIGHT),
+											 0,
+											 GameObject::generate_random_color()));
 		}
 
 		waves_.push_back(wave);
