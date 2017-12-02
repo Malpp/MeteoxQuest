@@ -113,6 +113,8 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="cloud9_weapon.h" />
     <ClInclude Include="colliable_object.h" />
     <ClInclude Include="collision.h" />
+    <ClInclude Include="command.hpp" />
+    <ClInclude Include="command_manager.hpp" />
     <ClInclude Include="deque.h" />
     <ClInclude Include="emp_bomb.h" />
     <ClInclude Include="enemy.h" />

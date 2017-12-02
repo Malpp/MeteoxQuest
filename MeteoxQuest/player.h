@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "character.h"
 #include "subject.h"
+#include "command_manager.hpp"
 
 class LevelBase;
 
@@ -39,4 +40,6 @@ private:
 	static const float frame_delay_;
 	static const int base_life_ = 3;
 	unsigned int score_;
+	CommandManager command_manager_;
+	PlayerState las_state_;
 };

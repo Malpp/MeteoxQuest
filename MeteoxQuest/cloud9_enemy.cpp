@@ -5,6 +5,7 @@
 #include "cloud9_weapon.h"
 
 const std::string Cloud9Enemy::texture_name_ = "Enemies/Cloud9/";
+
 sf::Texture* Cloud9Enemy::textures_[] = {
 	Game::resource_handler_.
 	add_texture(texture_name_ + "red.png"),

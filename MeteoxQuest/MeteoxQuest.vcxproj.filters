@@ -240,6 +240,12 @@
     <ClInclude Include="emp_bomb.h">
       <Filter>Header Files\Game\powerups</Filter>
     </ClInclude>
+    <ClInclude Include="command_manager.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="command.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
