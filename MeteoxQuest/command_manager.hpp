@@ -22,6 +22,7 @@ public:
 
 			if(commands_[i]->time_remaining_ < 0)
 			{
+				last_removed_ = commands_[i]->move_;
 				delete commands_[i];
 				commands_.erase(commands_.begin() + i);
 			}
@@ -33,10 +34,10 @@ public:
 		commands_.push_back(manip);
 	}
 
-	void remove_valid_command()
+	void remove_commands(const int no_commands)
 	{
 		//lul wat
-		for(int i = 0; i < 3; ++i)
+		for(int i = 0; i < no_commands; ++i)
 		{
 			remove_first();
 		}
@@ -50,4 +51,5 @@ public:
 
 private:
 	std::vector<Command*> commands_;
+	unsigned last_removed_;
 };

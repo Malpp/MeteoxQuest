@@ -10,6 +10,10 @@ sf::Texture* Player::texture_ = Game::resource_handler_.add_texture(
 const sf::Vector2f Player::size_ = sf::Vector2f(140, 80);
 const float Player::movespeed_ = 600;
 const float Player::frame_delay_ = 0.1f;
+const float Player::max_idle_time_ = 0.1f;
+const float Player::dash_duration_ = 0.15f;
+const float Player::dash_speed_ = 1000;
+const float Player::dash_cooldown_ = 2;
 
 unsigned Player::get_score() const
 {
@@ -43,7 +47,11 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 {
 	weapon_ = new HeartWeapon;
 	score_ = 0;
-	last_state_, last_last_state_ = state_;
+	last_state_ = state_;
+	dashing_ = false;
+	dash_timer_ = 0;
+	dash_cooldown_timer_ = 0;
+	dash_ready_ = true;
 }
 
 void Player::update(const float delta_time, LevelBase* level)
@@ -61,44 +69,33 @@ void Player::update(const float delta_time, LevelBase* level)
 	if(velocity_.x == 0 && velocity_.y == 0)
 		state_ = IDLE;
 
-	if(state_ != IDLE && last_state_ != state_)
+	do_dashes(delta_time);
+
+	if(dashing_)
 	{
-		//std::cout << state_ << "\n";
-		command_manager_.add(new Command(state_));
-		last_last_state_ = last_state_;
-		last_state_ = state_;
+		dash_timer_ += delta_time;
+		if(dash_timer_ > dash_duration_)
+		{
+			dash_timer_ = 0;
+			dashing_ = false;
+			dash_direction_.x = 0;
+			dash_direction_.y = 0;
+		}
+		else
+		{
+			velocity_ += dash_direction_ * dash_speed_;
+		}
 	}
-
-	std::vector<Command*>& commands = command_manager_.commands_;
-
-	command_manager_.update(delta_time);
-
-	if(commands.size() >= 3)
+	else
 	{
-		if(commands[0]->move == LEFT && commands[1]->move == RIGHT && commands[2]
-			->move == LEFT)
+		if(!dash_ready_)
 		{
-			std::cout << "DASH LEFT\n";
-			command_manager_.remove_valid_command();
-		}
-		else if(commands[0]->move == RIGHT && commands[1]->move == LEFT &&
-			commands[2]
-			->move == RIGHT)
-		{
-			std::cout << "DASH RIGHT\n";
-			command_manager_.remove_valid_command();
-		}
-		else if(commands[0]->move == UP && commands[1]->move == DOWN && commands[
-				2]
-			->move == UP)
-		{
-			std::cout << "DASH UP\n";
-			command_manager_.remove_valid_command();
-		}
-		else if(commands[0]->move == DOWN && commands[1]->move == UP && last_state_ == DOWN)
-		{
-			std::cout << "DASH DOWN\n";
-			command_manager_.remove_valid_command();
+			dash_cooldown_timer_ += delta_time;
+			if(dash_cooldown_timer_ > dash_cooldown_)
+			{
+				dash_ready_ = true;
+				dash_cooldown_timer_ = 0;
+			}
 		}
 	}
 
@@ -145,5 +142,83 @@ void Player::handle_collision(GameObject* other, LevelBase* level)
 	if(dynamic_cast<Enemy*>(other))
 	{
 		//despawn();
+	}
+}
+
+void Player::do_dashes(const float delta_time)
+{
+	//If new command, insert it
+	if(state_ != IDLE && last_state_ != state_)
+	{
+		dashing_ = false;
+		command_manager_.add(new Command(state_));
+		last_state_ = state_;
+		idle_timer_ = 0;
+	}
+	else
+	{
+		//If the player stays idle to too long
+		//reset the last_removed_
+		if(state_ == IDLE)
+		{
+			idle_timer_ += delta_time;
+			if(idle_timer_ > max_idle_time_)
+			{
+				command_manager_.last_removed_ = IDLE;
+			}
+		}
+	}
+
+	std::vector<Command*>& commands = command_manager_.commands_;
+
+	command_manager_.update(delta_time);
+
+	//If only 2 keys remain in the commands
+	//This is so the player must hold a direction before being able to dash
+	//in that direction
+	const int no_commands = commands.size();
+	if(no_commands == 2)
+	{
+		const unsigned last_command = commands.rbegin()[0]->move_;
+		if(last_command != command_manager_.last_removed_)
+			return;
+		dash_direction_.x = 0;
+		dash_direction_.y = 0;
+		const unsigned second_last_command = commands.rbegin()[1]->move_;
+
+		//Dash left
+		if(last_command == LEFT && second_last_command
+			== RIGHT)
+		{
+			dash_direction_.x = -1;
+			command_manager_.remove_commands(no_commands);
+		}
+		//Dash right
+		else if(last_command == RIGHT &&
+			second_last_command == LEFT)
+		{
+			dash_direction_.x = 1;
+			command_manager_.remove_commands(no_commands);
+		}
+		//Dash up
+		else if(last_command == UP &&
+			second_last_command == DOWN)
+		{
+			dash_direction_.y = -1;
+			command_manager_.remove_commands(no_commands);
+		}
+		//Dash down
+		else if(last_command == DOWN &&
+			second_last_command == UP)
+		{
+			dash_direction_.y = 1;
+			command_manager_.remove_commands(no_commands);
+		}
+
+		if((dash_direction_.x || dash_direction_.y) && dash_ready_)
+		{
+			dash_ready_ = false;
+			dashing_ = true;
+		}
 	}
 }

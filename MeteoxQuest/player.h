@@ -32,6 +32,7 @@ public:
 protected:
 	void handle_collision(GameObject* other, LevelBase* level) override;
 private:
+	void do_dashes(const float delta_time);
 	static const int base_damage_ = 1;
 	static sf::Texture* texture_;
 	static const sf::Vector2f size_;
@@ -42,5 +43,14 @@ private:
 	unsigned int score_;
 	CommandManager command_manager_;
 	unsigned last_state_;
-	unsigned last_last_state_;
+	float idle_timer_;
+	static const float max_idle_time_;
+	static const float dash_speed_;
+	static const float dash_duration_;
+	static const float dash_cooldown_;
+	float dash_cooldown_timer_;
+	float dash_timer_;
+	bool dashing_;
+	bool dash_ready_;
+	sf::Vector2f dash_direction_;
 };
