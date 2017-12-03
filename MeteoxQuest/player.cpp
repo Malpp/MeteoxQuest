@@ -215,6 +215,7 @@ void Player::do_dashes(const float delta_time)
 			command_manager_.remove_commands(no_commands);
 		}
 
+		//Only dash if ready
 		if((dash_direction_.x || dash_direction_.y) && dash_ready_)
 		{
 			dash_ready_ = false;
