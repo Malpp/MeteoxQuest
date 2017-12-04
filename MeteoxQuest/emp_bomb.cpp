@@ -5,7 +5,7 @@
 #include "level_base.h"
 
 const sf::Vector2f EmpBomb::size_ = sf::Vector2f( 30, 30 );
-sf::Texture* EmpBomb::texture_ = Game::resource_handler_.add_texture("emp_bomb.png");
+sf::Texture* EmpBomb::texture_;
 const float EmpBomb::movespeed_ = 100;
 const float EmpBomb::frame_delay_ = 0.2f;
 
