@@ -16,6 +16,7 @@ public:
 		SPLASH,
 		GAME,
 		MENU,
+		LOADING,
 		END
 	};
 

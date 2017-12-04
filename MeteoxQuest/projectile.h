@@ -15,7 +15,8 @@ public:
 		float frame_delay,
 		const sf::Vector2f& direction,
 		GameType type,
-		Color color);
+		Color color,
+		const float movespeed);
 	void on_death(LevelBase* level) override;	
 protected:
 	void handle_collision(GameObject* other, LevelBase* level) override;

@@ -200,3 +200,8 @@ void LevelBase::add_score(const int score_to_add) const
 {
 	player_->add_score(score_to_add);
 }
+
+Player* LevelBase::get_player() const
+{
+	return player_;
+}

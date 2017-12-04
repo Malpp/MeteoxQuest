@@ -10,6 +10,7 @@ class GameObject;
 
 class LevelBase : public Scene
 {
+	friend class PowerUp;
 public:
 	LevelBase(
 		sf::RenderWindow* window,
@@ -22,6 +23,7 @@ public:
 	virtual void manage_input(sf::Event event);
 	void add_game_object(GameObject* projectile);
 	void add_score( const int score_to_add ) const;
+	Player* get_player() const;
 private:
 	Player* player_;
 	float scroll_speed_;

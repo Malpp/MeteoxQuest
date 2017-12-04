@@ -107,13 +107,17 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="bomb.h" />
     <ClInclude Include="button.h" />
     <ClInclude Include="character.h" />
     <ClInclude Include="cloud9_enemy.h" />
     <ClInclude Include="cloud9_weapon.h" />
     <ClInclude Include="colliable_object.h" />
     <ClInclude Include="collision.h" />
+    <ClInclude Include="command.hpp" />
+    <ClInclude Include="command_manager.hpp" />
     <ClInclude Include="deque.h" />
+    <ClInclude Include="emp_bomb.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemy_projectile.h" />
     <ClInclude Include="game.h" />
@@ -132,6 +136,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="level1.h" />
     <ClInclude Include="level_base.h" />
     <ClInclude Include="list.h" />
+    <ClInclude Include="loading.h" />
     <ClInclude Include="lol_enemy.h" />
     <ClInclude Include="lol_projectile.h" />
     <ClInclude Include="lol_weapon.h" />
@@ -160,12 +165,14 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="weapon.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bomb.cpp" />
     <ClCompile Include="button.cpp" />
     <ClCompile Include="character.cpp" />
     <ClCompile Include="cloud9_enemy.cpp" />
     <ClCompile Include="cloud9_weapon.cpp" />
     <ClCompile Include="collidable_object.cpp" />
     <ClCompile Include="collision.cpp" />
+    <ClCompile Include="emp_bomb.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GC_enemy.cpp" />
@@ -180,6 +187,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="label.cpp" />
     <ClCompile Include="level1.cpp" />
     <ClCompile Include="level_base.cpp" />
+    <ClCompile Include="loading.cpp" />
     <ClCompile Include="lol_enemy.cpp" />
     <ClCompile Include="lol_projectile.cpp" />
     <ClCompile Include="lol_weapon.cpp" />

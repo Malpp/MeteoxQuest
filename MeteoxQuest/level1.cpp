@@ -2,6 +2,7 @@
 #include "level1.h"
 #include "Game.h"
 #include "cloud9_enemy.h"
+#include "emp_bomb.h"
 
 sf::Texture* Level1::texture_ = Game::resource_handler_.add_texture(
 	"level1.png");
@@ -9,7 +10,8 @@ sf::Texture* Level1::texture_ = Game::resource_handler_.add_texture(
 Level1::Level1(sf::RenderWindow* window)
 	: LevelBase(window, texture_, 300)
 {
-	load_level("Assets//level1.json");
+	load_level("Assets/level1.json");
+	add_game_object( new EmpBomb( sf::Vector2f( 500, 500 ), 0 ) );
 	add_game_object(new Cloud9Enemy(sf::Vector2f(1300, 0), 0, GameObject::generate_random_color()));
 }
 

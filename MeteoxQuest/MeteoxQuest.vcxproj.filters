@@ -237,6 +237,21 @@
     <ClInclude Include="stack.h">
       <Filter>Header Files\ALGO</Filter>
     </ClInclude>
+    <ClInclude Include="emp_bomb.h">
+      <Filter>Header Files\Game\powerups</Filter>
+    </ClInclude>
+    <ClInclude Include="loading.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="command.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="command_manager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bomb.h">
+      <Filter>Header Files\Game\powerups</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -367,6 +382,15 @@
     </ClCompile>
     <ClCompile Include="non_character.cpp">
       <Filter>Source Files\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="emp_bomb.cpp">
+      <Filter>Source Files\Game\powerups</Filter>
+    </ClCompile>
+    <ClCompile Include="loading.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="bomb.cpp">
+      <Filter>Source Files\Game\powerups</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

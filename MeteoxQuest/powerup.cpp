@@ -8,10 +8,7 @@ PowerUp::PowerUp(const sf::Vector2f& pos,
 				const int no_frames,
 				const int no_states,
 				const float frame_delay,
-				const int life,
-				const Color color,
-				const int damage,
-				const GameType type)
+				const float movespeed)
 	: NonCharacter(pos,
 					angle,
 					texture,
@@ -19,10 +16,18 @@ PowerUp::PowerUp(const sf::Vector2f& pos,
 					no_frames,
 					no_states,
 					frame_delay,
-					life,
-					color,
-					damage,
-					type)
+					powerup_life_,
+					NONE,
+					powerup_damage_,
+					PLAYER,
+					movespeed)
 {
-	
+}
+
+void PowerUp::handle_collision(GameObject* other, LevelBase* level)
+{
+}
+
+void PowerUp::on_death(LevelBase* level)
+{
 }

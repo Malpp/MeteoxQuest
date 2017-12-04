@@ -12,7 +12,8 @@ NonCharacter::NonCharacter(const sf::Vector2f& pos,
 							const int life,
 							const Color color,
 							const int damage,
-							const GameType type)
+							const GameType type,
+							const float movespeed)
 	: GameObject(pos,
 				angle,
 				texture,
@@ -24,13 +25,14 @@ NonCharacter::NonCharacter(const sf::Vector2f& pos,
 				color,
 				damage,
 				type)
+	, movespeed_(movespeed)
 {
 }
 
 void NonCharacter::update(const float delta_time, LevelBase* level)
 {
-	velocity_ = direction_;
-	GameObject::update( delta_time, level );
+	velocity_ = direction_ *  movespeed_;
+	GameObject::update(delta_time, level);
 }
 
 bool NonCharacter::is_at_edge()

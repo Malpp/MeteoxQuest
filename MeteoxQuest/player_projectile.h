@@ -12,17 +12,19 @@ public:
 		int no_frames,
 		int no_states,
 		float frame_delay,
-		const sf::Vector2f& direction)
+		const sf::Vector2f& direction,
+		const float movespeed)
 		: Projectile(pos,
-		             angle,
-		             texture,
-		             size,
-		             no_frames,
-		             no_states,
-		             frame_delay,
-		             direction,
-		             PLAYER,
-					 NONE)
+					angle,
+					texture,
+					size,
+					no_frames,
+					no_states,
+					frame_delay,
+					direction,
+					PLAYER,
+					NONE,
+					movespeed)
 	{
 	}
 };

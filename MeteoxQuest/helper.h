@@ -22,7 +22,7 @@ namespace Helper
 		                    sin(degreeToRadian(angle)) * distance);
 	}
 
-	inline float angleBetweenTwoPoints(sf::Vector2f& p1, sf::Vector2f& p2)
+	inline float angleBetweenTwoPoints(const sf::Vector2f& p1, const sf::Vector2f& p2)
 	{
 		return atan2(p2.y - p1.y, p2.x - p1.x) * 180 / M_PI;
 	}

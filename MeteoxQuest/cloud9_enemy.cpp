@@ -5,14 +5,7 @@
 #include "cloud9_weapon.h"
 
 const std::string Cloud9Enemy::texture_name_ = "Enemies/Cloud9/";
-sf::Texture* Cloud9Enemy::textures_[] = {
-	Game::resource_handler_.
-	add_texture(texture_name_ + "red.png"),
-	Game::resource_handler_.
-	add_texture(texture_name_ + "green.png"),
-	Game::resource_handler_.
-	add_texture(texture_name_ + "blue.png")
-};
+sf::Texture* Cloud9Enemy::textures_[3];
 const sf::Vector2f Cloud9Enemy::size_ = sf::Vector2f(220, 157);
 const float Cloud9Enemy::movespeed_ = 100;
 const float Cloud9Enemy::frame_delay_ = 0.1f;
