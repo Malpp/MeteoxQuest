@@ -189,9 +189,9 @@ void list<T>::push_back(const T& elem)
 	}
 	else
 	{
-		after_.prev->next = new box(elem, after_.prev, nullptr);
+		after_.prev->next = new box( elem, after_.prev, nullptr );
 		after_.prev = after_.prev->next;
-	}	
+	}
 }
 
 template <class T>
@@ -303,9 +303,9 @@ typename list<T>::iterator list<T>::erase(iterator pos)
 template <class T>
 typename list<T>::box* list<T>::insert(box* box, const T& value)
 {
-	list<T>::box* temp = list<T>::box->prev;
+	list<T>::box* temp = box->prev;
 	list<T>::box* new_box = new list<T>::box(value, temp, box);
-	list<T>::box->prev = new_box;
+	//list<T>::box->prev = new_box;
 	temp->next = new_box;
 	return new_box;
 }
