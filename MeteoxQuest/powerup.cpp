@@ -7,7 +7,8 @@ PowerUp::PowerUp(const sf::Vector2f& pos,
 				const sf::Vector2f& size,
 				const int no_frames,
 				const int no_states,
-				const float frame_delay)
+				const float frame_delay,
+				const float movespeed)
 	: NonCharacter(pos,
 					angle,
 					texture,
@@ -18,7 +19,8 @@ PowerUp::PowerUp(const sf::Vector2f& pos,
 					powerup_life_,
 					NONE,
 					powerup_damage_,
-					PLAYER)
+					PLAYER,
+					movespeed)
 {
 }
 

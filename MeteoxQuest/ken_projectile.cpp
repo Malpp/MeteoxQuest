@@ -21,13 +21,14 @@ KenProjectile::KenProjectile(
 	const sf::Vector2f& direction,
 	const Color color)
 	: EnemyProjectile(pos,
-	                  angle,
-	                  textures_[color],
-	                  size_,
-	                  no_frames_,
-	                  no_states_,
-	                  frame_delay_,
-	                  direction * movespeed_,
-					  color)
+					angle,
+					textures_[color],
+					size_,
+					no_frames_,
+					no_states_,
+					frame_delay_,
+					direction,
+					color,
+					movespeed_)
 {
 }

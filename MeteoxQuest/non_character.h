@@ -14,10 +14,13 @@ public:
 				const int life,
 				const Color color,
 				const int damage,
-				const GameType type);
+				const GameType type,
+		const float movespeed);
 	void update(const float delta_time, LevelBase* level) override;
 protected:
 	bool is_at_edge() override;
 	void handle_edge() override;
 	sf::Vector2f direction_;
+private:
+	float movespeed_;
 };

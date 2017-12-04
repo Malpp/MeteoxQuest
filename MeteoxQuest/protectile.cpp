@@ -15,18 +15,20 @@ Projectile::Projectile(
 	const float frame_delay,
 	const sf::Vector2f& direction,
 	const GameType type,
-	const Color color)
+	const Color color,
+	const float movespeed)
 	: NonCharacter(pos,
-	             angle,
-	             texture,
-	             size,
-	             no_frames,
-	             no_states,
-	             frame_delay,
-	             base_life_,
-	             color,
-	             base_damage_,
-	             type)
+					angle,
+					texture,
+					size,
+					no_frames,
+					no_states,
+					frame_delay,
+					base_life_,
+					color,
+					base_damage_,
+					type,
+					movespeed)
 {
 	direction_ = direction;
 }

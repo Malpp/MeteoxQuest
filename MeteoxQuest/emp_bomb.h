@@ -1,12 +1,11 @@
 ﻿#pragma once
-#include "powerup.h"
+#include "bomb.h"
 
-class EmpBomb : public PowerUp
+class EmpBomb : public Bomb
 {
 public:
 	EmpBomb(const sf::Vector2f& pos,
 			const float angle);
-	void update(const float delta_time, LevelBase* level) override;
 	static sf::Texture* texture_;
 	static const std::string texture_name_;
 private:

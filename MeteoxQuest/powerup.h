@@ -11,7 +11,8 @@ public:
 		const sf::Vector2f& size,
 		int no_frames,
 		int no_states,
-		float frame_delay );
+		float frame_delay,
+		const float movespeed);
 protected:
 	void handle_collision(GameObject* other, LevelBase* level) override;
 	void on_death(LevelBase* level) override;
