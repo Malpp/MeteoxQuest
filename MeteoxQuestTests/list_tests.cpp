@@ -19,8 +19,7 @@ namespace MeteoxQuestTests
 			list<int> list;
 
 			list.push_back(1);
-			int size = list.size();
-			Assert::AreEqual(1, size);
+			Assert::AreEqual(1, (int)list.size());
 			Assert::AreEqual(1, list.front());
 			Assert::AreEqual(1, list.back());
 		}
@@ -31,8 +30,7 @@ namespace MeteoxQuestTests
 
 			list.push_back(1);
 			list.push_back(2);
-			int size = list.size();
-			Assert::AreEqual(2, size);
+			Assert::AreEqual(2, (int)list.size());
 			Assert::AreEqual(1, list.front());
 			Assert::AreEqual(2, list.back());
 		}
@@ -44,10 +42,98 @@ namespace MeteoxQuestTests
 			list.push_back(1);
 			list.push_back(2);
 			list.push_back(3);
-			int size = list.size();
-			Assert::AreEqual(3, size);
+			Assert::AreEqual(3, (int)list.size());
 			Assert::AreEqual(1, list.front());
 			Assert::AreEqual(3, list.back());
+		}
+
+		TEST_METHOD(listPushFront1)
+		{
+			list<int> list;
+
+			list.push_front(1);
+			Assert::AreEqual(1, (int)list.size());
+			Assert::AreEqual(1, list.front());
+			Assert::AreEqual(1, list.back());
+		}
+
+		TEST_METHOD(listPushFront2)
+		{
+			list<int> list;
+
+			list.push_front(1);
+			list.push_front(2);
+			Assert::AreEqual(2, (int)list.size());
+			Assert::AreEqual(2, list.front());
+			Assert::AreEqual(1, list.back());
+		}
+
+		TEST_METHOD(listPushFront3)
+		{
+			list<int> list;
+
+			list.push_front(1);
+			list.push_front(2);
+			list.push_front(3);
+			Assert::AreEqual(3, (int)list.size());
+			Assert::AreEqual(3, list.front());
+			Assert::AreEqual(1, list.back());
+		}
+
+		TEST_METHOD(listPushFrontBack1)
+		{
+			list<int> list;
+
+			list.push_back(2);
+			list.push_front(1);
+			Assert::AreEqual(2, (int)list.size());
+			Assert::AreEqual(1, list.front());
+			Assert::AreEqual(2, list.back());
+		}
+
+		TEST_METHOD(listPushFrontBack2)
+		{
+			list<int> list;
+
+			list.push_back(1);
+			list.push_front(2);
+			Assert::AreEqual(2, (int)list.size());
+			Assert::AreEqual(2, list.front());
+			Assert::AreEqual(1, list.back());
+		}
+
+		TEST_METHOD(listPushFrontBack3)
+		{
+			list<int> list;
+
+			list.push_back(1);
+			list.push_front(2);
+			list.push_back(1);
+			list.push_front(2);
+			list.push_front(2);
+			list.push_front(2);
+			list.push_front(8);
+			Assert::AreEqual(7, (int)list.size());
+			Assert::AreEqual(8, list.front());
+			Assert::AreEqual(1, list.back());
+		}
+
+		TEST_METHOD(listPushFrontBack4)
+		{
+			list<int> list;
+
+			for (int i = 0; i < 11; ++i)
+			{
+				list.push_back(i);
+			}
+
+			for (int i = 0; i < 10; ++i)
+			{
+				list.push_front(i);
+			}
+			Assert::AreEqual(21, (int)list.size());
+			Assert::AreEqual(9, list.front());
+			Assert::AreEqual(10, list.back());
 		}
 	};
 }

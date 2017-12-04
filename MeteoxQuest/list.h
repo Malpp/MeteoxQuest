@@ -1,3 +1,5 @@
+#include <algorithm>
+#include <list>
 #ifndef _LIST_H_
 #define _LIST_H_
 
@@ -87,7 +89,7 @@ public:
 
 					//algorithmes
 	void reverse(); //Inverse l'ordre des elements de la liste. O(n)
-	void splice(iterator pos, list& other); //Transfere les elements contenu dans other vers la liste courante. les element sont ajouter before_ la box en position pos. O(1)
+	void splice(iterator pos, list& other); //Transfere les elements contenu dans other vers la liste courante. les element sont ajouter avant la box en position pos. O(1)
 											//void resize(size_t newSize, const T& value= T()); //Optionnel permet d'ajuster le nombre d'element de la liste. initialise les nouveaux element a value. Potentiellement O(n)
 };
 
@@ -167,31 +169,80 @@ list<T>::~list()
 		before_.next = temp->next;
 		delete temp;
 	}
-
 	size_ = 0;
 }
 
 template <class T>
 list<T>::list(const list& other)
+	: before_(NULL, nullptr, nullptr), after_(NULL, nullptr, nullptr)
 {
-	clear();
+	box* current = nullptr;
+	box* next_ptr = nullptr;
+	if (other.before_.next == nullptr)
+		before_.next, after.prev = nullptr;
+	else
+	{
+		before_.next = new box(other.before_.value, nullptr, nullptr);
+		current = before_.next;
+		next_ptr = other.before_.next;
+	}
 
+	while (next != nullptr)
+	{
+		current->next = new box(next_ptr->next->value, nullptr, current);
+		current = current->next;
+		next_ptr = next_ptr->next;
+	}
+	size_ = other.size_;
 	return *this;
 }
 
 template <class T>
-void list<T>::push_back(const T& elem)
+list<T>& list<T>::operator=(const list& other)
+{
+	box* current = nullptr;
+	box* other_current = nullptr;
+	if (other.before_.next == nullptr)
+		before_.next, after.prev = nullptr;
+	else
+	{
+		before_.next = new box(other.before_.value, nullptr, nullptr);
+		current = before_.next;
+		other_current = other.before_.next;
+	}
+
+	while (next != nullptr)
+	{
+		current->next = new box(other_current->next->value, nullptr, current);
+		current = current->next;
+		other_current = other_current->next;
+	}
+	size_ = other.size_;
+	return *this;
+}
+
+template <class T>
+void list<T>::swap(list<T>& other)
+{
+	std::swap(before_, other.before_);
+	std::swap(after_, other.after_);
+	std::swap(size_, other.size_);
+}
+
+template <class T>
+void list<T>::push_back(const T& value)
 {
 	if (after_.prev == nullptr)
 	{
-		after_.prev = new box(elem, nullptr, nullptr);
+		after_.prev = new box(value, nullptr, nullptr);
 		before_.next = after_.prev;
 	}
 	else
 	{
-		after_.prev->next = new box(elem, after_.prev, nullptr);
+		after_.prev->next = new box(value, after_.prev, nullptr);
 		after_.prev = after_.prev->next;
 	}	
+	++size_;
 }
 
 template <class T>
@@ -207,6 +258,7 @@ void list<T>::push_front(const T& elem)
 		before_.next->prev = new box(elem, before_.next, nullptr);
 		before_.next = before_.next->prev;
 	}
+	++size_;
 }
 
 template <class T>
@@ -215,6 +267,7 @@ void list<T>::pop_back()
 	box* temp = after_.prev;
 	after_.prev = temp->prev;
 	delete temp;
+	--size_;
 }
 
 template <class T>
@@ -223,6 +276,7 @@ void list<T>::pop_front()
 	box* temp = before_.next;
 	before_.next = temp->next;
 	delete temp;
+	--size_;
 }
 
 template <class T>
@@ -258,7 +312,6 @@ void list<T>::clear()
 		before_.next = temp->next;
 		delete temp;
 	}
-
 	size_ = 0;
 }
 
@@ -292,20 +345,23 @@ template <class T>
 typename list<T>::iterator list<T>::insert(iterator pos, const T& value)
 {
 	insert(pos.pointer_, value);
+	return --pos;
 }
 
 template <class T>
 typename list<T>::iterator list<T>::erase(iterator pos)
 {
+
 	erase(pos.pointer_);
+	return ++pos;
 }
 
 template <class T>
 typename list<T>::box* list<T>::insert(box* box, const T& value)
 {
-	list<T>::box* temp = list<T>::box->prev;
+	list<T>::box* temp = box->prev;
 	list<T>::box* new_box = new list<T>::box(value, temp, box);
-	list<T>::box->prev = new_box;
+	box->prev = new_box;
 	temp->next = new_box;
 	return new_box;
 }
@@ -318,6 +374,19 @@ typename list<T>::box* list<T>::erase(box* box)
 	box->next->prev = box->prev;
 
 	delete box;
-
 	return temp;
 }
+
+template <class T>
+void list<T>::reverse()
+{
+
+}
+
+template <class T>
+
+//void list<T>::splice(list<T>::iterator pos, list<T>& other)
+//{
+//	std::list::splice(pos, other);
+//}
+
