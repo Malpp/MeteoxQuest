@@ -1,8 +1,5 @@
 ﻿#include "stdafx.h"
 #include "emp_bomb.h"
-#include "Game.h"
-#include "helper.h"
-#include "level_base.h"
 
 const sf::Vector2f EmpBomb::size_ = sf::Vector2f(30, 30);
 sf::Texture* EmpBomb::texture_;
