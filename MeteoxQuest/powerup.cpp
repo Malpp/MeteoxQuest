@@ -19,12 +19,8 @@ PowerUp::PowerUp(const sf::Vector2f& pos,
 					powerup_life_,
 					NONE,
 					powerup_damage_,
-					PLAYER,
+					ENEMY,
 					movespeed)
-{
-}
-
-void PowerUp::handle_collision(GameObject* other, LevelBase* level)
 {
 }
 
