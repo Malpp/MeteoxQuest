@@ -72,8 +72,8 @@ void Player::update(const float delta_time, LevelBase* level)
 	{
 		if(bombs_.size() > 0)
 		{
-			bombs_.top()->launch(this);
-			bombs_.pop();
+			if(bombs_.top()->launch(this))
+				bombs_.pop();
 		}
 	}
 	if(velocity_.x == 0 && velocity_.y == 0)
