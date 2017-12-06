@@ -10,6 +10,8 @@ public:
 private:
 	int life_;
 	unsigned int score_;
+	sf::Sprite player_icon_;
+	static sf::Texture* player_icon_texture_;
 	sf::Text score_text_;
 	sf::Text life_text_;
 };

@@ -8,6 +8,7 @@ public:
 	void update(const float delta_time, LevelBase* level) override;
 private:
 	static sf::Texture* textures_[3];
+	const int target_height_;
 	static const std::string texture_name_;
 	static const sf::Vector2f size_;
 	static const int no_frames_ = 1;
