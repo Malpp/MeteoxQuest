@@ -15,7 +15,9 @@ Scene::Scenes Scene::run()
 		input();
 		const float delta_time = std::min(0.025f, clock.restart().asSeconds());
 		update(delta_time);
+		window_->clear();
 		draw();
+		window_->display();
 	}
 	return returned_scene_;
 }

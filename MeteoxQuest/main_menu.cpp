@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "main_menu.h"
+#include "textbox.h"
 
 MainMenu::MainMenu(sf::RenderWindow* window)
 	: MenuBase(window, Scene::Scenes::EXIT)

@@ -69,7 +69,7 @@ void Player::update(const float delta_time, LevelBase* level)
 		right();
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 		fire(level);
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::C))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
 	{
 		if(!bomb_launched_ && bombs_.size() > 0)
 		{
@@ -171,7 +171,6 @@ void Player::handle_collision(GameObject* other, LevelBase* level)
 		if(std::find(bombs_.begin(), bombs_.end(), bomb) == bombs_.end())
 		{
 			bombs_.push_back(bomb);
-			std::cout << "added bomb\n";
 		}
 	}
 }

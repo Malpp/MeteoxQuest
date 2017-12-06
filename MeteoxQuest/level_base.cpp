@@ -123,8 +123,6 @@ void LevelBase::update(const float delta_time)
 
 void LevelBase::draw()
 {
-	window_->clear();
-
 	for(int i = 0; i < 2; ++i)
 	{
 		window_->draw(background_sprites_[i]);
@@ -135,8 +133,6 @@ void LevelBase::draw()
 	}
 
 	hud.draw(window_);
-
-	window_->display();
 }
 
 void LevelBase::manage_input(sf::Event event)

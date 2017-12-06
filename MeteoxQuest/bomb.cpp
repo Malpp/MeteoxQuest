@@ -31,12 +31,12 @@ Bomb::Bomb(const sf::Vector2f& pos,
 
 bool Bomb::launch(GameObject* other)
 {
-	if (state_ == ORBIT && !(orbit_distance_ < max_orbit_distance_))
+	if(state_ == ORBIT && !(orbit_distance_ < max_orbit_distance_))
 	{
 		state_ = LAUNCH;
-		direction_ = Helper::movePointByAngle( 10,
-			Helper::angleBetweenTwoPoints( getPosition(),
-				other->getPosition() ) + 270 );
+		direction_ = Helper::movePointByAngle(10,
+											Helper::angleBetweenTwoPoints(getPosition(),
+																		other->getPosition()) + 270);
 		type_ = PLAYER;
 		return true;
 	}
@@ -77,23 +77,21 @@ void Bomb::handle_collision(GameObject* other, LevelBase* level)
 {
 	if(dynamic_cast<Player*>(other))
 	{
-		if (state_ == SEEKING)
+		if(state_ == SEEKING)
 		{
-
 			orbit_center_ = other;
 			state_ = ORBIT;
-			orbit_counter_ = Helper::angleBetweenTwoPoints( other->getPosition(),
-				getPosition() );
-			orbit_distance_ = Helper::distanceBetweenTwoPoints( getPosition(),
-				other->getPosition() );
-
+			orbit_counter_ = Helper::angleBetweenTwoPoints(other->getPosition(),
+															getPosition());
+			orbit_distance_ = Helper::distanceBetweenTwoPoints(getPosition(),
+																other->getPosition());
 		}
 	}
 
 	if(dynamic_cast<Enemy*>(other))
 	{
-		//take_damage( other, level );
-		despawn();
+		take_damage( other, level );
+		//despawn();
 	}
 }
 

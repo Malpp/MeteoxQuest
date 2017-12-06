@@ -5,6 +5,7 @@
 #include "emp_bomb.h"
 #include "GC_enemy.h"
 #include <windows.h>
+#include "emp_projectile.h"
 
 Loading::Loading(sf::RenderWindow* window)
 	: Scene(window)
@@ -50,6 +51,8 @@ void Loading::update(float delta_time)
 			GCEnemy::textures_[2] = Game::resource_handler_.
 					add_texture(GCEnemy::texture_name_ + "blue.png");
 			break;
+		case 7:
+			EmpBlast::texture_ = Game::resource_handler_.add_texture( "emp_blast.png");
 		case elements_to_load_:
 			change_scene(MENU);
 			break;
@@ -63,9 +66,5 @@ void Loading::update(float delta_time)
 
 void Loading::draw()
 {
-	window_->clear();
-
 	window_->draw(loading_bar_);
-
-	window_->display();
 }
