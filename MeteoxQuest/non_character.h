@@ -21,6 +21,5 @@ protected:
 	bool is_at_edge() override;
 	void handle_edge() override;
 	sf::Vector2f direction_;
-private:
 	float movespeed_;
 };

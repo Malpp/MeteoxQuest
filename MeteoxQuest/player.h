@@ -3,6 +3,8 @@
 #include "character.h"
 #include "subject.h"
 #include "command_manager.hpp"
+#include "powerup.h"
+#include "bomb.h"
 
 class LevelBase;
 
@@ -29,6 +31,7 @@ public:
 	void left() override;
 	void right() override;
 	void on_death(LevelBase* level) override;
+	void add_powerup( const PowerUp::PowerUpType power_up );
 protected:
 	void handle_collision(GameObject* other, LevelBase* level) override;
 private:
@@ -53,4 +56,6 @@ private:
 	bool dashing_;
 	bool dash_ready_;
 	sf::Vector2f dash_direction_;
+	std::vector<Bomb*> bombs_;
+	bool bomb_launched_;
 };
