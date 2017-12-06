@@ -4,7 +4,6 @@
 #include "subject.h"
 #include "command_manager.hpp"
 #include "powerup.h"
-#include "stack.h"
 #include "bomb.h"
 
 class LevelBase;
@@ -57,5 +56,6 @@ private:
 	bool dashing_;
 	bool dash_ready_;
 	sf::Vector2f dash_direction_;
-	Stack<Bomb*> bombs_;
+	std::vector<Bomb*> bombs_;
+	bool bomb_launched_;
 };

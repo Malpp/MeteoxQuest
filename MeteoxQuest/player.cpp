@@ -54,6 +54,7 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 	dash_timer_ = 0;
 	dash_cooldown_timer_ = 0;
 	dash_ready_ = true;
+	bomb_launched_ = false;
 }
 
 void Player::update(const float delta_time, LevelBase* level)
@@ -70,11 +71,18 @@ void Player::update(const float delta_time, LevelBase* level)
 		fire(level);
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::C))
 	{
-		if(bombs_.size() > 0)
+		if(!bomb_launched_ && bombs_.size() > 0)
 		{
-			if(bombs_.top()->launch(this))
-				bombs_.pop();
+			if(bombs_.back()->launch(this))
+			{
+				bomb_launched_ = true;
+				bombs_.pop_back();
+			}
 		}
+	}
+	else
+	{
+		bomb_launched_ = false;
 	}
 	if(velocity_.x == 0 && velocity_.y == 0)
 		state_ = IDLE;
@@ -160,7 +168,11 @@ void Player::handle_collision(GameObject* other, LevelBase* level)
 
 	if(const auto bomb = dynamic_cast<Bomb*>(other))
 	{
-		bombs_.push(bomb);
+		if(std::find(bombs_.begin(), bombs_.end(), bomb) == bombs_.end())
+		{
+			bombs_.push_back(bomb);
+			std::cout << "added bomb\n";
+		}
 	}
 }
 

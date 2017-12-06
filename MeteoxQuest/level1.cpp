@@ -15,6 +15,7 @@ Level1::Level1(sf::RenderWindow* window)
 									0,
 									GameObject::generate_random_color()));
 	add_game_object(new EmpBomb(sf::Vector2f(500, 500), 0));
+	add_game_object(new EmpBomb(sf::Vector2f(600, 600), 0));
 }
 
 void Level1::update(const float delta_time)
