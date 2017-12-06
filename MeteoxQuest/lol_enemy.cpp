@@ -5,7 +5,7 @@
 #include "level_base.h"
 
 
-const std::string LOLEnemy::texture_name_ = "Enemies/Orc/";
+const std::string LOLEnemy::texture_name_ = "Enemies/LOL/";
 sf::Texture* LOLEnemy::textures_[] = {
 	Game::resource_handler_.
 	add_texture(texture_name_ + "red.png"),
@@ -14,7 +14,7 @@ sf::Texture* LOLEnemy::textures_[] = {
 	Game::resource_handler_.
 	add_texture(texture_name_ + "blue.png")
 };
-const sf::Vector2f LOLEnemy::size_ = sf::Vector2f(80, 83);
+const sf::Vector2f LOLEnemy::size_ = sf::Vector2f(75, 75);
 const float	LOLEnemy::movespeed_ = 600;
 const float LOLEnemy::frame_delay_ = 0.1f;
 

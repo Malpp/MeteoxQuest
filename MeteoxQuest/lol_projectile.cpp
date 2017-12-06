@@ -2,7 +2,7 @@
 #include "lol_projectile.h"
 #include "Game.h"
 
-const std::string LOLProjectile::texture_name_ = "Projectiles/Orc/";
+const std::string LOLProjectile::texture_name_ = "Projectiles/LOL/";
 sf::Texture* LOLProjectile::textures_[] = {
 	Game::resource_handler_.
 	add_texture(texture_name_ + "red.png"),
@@ -11,7 +11,7 @@ sf::Texture* LOLProjectile::textures_[] = {
 	Game::resource_handler_.
 	add_texture(texture_name_ + "blue.png")
 };
-const sf::Vector2f LOLProjectile::size_ = sf::Vector2f(48, 44);
+const sf::Vector2f LOLProjectile::size_ = sf::Vector2f(60, 30);
 const float LOLProjectile::movespeed_ = 1000;
 const float LOLProjectile::frame_delay_ = 0.2f;
 
