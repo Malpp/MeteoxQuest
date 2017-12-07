@@ -4,7 +4,7 @@
 #include "level_base.h"
 #include "character.h"
 
-const float LOLWeapon::fire_speed_ = 0.3f;
+const float LOLWeapon::fire_speed_ = 0.5f;
 
 LOLWeapon::LOLWeapon(const GameObject::Color color)
 	: Weapon(ammo_, fire_speed_, color)

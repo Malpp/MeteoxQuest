@@ -38,7 +38,7 @@
           "posY": 0.5
         }
       ],
-      "delay": 20
+      "delay": 15
     },
     "Wave3": {
       "enemies_to_spawn": [
@@ -73,7 +73,7 @@
           "posY": 0.75
         }
       ],
-      "delay": 50
+      "delay": 30
     },
     "Wave4": {
       "enemies_to_spawn": [
@@ -83,7 +83,7 @@
           "posY": 0.5
         }
       ],
-      "delay": 75
+      "delay": 50
     }
   },
   "test": [
