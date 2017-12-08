@@ -10,7 +10,7 @@ public:
 	/// <summary>
 	/// Virtuel seulement pour que Subject fonctionne avec typeid
 	/// </summary>
-	virtual void notify_all_observers();
+	virtual void notify_all_observers(float delta_time);
 
 protected:
 	std::vector<IObserver*> observers_;

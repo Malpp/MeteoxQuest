@@ -118,7 +118,7 @@ void Player::update(const float delta_time, LevelBase* level)
 	}
 
 	Character::update(delta_time, level);
-	notify_all_observers();
+	notify_all_observers(delta_time);
 }
 
 void Player::up()
@@ -182,7 +182,6 @@ void Player::do_dashes(const float delta_time)
 	{
 		dashing_ = false;
 		command_manager_.add(new Command(state_));
-		last_state_ = state_;
 		idle_timer_ = 0;
 	}
 	else
@@ -252,4 +251,5 @@ void Player::do_dashes(const float delta_time)
 			dashing_ = true;
 		}
 	}
+	last_state_ = state_;
 }

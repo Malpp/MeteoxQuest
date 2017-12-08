@@ -15,6 +15,7 @@ LevelBase::LevelBase(
 {
 	player_ = new Player(sf::Vector2f(100, Game::GAME_HEIGHT * 0.5f), 0);
 	player_->add_observer(&hud);
+	add_observer( &hud );
 	add_game_object(player_);
 	scroll_speed_ = scroll_speed;
 	background_size_ = static_cast<sf::Vector2f>(texture->getSize());
@@ -70,7 +71,7 @@ void LevelBase::update(const float delta_time)
 		Wave* current_wave = waves_.front();
 		current_wave->update(delta_time);
 
-		if(current_wave->delay() <= 0)
+		if(current_wave->get_delay() <= 0)
 		{
 			current_wave->spawn_enemies(this);
 			delete waves_.front();
@@ -119,6 +120,8 @@ void LevelBase::update(const float delta_time)
 		fps_ = 0;
 	}
 	++fps_;
+
+	notify_all_observers(delta_time);
 }
 
 void LevelBase::draw()

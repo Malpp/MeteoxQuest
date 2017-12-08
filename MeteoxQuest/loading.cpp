@@ -6,6 +6,7 @@
 #include "GC_enemy.h"
 #include <windows.h>
 #include "emp_projectile.h"
+#include "hud.h"
 
 Loading::Loading(sf::RenderWindow* window)
 	: Scene(window)
@@ -52,8 +53,22 @@ void Loading::update(float delta_time)
 					add_texture(GCEnemy::texture_name_ + "blue.png");
 			break;
 		case 7:
-			EmpBlast::texture_ = Game::resource_handler_.add_texture( "emp_blast.png");
-		case elements_to_load_:
+			EmpBlast::texture_ = Game::resource_handler_.
+					add_texture("emp_blast.png");
+			break;
+		case 8:
+			Hud::player_icon_texture_ = Game::resource_handler_.
+					add_texture("hud/player_icon.png");
+			break;
+		case 9:
+			Hud::incoming_arrow_ = Game::resource_handler_.
+					add_texture("hud/arrow.png");
+			break;
+		case 10:
+			Hud::incoming_warning_ = Game::resource_handler_.
+					add_texture("hud/warning.png");
+			break;
+		default:
 			change_scene(MENU);
 			break;
 	}
