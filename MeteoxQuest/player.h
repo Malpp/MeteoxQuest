@@ -39,7 +39,7 @@ protected:
 private:
 	void do_dashes(const float delta_time);
 	static const int base_damage_ = 1;
-	static sf::Texture* texture_;
+	static sf::Texture* texture_; 
 	static const sf::Vector2f size_;
 	static const int no_frames_ = 4;
 	static const float movespeed_;

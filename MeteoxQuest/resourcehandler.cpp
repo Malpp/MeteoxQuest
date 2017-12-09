@@ -35,7 +35,6 @@ sf::Texture* ResourceHandler::add_texture(const std::string path)
 	}
 
 	masks_.insert_or_assign( texture_to_load_, mask );
-
 	return texture_to_load_;
 }
 
