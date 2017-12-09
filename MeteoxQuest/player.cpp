@@ -47,7 +47,8 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 				PLAYER)
 	, Subject()
 {
-	weapon_ = new HeartWeapon;
+	weapons.push_back(new HeartWeapon);
+	weapon_ = weapons.front();
 	score_ = 0;
 	last_state_ = state_;
 	dashing_ = false;

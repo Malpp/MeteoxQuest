@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "character.h"
 #include "subject.h"
+#include "list.h"
 #include "command_manager.hpp"
 #include "powerup.h"
 #include "bomb.h"
@@ -44,6 +45,7 @@ private:
 	static const float frame_delay_;
 	static const int base_life_ = 3;
 	unsigned int score_;
+	list<Weapon*> weapons;
 	CommandManager command_manager_;
 	unsigned last_state_;
 	float idle_timer_;
