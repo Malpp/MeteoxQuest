@@ -6,6 +6,7 @@ class LevelBase;
 
 class GameObject : public CollidableObject
 {
+	friend class MovementEffector;
 public:
 	enum Color
 	{

@@ -121,6 +121,8 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="emp_projectile.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemy_projectile.h" />
+    <ClInclude Include="explosive_bomb.h" />
+    <ClInclude Include="explosive_projectile.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GC_enemy.h" />
     <ClInclude Include="gc_projectile.h" />
@@ -129,6 +131,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="heart_weapon.h" />
     <ClInclude Include="helper.h" />
     <ClInclude Include="hud.h" />
+    <ClInclude Include="ieffector.h" />
     <ClInclude Include="iobserver.h" />
     <ClInclude Include="ken_enemy.h" />
     <ClInclude Include="ken_projectile.h" />
@@ -142,10 +145,13 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="lol_projectile.h" />
     <ClInclude Include="lol_weapon.h" />
     <ClInclude Include="main_menu.h" />
+    <ClInclude Include="mario_projectile.h" />
+    <ClInclude Include="mario_weapon.h" />
     <ClInclude Include="menu_base.h" />
     <ClInclude Include="menu_element.h" />
     <ClInclude Include="menu_manager.h" />
     <ClInclude Include="game_object.h" />
+    <ClInclude Include="movement_effector.h" />
     <ClInclude Include="non_character.h" />
     <ClInclude Include="orc_enemy.h" />
     <ClInclude Include="orc_projectile.h" />
@@ -164,6 +170,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="textbox.h" />
     <ClInclude Include="wave.h" />
     <ClInclude Include="weapon.h" />
+    <ClInclude Include="weapon_effector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bomb.cpp" />
@@ -176,6 +183,8 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="emp_bomb.cpp" />
     <ClCompile Include="emp_projectile.cpp" />
     <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="explosive_bomb.cpp" />
+    <ClCompile Include="explosive_projectile.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GC_enemy.cpp" />
     <ClCompile Include="gc_projectile.cpp" />
@@ -195,6 +204,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="lol_weapon.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="main_menu.cpp" />
+    <ClCompile Include="mario_projectile.cpp" />
     <ClCompile Include="menu_base.cpp" />
     <ClCompile Include="menu_element.cpp" />
     <ClCompile Include="menu_manager.cpp" />
@@ -204,6 +214,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="orc_projectile.cpp" />
     <ClCompile Include="orc_weapon.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="mario_weapon.cpp" />
     <ClCompile Include="powerup.cpp" />
     <ClCompile Include="protectile.cpp" />
     <ClCompile Include="resourcehandler.cpp" />

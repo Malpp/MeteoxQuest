@@ -6,6 +6,7 @@
 #include "projectile.h"
 #include "bomb.h"
 #include "emp_bomb.h"
+#include "mario_weapon.h"
 
 sf::Texture* Player::texture_ = Game::resource_handler_.add_texture(
 																	 "player.png");
@@ -47,7 +48,7 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 				PLAYER)
 	, Subject()
 {
-	weapon_ = new HeartWeapon;
+	weapon_ = new MarioWeapon;
 	score_ = 0;
 	last_state_ = state_;
 	dashing_ = false;
@@ -118,7 +119,7 @@ void Player::update(const float delta_time, LevelBase* level)
 	}
 
 	Character::update(delta_time, level);
-	notify_all_observers();
+	notify_all_observers(delta_time);
 }
 
 void Player::up()
@@ -182,7 +183,6 @@ void Player::do_dashes(const float delta_time)
 	{
 		dashing_ = false;
 		command_manager_.add(new Command(state_));
-		last_state_ = state_;
 		idle_timer_ = 0;
 	}
 	else
@@ -252,4 +252,5 @@ void Player::do_dashes(const float delta_time)
 			dashing_ = true;
 		}
 	}
+	last_state_ = state_;
 }

@@ -66,13 +66,13 @@ Deque<T>& Deque<T>::operator=(const Deque<T>& other)
 }
 
 template <class T>
-T& Deque<T>::at(int index) const
+T& Deque<T>::at(const int index) const
 {
 	return tab[index];
 }
 
-template <class T>
-T& Deque<T>::operator[](const unsigned index)
+template<class T>
+inline T & Deque<T>::operator[]( const unsigned int index )
 {
 	return tab[index];
 }

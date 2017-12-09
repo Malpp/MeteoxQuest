@@ -25,10 +25,10 @@ void Subject::remove_observer( IObserver* observateur )
 }
 
 //Suite à une action on fait toujours ça.
-void Subject::notify_all_observers()
+void Subject::notify_all_observers(const float delta_time)
 {
 	for (int i = 0; i < observers_.size(); i++)
 	{
-		observers_[i]->notifier( this );
+		observers_[i]->notifier( this, delta_time);
 	}
 }

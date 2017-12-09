@@ -17,6 +17,7 @@ public:
 	virtual void update(const float delta_time);
 	int get_ammo() const;
 	bool can_fire() const;
+	void jam_weapon();
 protected:
 	GameObject::Color color_;
 private:

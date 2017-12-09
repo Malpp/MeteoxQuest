@@ -26,6 +26,7 @@ public:
 	virtual void left();
 	virtual void right();
 	virtual void fire(LevelBase* level);
+	Weapon* get_weapon() const;
 protected:
 	Weapon* weapon_;
 private:
