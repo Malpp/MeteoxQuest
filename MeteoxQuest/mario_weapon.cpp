@@ -8,15 +8,22 @@
 const float MarioWeapon::fire_speed_ = 0.5f;
 
 MarioWeapon::MarioWeapon()
-	: Weapon( ammo_, fire_speed_, GameObject::NONE )
-{}
+	: Weapon(ammo_, fire_speed_, GameObject::NONE)
+{
+}
 
-void MarioWeapon::handle_fire( LevelBase* level, Character* character )
+void MarioWeapon::handle_fire(LevelBase* level, Character* character)
 {
 	level->add_game_object(
-		new MarioProjectile( character->getPosition(), 0, Helper::movePointByAngle(1, 30)) );
+						 new MarioProjectile(character->getPosition(),
+											0,
+											Helper::movePointByAngle(1, 30)));
 	level->add_game_object(
-		new MarioProjectile( character->getPosition(), 0, Helper::movePointByAngle( 1, 0 ) ) );
+						 new MarioProjectile(character->getPosition(),
+											0,
+											Helper::movePointByAngle(1, 0)));
 	level->add_game_object(
-		new MarioProjectile( character->getPosition(), 0, Helper::movePointByAngle( 1, -30 ) ) );
+						 new MarioProjectile(character->getPosition(),
+											0,
+											Helper::movePointByAngle(1, -30)));
 }

@@ -121,6 +121,8 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="emp_projectile.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemy_projectile.h" />
+    <ClInclude Include="explosive_bomb.h" />
+    <ClInclude Include="explosive_projectile.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="GC_enemy.h" />
     <ClInclude Include="gc_projectile.h" />
@@ -178,6 +180,8 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="emp_bomb.cpp" />
     <ClCompile Include="emp_projectile.cpp" />
     <ClCompile Include="enemy.cpp" />
+    <ClCompile Include="explosive_bomb.cpp" />
+    <ClCompile Include="explosive_projectile.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="GC_enemy.cpp" />
     <ClCompile Include="gc_projectile.cpp" />

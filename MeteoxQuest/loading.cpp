@@ -7,6 +7,8 @@
 #include <windows.h>
 #include "emp_projectile.h"
 #include "hud.h"
+#include "explosive_projectile.h"
+#include "explosive_bomb.h"
 
 Loading::Loading(sf::RenderWindow* window)
 	: Scene(window)
@@ -67,6 +69,14 @@ void Loading::update(float delta_time)
 		case 10:
 			Hud::incoming_warning_ = Game::resource_handler_.
 					add_texture("hud/warning.png");
+			break;
+		case 11:
+			ExplosiveBlast::texture_ = Game::resource_handler_.
+				add_texture( "bomb_explosion.png" );
+			break;
+		case 12:
+			ExplosiveBomb::texture_ = Game::resource_handler_.
+				add_texture( "explosive_bomb.png" );
 			break;
 		default:
 			change_scene(MENU);
