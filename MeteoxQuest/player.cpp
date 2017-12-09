@@ -6,6 +6,7 @@
 #include "projectile.h"
 #include "bomb.h"
 #include "emp_bomb.h"
+#include "mario_weapon.h"
 
 sf::Texture* Player::texture_ = Game::resource_handler_.add_texture(
 																	 "player.png");
@@ -47,7 +48,7 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 				PLAYER)
 	, Subject()
 {
-	weapon_ = new HeartWeapon;
+	weapon_ = new MarioWeapon;
 	score_ = 0;
 	last_state_ = state_;
 	dashing_ = false;

@@ -82,6 +82,30 @@
     <Filter Include="Header Files\ALGO">
       <UniqueIdentifier>{dcfedf9d-2363-4e72-b6eb-ff3a9ed6c022}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\weapons\player">
+      <UniqueIdentifier>{23cb8936-7c1c-4211-845e-81590bcb3507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\weapons\player">
+      <UniqueIdentifier>{ee46205e-5ddb-4bd3-92e4-f9e6f5914d20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\projectiles\player">
+      <UniqueIdentifier>{f3357afa-8e6a-40e3-815b-7f3d0cbd01b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\projectiles\enemy">
+      <UniqueIdentifier>{a519ba39-10d8-4f84-b0b0-509a687466c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game\weapons\enemy">
+      <UniqueIdentifier>{5e28db1f-aca4-41fc-bd90-259cb73b7985}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\weapons\enemy">
+      <UniqueIdentifier>{8eead806-1c52-4a61-977c-8f6766135c66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\projectiles\player">
+      <UniqueIdentifier>{022afa7b-7f89-4ff2-b2ea-02987e308c6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\projectiles\enemy">
+      <UniqueIdentifier>{847c42da-61c8-4446-9083-74bd1ba806ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -141,20 +165,8 @@
     <ClInclude Include="main_menu.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="gc_projectile.h">
-      <Filter>Header Files\Game\projectiles</Filter>
-    </ClInclude>
-    <ClInclude Include="heart_projectile.h">
-      <Filter>Header Files\Game\projectiles</Filter>
-    </ClInclude>
     <ClInclude Include="projectile.h">
       <Filter>Header Files\Game\projectiles</Filter>
-    </ClInclude>
-    <ClInclude Include="gc_weapon.h">
-      <Filter>Header Files\Game\weapons</Filter>
-    </ClInclude>
-    <ClInclude Include="heart_weapon.h">
-      <Filter>Header Files\Game\weapons</Filter>
     </ClInclude>
     <ClInclude Include="weapon.h">
       <Filter>Header Files\Game\weapons</Filter>
@@ -168,41 +180,17 @@
     <ClInclude Include="orc_enemy.h">
       <Filter>Header Files\Game\enemies</Filter>
     </ClInclude>
-    <ClInclude Include="orc_weapon.h">
-      <Filter>Header Files\Game\weapons</Filter>
-    </ClInclude>
-    <ClInclude Include="orc_projectile.h">
-      <Filter>Header Files\Game\projectiles</Filter>
-    </ClInclude>
     <ClInclude Include="ken_enemy.h">
       <Filter>Header Files\Game\enemies</Filter>
     </ClInclude>
-    <ClInclude Include="ken_weapon.h">
-      <Filter>Header Files\Game\weapons</Filter>
-    </ClInclude>
-    <ClInclude Include="ken_projectile.h">
-      <Filter>Header Files\Game\projectiles</Filter>
-    </ClInclude>
     <ClInclude Include="collision.h">
       <Filter>Header Files\Other</Filter>
-    </ClInclude>
-    <ClInclude Include="player_projectile.h">
-      <Filter>Header Files\Game\projectiles</Filter>
-    </ClInclude>
-    <ClInclude Include="enemy_projectile.h">
-      <Filter>Header Files\Game\projectiles</Filter>
     </ClInclude>
     <ClInclude Include="wave.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
     <ClInclude Include="lol_enemy.h">
       <Filter>Header Files\Game\enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="lol_weapon.h">
-      <Filter>Header Files\Game\weapons</Filter>
-    </ClInclude>
-    <ClInclude Include="lol_projectile.h">
-      <Filter>Header Files\Game\projectiles</Filter>
     </ClInclude>
     <ClInclude Include="hud.h">
       <Filter>Header Files\Game\hud</Filter>
@@ -215,9 +203,6 @@
     </ClInclude>
     <ClInclude Include="cloud9_enemy.h">
       <Filter>Header Files\Game\enemies</Filter>
-    </ClInclude>
-    <ClInclude Include="cloud9_weapon.h">
-      <Filter>Header Files\Game\weapons</Filter>
     </ClInclude>
     <ClInclude Include="colliable_object.h">
       <Filter>Header Files\Base</Filter>
@@ -254,6 +239,51 @@
     </ClInclude>
     <ClInclude Include="emp_projectile.h">
       <Filter>Header Files\Game\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="heart_weapon.h">
+      <Filter>Header Files\Game\weapons\player</Filter>
+    </ClInclude>
+    <ClInclude Include="cloud9_weapon.h">
+      <Filter>Header Files\Game\weapons\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="gc_weapon.h">
+      <Filter>Header Files\Game\weapons\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ken_weapon.h">
+      <Filter>Header Files\Game\weapons\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="lol_weapon.h">
+      <Filter>Header Files\Game\weapons\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="orc_weapon.h">
+      <Filter>Header Files\Game\weapons\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="heart_projectile.h">
+      <Filter>Header Files\Game\projectiles\player</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy_projectile.h">
+      <Filter>Header Files\Game\projectiles\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="gc_projectile.h">
+      <Filter>Header Files\Game\projectiles\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="ken_projectile.h">
+      <Filter>Header Files\Game\projectiles\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="lol_projectile.h">
+      <Filter>Header Files\Game\projectiles\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="orc_projectile.h">
+      <Filter>Header Files\Game\projectiles\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="player_projectile.h">
+      <Filter>Header Files\Game\projectiles\player</Filter>
+    </ClInclude>
+    <ClInclude Include="mario_projectile.h">
+      <Filter>Header Files\Game\projectiles\player</Filter>
+    </ClInclude>
+    <ClInclude Include="mario_weapon.h">
+      <Filter>Header Files\Game\weapons\player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -308,18 +338,6 @@
     <ClCompile Include="main_menu.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="gc_weapon.cpp">
-      <Filter>Source Files\Game\weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="heart_weapon.cpp">
-      <Filter>Source Files\Game\weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="gc_projectile.cpp">
-      <Filter>Source Files\Game\projectiles</Filter>
-    </ClCompile>
-    <ClCompile Include="heart_projectile.cpp">
-      <Filter>Source Files\Game\projectiles</Filter>
-    </ClCompile>
     <ClCompile Include="protectile.cpp">
       <Filter>Source Files\Game\projectiles</Filter>
     </ClCompile>
@@ -335,20 +353,8 @@
     <ClCompile Include="orc_enemy.cpp">
       <Filter>Source Files\Game\enemies</Filter>
     </ClCompile>
-    <ClCompile Include="orc_weapon.cpp">
-      <Filter>Source Files\Game\weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="orc_projectile.cpp">
-      <Filter>Source Files\Game\projectiles</Filter>
-    </ClCompile>
     <ClCompile Include="ken_enemy.cpp">
       <Filter>Source Files\Game\enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="ken_weapon.cpp">
-      <Filter>Source Files\Game\weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="ken_projectile.cpp">
-      <Filter>Source Files\Game\projectiles</Filter>
     </ClCompile>
     <ClCompile Include="collision.cpp">
       <Filter>Source Files\Other</Filter>
@@ -359,12 +365,6 @@
     <ClCompile Include="lol_enemy.cpp">
       <Filter>Source Files\Game\enemies</Filter>
     </ClCompile>
-    <ClCompile Include="lol_weapon.cpp">
-      <Filter>Source Files\Game\weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="lol_projectile.cpp">
-      <Filter>Source Files\Game\projectiles</Filter>
-    </ClCompile>
     <ClCompile Include="hud.cpp">
       <Filter>Source Files\Game\hud</Filter>
     </ClCompile>
@@ -373,9 +373,6 @@
     </ClCompile>
     <ClCompile Include="cloud9_enemy.cpp">
       <Filter>Source Files\Game\enemies</Filter>
-    </ClCompile>
-    <ClCompile Include="cloud9_weapon.cpp">
-      <Filter>Source Files\Game\weapons</Filter>
     </ClCompile>
     <ClCompile Include="collidable_object.cpp">
       <Filter>Source Files\Base</Filter>
@@ -397,6 +394,45 @@
     </ClCompile>
     <ClCompile Include="emp_projectile.cpp">
       <Filter>Source Files\Game\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="heart_weapon.cpp">
+      <Filter>Source Files\Game\weapons\player</Filter>
+    </ClCompile>
+    <ClCompile Include="gc_projectile.cpp">
+      <Filter>Source Files\Game\projectiles\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ken_projectile.cpp">
+      <Filter>Source Files\Game\projectiles\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="lol_projectile.cpp">
+      <Filter>Source Files\Game\projectiles\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="orc_projectile.cpp">
+      <Filter>Source Files\Game\projectiles\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="heart_projectile.cpp">
+      <Filter>Source Files\Game\projectiles\player</Filter>
+    </ClCompile>
+    <ClCompile Include="cloud9_weapon.cpp">
+      <Filter>Source Files\Game\weapons\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="gc_weapon.cpp">
+      <Filter>Source Files\Game\weapons\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="ken_weapon.cpp">
+      <Filter>Source Files\Game\weapons\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="lol_weapon.cpp">
+      <Filter>Source Files\Game\weapons\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="orc_weapon.cpp">
+      <Filter>Source Files\Game\weapons\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="mario_projectile.cpp">
+      <Filter>Source Files\Game\projectiles\player</Filter>
+    </ClCompile>
+    <ClCompile Include="mario_weapon.cpp">
+      <Filter>Source Files\Game\weapons\player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
