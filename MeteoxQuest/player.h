@@ -8,7 +8,8 @@
 
 class LevelBase;
 
-class Player : public Character, public Subject
+class Player : public Character,
+               public Subject
 {
 	friend class PowerUp;
 public:
@@ -21,6 +22,7 @@ public:
 		DOWN,
 		COUNT
 	};
+
 	unsigned get_score() const;
 	void add_score(const int score_to_add);
 	int get_life() const;
@@ -31,7 +33,7 @@ public:
 	void left() override;
 	void right() override;
 	void on_death(LevelBase* level) override;
-	void add_powerup( const PowerUp::PowerUpType power_up );
+	void add_powerup(const PowerUp::PowerUpType power_up);
 protected:
 	void handle_collision(GameObject* other, LevelBase* level) override;
 private:
