@@ -48,3 +48,9 @@ bool Weapon::can_fire() const
 {
 	return can_fire_;
 }
+
+void Weapon::jam_weapon()
+{
+	fire_timer_ = 0;
+	can_fire_ = false;
+}

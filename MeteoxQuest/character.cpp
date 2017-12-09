@@ -72,3 +72,8 @@ void Character::fire(LevelBase* level)
 {
 	weapon_->fire(level, this);
 }
+
+Weapon* Character::get_weapon() const
+{
+	return weapon_;
+}

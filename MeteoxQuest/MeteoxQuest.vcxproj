@@ -131,6 +131,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="heart_weapon.h" />
     <ClInclude Include="helper.h" />
     <ClInclude Include="hud.h" />
+    <ClInclude Include="ieffector.h" />
     <ClInclude Include="iobserver.h" />
     <ClInclude Include="ken_enemy.h" />
     <ClInclude Include="ken_projectile.h" />
@@ -150,6 +151,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="menu_element.h" />
     <ClInclude Include="menu_manager.h" />
     <ClInclude Include="game_object.h" />
+    <ClInclude Include="movement_effector.h" />
     <ClInclude Include="non_character.h" />
     <ClInclude Include="orc_enemy.h" />
     <ClInclude Include="orc_projectile.h" />
@@ -168,6 +170,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="textbox.h" />
     <ClInclude Include="wave.h" />
     <ClInclude Include="weapon.h" />
+    <ClInclude Include="weapon_effector.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="bomb.cpp" />
