@@ -294,13 +294,13 @@
     <ClInclude Include="explosive_projectile.h">
       <Filter>Header Files\Game\projectiles</Filter>
     </ClInclude>
-    <ClInclude Include="ieffector.h">
-      <Filter>Header Files\Game\effectors</Filter>
-    </ClInclude>
     <ClInclude Include="movement_effector.h">
       <Filter>Header Files\Game\effectors</Filter>
     </ClInclude>
     <ClInclude Include="weapon_effector.h">
+      <Filter>Header Files\Game\effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="effector.h">
       <Filter>Header Files\Game\effectors</Filter>
     </ClInclude>
   </ItemGroup>

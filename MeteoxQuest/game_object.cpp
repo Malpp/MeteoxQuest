@@ -7,6 +7,17 @@
 
 void GameObject::update(const float delta_time, LevelBase* level)
 {
+	for(int i = effectors_.size() - 1; i >= 0; --i)
+	{
+		effectors_[i]->apply_effector(this);
+		effectors_[i]->update(delta_time);
+		if(effectors_[i]->should_despawn())
+		{
+			delete effectors_[i];
+			effectors_.erase(effectors_.begin() + i);
+		}
+	}
+
 	move(velocity_ * delta_time);
 
 	frame_timer_ += delta_time;
@@ -92,6 +103,10 @@ GameObject::~GameObject()
 		delete[] player_animations_[state];
 	}
 	delete[] player_animations_;
+	for(Effector* effector : effectors_)
+	{
+		delete effector;
+	}
 }
 
 void GameObject::collision_test(GameObject* other, LevelBase* level)
@@ -119,6 +134,11 @@ GameObject::Color GameObject::generate_random_color()
 GameObject::GameType GameObject::get_type() const
 {
 	return type_;
+}
+
+void GameObject::add_effector(Effector* effector)
+{
+	effectors_.push_back(effector);
 }
 
 bool GameObject::is_at_edge()

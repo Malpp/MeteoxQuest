@@ -131,7 +131,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="heart_weapon.h" />
     <ClInclude Include="helper.h" />
     <ClInclude Include="hud.h" />
-    <ClInclude Include="ieffector.h" />
+    <ClInclude Include="effector.h" />
     <ClInclude Include="iobserver.h" />
     <ClInclude Include="ken_enemy.h" />
     <ClInclude Include="ken_projectile.h" />
