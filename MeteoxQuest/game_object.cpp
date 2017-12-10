@@ -65,7 +65,7 @@ GameObject::GameObject(
 	color_ = color;
 	setPosition(pos);
 	setRotation(angle);
-	setTexture( *texture );
+	setTexture(*texture);
 	life_ = life;
 	damage_ = damage;
 	state_ = 0;
@@ -96,7 +96,7 @@ GameObject::GameObject(
 	                                 half_texture_size_.y);
 }
 
-GameObject::~GameObject() 
+GameObject::~GameObject()
 {
 	for(int state = 0; state < max_state_; ++state)
 	{

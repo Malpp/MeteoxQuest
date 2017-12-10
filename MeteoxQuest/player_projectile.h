@@ -15,16 +15,16 @@ public:
 		const sf::Vector2f& direction,
 		const float movespeed)
 		: Projectile(pos,
-					angle,
-					texture,
-					size,
-					no_frames,
-					no_states,
-					frame_delay,
-					direction,
-					PLAYER,
-					NONE,
-					movespeed)
+		             angle,
+		             texture,
+		             size,
+		             no_frames,
+		             no_states,
+		             frame_delay,
+		             direction,
+		             PLAYER,
+		             NONE,
+		             movespeed)
 	{
 	}
 
@@ -40,17 +40,17 @@ public:
 		const float movespeed,
 		const float damage)
 		: Projectile(pos,
-					 angle,
-					 texture,
-					 size,
-					 no_frames,
-					 no_states,
-					 frame_delay,
-					 direction,
-					 PLAYER,
-					 NONE,
-					 movespeed,
-					 damage)
+		             angle,
+		             texture,
+		             size,
+		             no_frames,
+		             no_states,
+		             frame_delay,
+		             direction,
+		             PLAYER,
+		             NONE,
+		             movespeed,
+		             damage)
 	{
 	}
 };

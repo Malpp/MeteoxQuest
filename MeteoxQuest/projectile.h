@@ -30,7 +30,7 @@ public:
 		Color color,
 		const float movespeed,
 		const float damage);
-	void on_death(LevelBase* level) override;	
+	void on_death(LevelBase* level) override;
 protected:
 	void handle_collision(GameObject* other, LevelBase* level) override;
 	static const int base_damage_ = 1;

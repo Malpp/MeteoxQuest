@@ -4,8 +4,9 @@
 class EmpBlast : public PlayerProjectile
 {
 public:
-	EmpBlast(const sf::Vector2f& pos,
-			float angle);
+	EmpBlast(
+		const sf::Vector2f& pos,
+		float angle);
 	void update(const float delta_time, LevelBase* level) override;
 	static sf::Texture* texture_;
 	void on_death(LevelBase* level) override;
