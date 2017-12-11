@@ -8,9 +8,9 @@
 
 class GameObject;
 
-class LevelBase : public Scene
+class LevelBase : public Scene, public Subject
 {
-	friend class PowerUp;
+	friend class Hud;
 public:
 	LevelBase(
 		sf::RenderWindow* window,

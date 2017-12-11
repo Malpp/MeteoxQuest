@@ -1,5 +1,7 @@
 ﻿#include "stdafx.h"
 #include "emp_bomb.h"
+#include "level_base.h"
+#include "emp_projectile.h"
 
 const sf::Vector2f EmpBomb::size_ = sf::Vector2f(30, 30);
 sf::Texture* EmpBomb::texture_;
@@ -17,4 +19,10 @@ EmpBomb::EmpBomb(const sf::Vector2f& pos,
 			frame_delay_,
 			movespeed_)
 {
+}
+
+void EmpBomb::on_death(LevelBase* level)
+{
+	level->add_game_object( new EmpBlast( getPosition(), 0 ) );
+	despawn();
 }

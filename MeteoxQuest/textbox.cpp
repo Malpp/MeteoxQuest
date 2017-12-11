@@ -10,7 +10,8 @@ Textbox::Textbox(
 	sf::Vector2f& size,
 	std::string back_text)
 	: MenuElement(pos, size, true)
-//, text_("", Game::font, 8), back_text_(back_text, Game::font, 8)
+	, text_("", Game::font, 8)
+	, back_text_(back_text, Game::font, 8)
 {
 	box_ = sf::RectangleShape(size);
 	box_.setPosition(pos);
@@ -20,8 +21,9 @@ Textbox::Textbox(
 	text_.setFillColor(sf::Color::Black);
 	text_.setPosition(pos_ + size_ * 0.5f);
 	back_text_.setOrigin(
-		back_text_.getCharacterSize() * back_text_.getString().getSize() * 0.5f,
-		back_text_.getCharacterSize() * 0.5f);
+						 back_text_.getCharacterSize() * back_text_.getString().getSize() *
+						 0.5f,
+						 back_text_.getCharacterSize() * 0.5f);
 	back_text_.setPosition(pos_ + size_ * 0.5f);
 	back_text_.setFillColor(back_text_color_);
 	max_text_size_ = (int)(click_box_.width / text_.getCharacterSize());
@@ -63,8 +65,8 @@ void Textbox::handle_input(sf::Event& event, sf::RenderWindow* window)
 				{
 					case sf::Keyboard::BackSpace:
 						current_string_ = current_string_.substring(
-							0,
-							current_string_.getSize() - 1);
+																	 0,
+																	 current_string_.getSize() - 1);
 						break;
 					case sf::Keyboard::Return:
 						is_active_ = true;
@@ -95,8 +97,8 @@ void Textbox::set_text(const std::string& text)
 void Textbox::center_text()
 {
 	text_.setOrigin(
-		text_.getCharacterSize() * text_.getString().getSize() * 0.5f,
-		text_.getCharacterSize() * 0.5f);
+					 text_.getCharacterSize() * text_.getString().getSize() * 0.5f,
+					 text_.getCharacterSize() * 0.5f);
 }
 
 void Textbox::keep_text_inside()

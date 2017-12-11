@@ -6,6 +6,7 @@
 #include "projectile.h"
 #include "bomb.h"
 #include "emp_bomb.h"
+#include "mario_weapon.h"
 
 sf::Texture* Player::texture_ = Game::resource_handler_.add_texture(
 																	 "player.png");
@@ -47,6 +48,7 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 				PLAYER)
 	, Subject()
 {
+	weapon_ = new MarioWeapon;
 	weapons.push_back(new HeartWeapon);
 	weapon_ = weapons.front();
 	score_ = 0;
@@ -70,7 +72,7 @@ void Player::update(const float delta_time, LevelBase* level)
 		right();
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 		fire(level);
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::C))
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
 	{
 		if(!bomb_launched_ && bombs_.size() > 0)
 		{
@@ -119,7 +121,7 @@ void Player::update(const float delta_time, LevelBase* level)
 	}
 
 	Character::update(delta_time, level);
-	notify_all_observers();
+	notify_all_observers(delta_time);
 }
 
 void Player::up()
@@ -172,7 +174,6 @@ void Player::handle_collision(GameObject* other, LevelBase* level)
 		if(std::find(bombs_.begin(), bombs_.end(), bomb) == bombs_.end())
 		{
 			bombs_.push_back(bomb);
-			std::cout << "added bomb\n";
 		}
 	}
 }
@@ -184,7 +185,6 @@ void Player::do_dashes(const float delta_time)
 	{
 		dashing_ = false;
 		command_manager_.add(new Command(state_));
-		last_state_ = state_;
 		idle_timer_ = 0;
 	}
 	else
@@ -254,4 +254,5 @@ void Player::do_dashes(const float delta_time)
 			dashing_ = true;
 		}
 	}
+	last_state_ = state_;
 }

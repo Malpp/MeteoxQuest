@@ -1,0 +1,35 @@
+﻿#include "stdafx.h"
+#include "emp_projectile.h"
+#include "Game.h"
+
+sf::Texture* EmpBlast::texture_;
+const sf::Vector2f EmpBlast::size_ = sf::Vector2f( 690, 690 );
+const float EmpBlast::movespeed_ = 0;
+const float EmpBlast::frame_delay_ = 0.08f;
+
+EmpBlast::EmpBlast(const sf::Vector2f& pos,
+					const float angle)
+	: PlayerProjectile(pos,
+						angle,
+						texture_,
+						size_,
+						no_frames_,
+						no_states_,
+						frame_delay_,
+						sf::Vector2f(),
+						movespeed_)
+{
+}
+
+void EmpBlast::update(const float delta_time, LevelBase* level)
+{
+	if(frame_ >= max_frame_)
+	{
+		despawn();
+	}
+	PlayerProjectile::update( delta_time, level );
+}
+
+void EmpBlast::on_death(LevelBase* level)
+{
+}

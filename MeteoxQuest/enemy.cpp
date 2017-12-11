@@ -81,6 +81,6 @@ void Enemy::handle_collision(GameObject* other, LevelBase* level)
 
 	if (dynamic_cast<Bomb*>(other))
 	{
-		despawn();
+		take_damage( other, level );
 	}
 }

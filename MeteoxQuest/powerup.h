@@ -21,5 +21,5 @@ public:
 protected:
 	void on_death(LevelBase* level) override;
 	static const int powerup_life_ = 1;
-	static const int powerup_damage_ = 1;
+	static const int powerup_damage_ = 0;
 };

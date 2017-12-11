@@ -8,6 +8,8 @@ public:
 			const float angle);
 	static sf::Texture* texture_;
 	static const std::string texture_name_;
+protected:
+	void on_death(LevelBase* level) override;
 private:
 	static const sf::Vector2f size_;
 	static const int no_frames_ = 1;

@@ -11,7 +11,7 @@ MenuBase::MenuBase(
 {
 	MenuElement::focused_element_ = nullptr;
 	background_sprite_.setTexture(
-		*resource_handler_.add_texture("menu_background.jpg"));
+								 *resource_handler_.add_texture("menu_background.jpg"));
 	exit_scene_ = scene_to_exit;
 	error_string_ = "";
 }
@@ -43,13 +43,9 @@ void MenuBase::input()
 
 void MenuBase::draw()
 {
-	window_->clear();
-
 	window_->draw(background_sprite_);
 
 	menu_manager_.draw(window_);
-
-	window_->display();
 }
 
 void MenuBase::update(float delta_time)

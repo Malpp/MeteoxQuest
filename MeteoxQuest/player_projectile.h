@@ -6,12 +6,12 @@ class PlayerProjectile : public Projectile
 public:
 	PlayerProjectile(
 		const sf::Vector2f& pos,
-		float angle,
+		const float angle,
 		sf::Texture* texture,
 		const sf::Vector2f& size,
-		int no_frames,
-		int no_states,
-		float frame_delay,
+		const int no_frames,
+		const int no_states,
+		const float frame_delay,
 		const sf::Vector2f& direction,
 		const float movespeed)
 		: Projectile(pos,
