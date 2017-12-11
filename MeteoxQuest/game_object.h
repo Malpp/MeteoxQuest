@@ -1,11 +1,14 @@
 #pragma once
 #include "stdafx.h"
 #include "colliable_object.h"
+#include "effector.h"
+#include <list>
 
 class LevelBase;
 
 class GameObject : public CollidableObject
 {
+	friend class MovementEffector;
 public:
 	enum Color
 	{
@@ -42,6 +45,7 @@ public:
 	void collision_test(GameObject* other, LevelBase* level);
 	static Color generate_random_color();
 	GameType get_type() const;
+	void add_effector(Effector* effector);
 protected:
 	virtual void handle_collision(GameObject* other, LevelBase* level) = 0;
 	virtual bool is_at_edge();
@@ -62,4 +66,5 @@ protected:
 	float biggest_texture_side_;
 	Color color_;
 	GameType type_;
+	std::vector<Effector*> effectors_;
 };

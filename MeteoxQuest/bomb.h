@@ -10,7 +10,9 @@ public:
 		ORBIT,
 		LAUNCH
 	};
-	Bomb( const sf::Vector2f& pos,
+
+	Bomb(
+		const sf::Vector2f& pos,
 		const float angle,
 		sf::Texture* texture,
 		const sf::Vector2f& size,

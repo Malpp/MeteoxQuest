@@ -10,7 +10,9 @@ public:
 		EMP,
 		EXPLOSIVE
 	};
-	PowerUp( const sf::Vector2f& pos,
+
+	PowerUp(
+		const sf::Vector2f& pos,
 		float angle,
 		sf::Texture* texture,
 		const sf::Vector2f& size,

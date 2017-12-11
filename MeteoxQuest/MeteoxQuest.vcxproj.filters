@@ -106,6 +106,9 @@
     <Filter Include="Header Files\Game\projectiles\enemy">
       <UniqueIdentifier>{847c42da-61c8-4446-9083-74bd1ba806ad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Game\effectors">
+      <UniqueIdentifier>{a96d89c1-34f9-4ccf-b313-a60e25f5e1f4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -290,6 +293,15 @@
     </ClInclude>
     <ClInclude Include="explosive_projectile.h">
       <Filter>Header Files\Game\projectiles</Filter>
+    </ClInclude>
+    <ClInclude Include="movement_effector.h">
+      <Filter>Header Files\Game\effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="weapon_effector.h">
+      <Filter>Header Files\Game\effectors</Filter>
+    </ClInclude>
+    <ClInclude Include="effector.h">
+      <Filter>Header Files\Game\effectors</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

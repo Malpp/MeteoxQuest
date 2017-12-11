@@ -12,9 +12,16 @@
 
 Loading::Loading(sf::RenderWindow* window)
 	: Scene(window)
-	, loading_bar_(sf::Vector2f(0, Game::GAME_HEIGHT))
+	, loading_bar_()
 {
 	current_element_ = 0;
+	Game::font.loadFromFile("Assets//emulogic.ttf");
+	loading_bar_.setSize(sf::Vector2f(Game::GAME_WIDTH * (static_cast<float>(
+			                                  current_element_) /
+		                                  static_cast<float>(elements_to_load_)),
+	                                  Game::GAME_HEIGHT * 0.1f));
+	loading_bar_.setOrigin(0, Game::GAME_HEIGHT * 0.1f * 0.5f);
+	loading_bar_.setPosition(0, Game::GAME_HEIGHT);
 }
 
 void Loading::input()
@@ -72,11 +79,11 @@ void Loading::update(float delta_time)
 			break;
 		case 11:
 			ExplosiveBlast::texture_ = Game::resource_handler_.
-				add_texture( "bomb_explosion.png" );
+					add_texture("bomb_explosion.png");
 			break;
 		case 12:
 			ExplosiveBomb::texture_ = Game::resource_handler_.
-				add_texture( "explosive_bomb.png" );
+					add_texture("explosive_bomb.png");
 			break;
 		default:
 			change_scene(MENU);
@@ -84,12 +91,13 @@ void Loading::update(float delta_time)
 	}
 	++current_element_;
 	loading_bar_.setSize(sf::Vector2f(Game::GAME_WIDTH * (static_cast<float>(
-											current_element_) /
-										static_cast<float>(elements_to_load_)),
-									Game::GAME_HEIGHT));
+			                                  current_element_) /
+		                                  static_cast<float>(elements_to_load_)),
+	                                  Game::GAME_HEIGHT * 0.1f));
 }
 
 void Loading::draw()
 {
 	window_->draw(loading_bar_);
+	window_->draw(text_);
 }

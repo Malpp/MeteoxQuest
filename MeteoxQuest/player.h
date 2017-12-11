@@ -9,7 +9,8 @@
 
 class LevelBase;
 
-class Player : public Character, public Subject
+class Player : public Character,
+               public Subject
 {
 	friend class PowerUp;
 public:
@@ -22,6 +23,7 @@ public:
 		DOWN,
 		COUNT
 	};
+
 	unsigned get_score() const;
 	void add_score(const int score_to_add);
 	int get_life() const;
@@ -40,7 +42,7 @@ protected:
 private:
 	void do_dashes(const float delta_time);
 	static const int base_damage_ = 1;
-	static sf::Texture* texture_;
+	static sf::Texture* texture_; 
 	static const sf::Vector2f size_;
 	static const int no_frames_ = 4;
 	static const float movespeed_;

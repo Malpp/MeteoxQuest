@@ -19,7 +19,6 @@ Game::Game()
 	window->setView(view);
 	srand(time(nullptr));
 	rand();
-	font.loadFromFile("Assets//emulogic.ttf");
 	running = true;
 	current_scene_ = Scene::LOADING;
 }
