@@ -1,8 +1,8 @@
-
 #ifndef _LIST_H_
 #define _LIST_H_
 #include <algorithm>
 #include <list>
+
 /**********************************************************
 Description de la representation
 
@@ -28,20 +28,26 @@ sur une list const.
 **********************************************************/
 
 template <class T>
-class list {
-
+class list
+{
 private:
-	struct box {
+	struct box
+	{
 		T value;
-		box *next, *prev;
-		box(const T& C, box*S = nullptr, box*P = nullptr) 
+		box* next, * prev;
+
+		box(const T& C, box* S = nullptr, box* P = nullptr)
 		{
 			value = C;
 			next = S;
 			prev = P;
 		} //a implanter
-		~box() { prev = next = nullptr; } //je vous le donne en cadeau
+		~box()
+		{
+			prev = next = nullptr;
+		} //je vous le donne en cadeau
 	};
+
 	box before_;
 	box after_;
 	size_t size_;
@@ -60,22 +66,30 @@ public:
 	~list(); //destructeur
 	list(const list&); //copie constructeur
 	list(std::initializer_list<T>);
-	list& operator=(const list& other);  //affectateur. copie les elements de other dans la file courante. O(n) 
-	void swap(list& other) noexcept; //echange les element des files courante et other O(1);
+	list& operator=(const list& other);
+	//affectateur. copie les elements de other dans la file courante. O(n) 
+	void swap(list& other) noexcept;
+	//echange les element des files courante et other O(1);
 
-	iterator insert(iterator pos, const T& value); //ajoute un element AVANT la box en position pos. retourne un iterateur sur la nouvelle box. O(1)
-	iterator erase(iterator pos); //enleve l'element a la position pos. retourne un iterateur sur l'element suivant celui qui est retire. O(1)
-								  //reverse_iterator insert(reverse_iterator, const T&); //Optionnel, comme les methodes precedentes mais avec un reverse iterator
-								  //reverse_iterator erase(reverse_iterator);  //Optionnel, comme les methodes precedentes mais avec un reverse iterator
+	iterator insert(iterator pos, const T& value);
+	//ajoute un element AVANT la box en position pos. retourne un iterateur sur la nouvelle box. O(1)
+	iterator erase(iterator pos);
+	//enleve l'element a la position pos. retourne un iterateur sur l'element suivant celui qui est retire. O(1)
+	//reverse_iterator insert(reverse_iterator, const T&); //Optionnel, comme les methodes precedentes mais avec un reverse iterator
+	//reverse_iterator erase(reverse_iterator);  //Optionnel, comme les methodes precedentes mais avec un reverse iterator
 
-	void push_back(const T& elem);  //Ajoute un element a la fin de la liste. O(1)
-	void pop_back();			  //Enleve un element a la fin de la liste. O(1)
-	void push_front(const T& elem); //Ajoute un element au debut de la liste. O(1)
-	void pop_front();			  //Enleve un element au debut de la liste. O(1)
+	void push_back(const T& elem);
+	//Ajoute un element a la fin de la liste. O(1)
+	void pop_back(); //Enleve un element a la fin de la liste. O(1)
+	void push_front(const T& elem);
+	//Ajoute un element au debut de la liste. O(1)
+	void pop_front(); //Enleve un element au debut de la liste. O(1)
 
-	T& back(); //Retourne une reference sur le dernier element de la liste. O(1)
-	T& front(); //Retourne une reference sur le premier element de la liste. O(1)
-	T& back() const;	//Optionnel version const de la precedente
+	T& back();
+	//Retourne une reference sur le dernier element de la liste. O(1)
+	T& front();
+	//Retourne une reference sur le premier element de la liste. O(1)
+	T& back() const; //Optionnel version const de la precedente
 	T& front() const; //Optionnel version const de la precedente
 
 	void clear();
@@ -84,13 +98,14 @@ public:
 
 	iterator begin(); //Retourne un iterateur sur la box suivant before_.
 	iterator end(); //Retourne un iterateur sur la box after_.
-					//reverse_iterator rbegin(); //Optionnel version inverse des methodes precedentes
-					//reverse_iterator rend(); //Optionnel version inverse des methodes precedentes
+	//reverse_iterator rbegin(); //Optionnel version inverse des methodes precedentes
+	//reverse_iterator rend(); //Optionnel version inverse des methodes precedentes
 
-					//algorithmes
+	//algorithmes
 	void reverse(); //Inverse l'ordre des elements de la liste. O(n)
-	void splice(iterator pos, list& other); //Transfere les elements contenu dans other vers la liste courante. les element sont ajouter avant la box en position pos. O(1)
-											//void resize(size_t newSize, const T& value= T()); //Optionnel permet d'ajuster le nombre d'element de la liste. initialise les nouveaux element a value. Potentiellement O(n)
+	void splice(iterator pos, list& other);
+	//Transfere les elements contenu dans other vers la liste courante. les element sont ajouter avant la box en position pos. O(1)
+	//void resize(size_t newSize, const T& value= T()); //Optionnel permet d'ajuster le nombre d'element de la liste. initialise les nouveaux element a value. Potentiellement O(n)
 };
 
 ///////////////////////////////////////////////////////////
@@ -98,23 +113,26 @@ public:
 ///////////////////////////////////////////////////////////
 
 template <typename T>
-class list<T>::iterator 
+class list<T>::iterator
 {
 	friend class list<T>;
 private:
 	box* pointer_;
 public:
-	iterator(box*c = nullptr) :pointer_(c) {} // cadeau
+	iterator(box* c = nullptr)
+		: pointer_(c)
+	{
+	} // cadeau
 
-	T& operator*()const //Dereference l'iterateur
+	T& operator*() const //Dereference l'iterateur
 	{
 		return pointer_->value;
 	}
 
-	T* operator->()const //Autre dereference en cadeau.
+	T* operator->() const //Autre dereference en cadeau.
 	{
 		return &(pointer_->value);
-	} 
+	}
 
 	iterator& operator++() //++i
 	{
@@ -122,8 +140,9 @@ public:
 		return *this;
 	}
 
-	iterator operator++(int) 
-	{							 //i++
+	iterator operator++(int)
+	{
+		//i++
 		iterator i(*this);
 		pointer_ = pointer_->next;
 		return i;
@@ -135,19 +154,23 @@ public:
 		return *this;
 	}
 
-	iterator operator--(int) 
-	{							 //i--
+	iterator operator--(int)
+	{
+		//i--
 		iterator i(*this);
 		pointer_ = pointer_->prev;
 		return i;
 	}
 
-	bool operator==(const iterator&droite)const 
-	{ //Cadeau! comparaison d'iterateur
+	bool operator==(const iterator& droite) const
+	{
+		//Cadeau! comparaison d'iterateur
 		return pointer_ == droite.pointer_;
 	}
-	bool operator!=(const iterator&droite)const 
-	{ //Cadeau! comparaison d'iterateur
+
+	bool operator!=(const iterator& droite) const
+	{
+		//Cadeau! comparaison d'iterateur
 		return pointer_ != droite.pointer_;
 	}
 };
@@ -155,7 +178,8 @@ public:
 
 template <class T>
 list<T>::list()
-	: before_(0, nullptr, nullptr), after_(0, nullptr, nullptr)
+	: before_(0, nullptr, nullptr)
+	, after_(0, nullptr, nullptr)
 {
 	size_ = 0;
 }
@@ -163,7 +187,7 @@ list<T>::list()
 template <class T>
 list<T>::~list()
 {
-	while (before_.next != nullptr)
+	while(before_.next != nullptr)
 	{
 		box* temp = before_.next;
 		before_.next = temp->next;
@@ -174,11 +198,12 @@ list<T>::~list()
 
 template <class T>
 list<T>::list(const list& other)
-	: before_(NULL, nullptr, nullptr), after_(NULL, nullptr, nullptr)
+	: before_(NULL, nullptr, nullptr)
+	, after_(NULL, nullptr, nullptr)
 {
 	box* current = nullptr;
 	box* other_current = nullptr;
-	if (other.before_.next == nullptr)
+	if(other.before_.next == nullptr)
 		before_.next, after_.prev = nullptr;
 	else
 	{
@@ -187,7 +212,7 @@ list<T>::list(const list& other)
 		other_current = other.before_.next;
 	}
 
-	while (other_current != nullptr)
+	while(other_current != nullptr)
 	{
 		current->next = new box(other_current->next->value, nullptr, current);
 		current = current->next;
@@ -203,7 +228,7 @@ list<T>::list(std::initializer_list<T> other)
 {
 	box* current = nullptr;
 	box* other_current = nullptr;
-	if (other.begin() == nullptr)
+	if(other.begin() == nullptr)
 		before_.next, after_.prev = nullptr;
 	else
 	{
@@ -212,7 +237,7 @@ list<T>::list(std::initializer_list<T> other)
 		other_current = other.begin();
 	}
 
-	while (other_current != nullptr)
+	while(other_current != nullptr)
 	{
 		current->next = new box(other_current->next->value, nullptr, current);
 		current = current->next;
@@ -228,7 +253,7 @@ list<T>& list<T>::operator=(const list& other)
 {
 	box* current = nullptr;
 	box* other_current = nullptr;
-	if (other.before_.next == nullptr)
+	if(other.before_.next == nullptr)
 		before_.next, after_.prev = nullptr;
 	else
 	{
@@ -237,7 +262,7 @@ list<T>& list<T>::operator=(const list& other)
 		other_current = other.before_.next;
 	}
 
-	while (other_current != nullptr)
+	while(other_current != nullptr)
 	{
 		current->next = new box(other_current->next->value, nullptr, current);
 		current = current->next;
@@ -258,7 +283,7 @@ void list<T>::swap(list<T>& other) noexcept
 template <class T>
 void list<T>::push_back(const T& value)
 {
-	if (after_.prev == nullptr)
+	if(after_.prev == nullptr)
 	{
 		after_.prev = new box(value, nullptr, nullptr);
 		before_.next = after_.prev;
@@ -267,14 +292,14 @@ void list<T>::push_back(const T& value)
 	{
 		after_.prev->next = new box(value, nullptr, after_.prev);
 		after_.prev = after_.prev->next;
-	}	
+	}
 	++size_;
 }
 
 template <class T>
 void list<T>::push_front(const T& elem)
 {
-	if (before_.next == nullptr)
+	if(before_.next == nullptr)
 	{
 		before_.next = new box(elem, nullptr, nullptr);
 		after_.prev = before_.next;
@@ -332,7 +357,7 @@ T& list<T>::back() const
 template <class T>
 void list<T>::clear()
 {
-	while (before_.next != nullptr)
+	while(before_.next != nullptr)
 	{
 		box* temp = before_.next;
 		before_.next = temp->next;
@@ -363,7 +388,7 @@ typename list<T>::iterator list<T>::begin()
 template <class T>
 typename list<T>::iterator list<T>::end()
 {
-	iterator i(after_);
+	iterator i(after_.prev);
 	return i;
 }
 
@@ -377,7 +402,6 @@ typename list<T>::iterator list<T>::insert(iterator pos, const T& value)
 template <class T>
 typename list<T>::iterator list<T>::erase(iterator pos)
 {
-
 	erase(pos.pointer_);
 	return ++pos;
 }
@@ -386,7 +410,8 @@ template <class T>
 typename list<T>::box* list<T>::insert(box* box, const T& value)
 {
 	typename list<T>::box* temp = box->prev;
-	typename list<T>::box* new_box = new typename list<T>::box(value, temp, box);
+	typename list<T>::box* new_box = new typename list<T>::box
+			(value, temp, box);
 	box->prev = new_box;
 	temp->next = new_box;
 	return new_box;
@@ -408,7 +433,7 @@ void list<T>::reverse()
 {
 	typename list<T>::iterator i(before_.next);
 	typename list<T>::iterator j(after_.prev);
-	while (!(i == j) && !(++j == i))
+	while(!(i == j) && !(++j == i))
 	{
 		box* temp = i.pointer_;
 		i.pointer_ = j.pointer_;
@@ -416,7 +441,6 @@ void list<T>::reverse()
 		++i;
 		--j;
 	}
-
 }
 
 template <class T>
@@ -425,4 +449,3 @@ void list<T>::splice(typename list<T>::iterator pos, list<T>& other)
 {
 	std::list<T>::splice(pos, other);
 }
-
