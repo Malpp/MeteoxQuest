@@ -33,6 +33,8 @@ public:
 	void right() override;
 	void on_death(LevelBase* level) override;
 	void add_powerup( const PowerUp::PowerUpType power_up );
+	void switch_weapon_left();
+	void switch_weapon_right();
 protected:
 	void handle_collision(GameObject* other, LevelBase* level) override;
 private:
@@ -46,6 +48,7 @@ private:
 	static const int base_life_ = 3;
 	unsigned int score_;
 	list<Weapon*> weapons;
+	list<Weapon*>::iterator weapon_equipped_;
 	CommandManager command_manager_;
 	unsigned last_state_;
 	float idle_timer_;
@@ -57,6 +60,9 @@ private:
 	float dash_timer_;
 	bool dashing_;
 	bool dash_ready_;
+	bool weapon_switch_ready_;
+	float weapon_switch_timer_;
+	static const float weapon_switch_cooldown_;
 	sf::Vector2f dash_direction_;
 	std::vector<Bomb*> bombs_;
 	bool bomb_launched_;

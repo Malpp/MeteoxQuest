@@ -155,7 +155,7 @@ public:
 
 template <class T>
 list<T>::list()
-	: before_(NULL, nullptr, nullptr), after_(NULL, nullptr, nullptr)
+	: before_(0, nullptr, nullptr), after_(0, nullptr, nullptr)
 {
 	size_ = 0;
 }
@@ -265,7 +265,7 @@ void list<T>::push_back(const T& value)
 	}
 	else
 	{
-		after_.prev->next = new box(value, after_.prev, nullptr);
+		after_.prev->next = new box(value, nullptr, after_.prev);
 		after_.prev = after_.prev->next;
 	}	
 	++size_;

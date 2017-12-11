@@ -17,6 +17,7 @@ const float Player::max_idle_time_ = 0.1f;
 const float Player::dash_duration_ = 0.15f;
 const float Player::dash_speed_ = 1000;
 const float Player::dash_cooldown_ = 2;
+const float Player::weapon_switch_cooldown_ = 1;
 
 unsigned Player::get_score() const
 {
@@ -48,9 +49,13 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 				PLAYER)
 	, Subject()
 {
-	weapon_ = new MarioWeapon;
 	weapons.push_back(new HeartWeapon);
-	weapon_ = weapons.front();
+	weapons.push_back(new MarioWeapon);
+	weapons.push_back(new HeartWeapon);
+	weapon_equipped_ = weapons.begin();
+	weapon_ = *weapon_equipped_;
+	weapon_switch_timer_ = 0;
+	weapon_switch_ready_ = true;
 	score_ = 0;
 	last_state_ = state_;
 	dashing_ = false;
@@ -70,6 +75,18 @@ void Player::update(const float delta_time, LevelBase* level)
 		down();
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		right();
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && weapon_switch_ready_)
+	{
+		switch_weapon_left();
+		weapon_switch_ready_ = false;
+	}
+		
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) && weapon_switch_ready_)
+	{
+		switch_weapon_right();
+		weapon_switch_ready_ = false;
+	}
+
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 		fire(level);
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::F))
@@ -117,6 +134,16 @@ void Player::update(const float delta_time, LevelBase* level)
 				dash_ready_ = true;
 				dash_cooldown_timer_ = 0;
 			}
+		}
+	}
+
+	if (!weapon_switch_ready_)
+	{
+		weapon_switch_timer_ += delta_time;
+		if (weapon_switch_timer_ > weapon_switch_cooldown_)
+		{
+			weapon_switch_ready_ = true;
+			weapon_switch_timer_ = 0;
 		}
 	}
 
@@ -255,4 +282,24 @@ void Player::do_dashes(const float delta_time)
 		}
 	}
 	last_state_ = state_;
+}
+
+void Player::switch_weapon_right()
+{
+	if ( weapon_ != weapons.back())
+	{
+		weapon_ = nullptr;
+		++weapon_equipped_;
+		weapon_ = *weapon_equipped_;
+	}
+}
+
+void Player::switch_weapon_left()
+{
+	if (weapon_ != weapons.front())
+	{
+		weapon_ = nullptr;
+		--weapon_equipped_;
+		weapon_ = *weapon_equipped_;
+	}
 }
