@@ -28,6 +28,7 @@ public:
 	void add_score(const int score_to_add);
 	int get_life() const;
 	Player(const sf::Vector2f& pos, const float angle);
+	~Player();
 	void update(const float delta_time, LevelBase* level) override;
 	void up() override;
 	void down() override;
@@ -49,7 +50,7 @@ private:
 	static const float frame_delay_;
 	static const int base_life_ = 3;
 	unsigned int score_;
-	list<Weapon*> weapons;
+	list<Weapon*> weapons_;
 	list<Weapon*>::iterator weapon_equipped_;
 	CommandManager command_manager_;
 	unsigned last_state_;

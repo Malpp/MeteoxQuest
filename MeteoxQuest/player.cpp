@@ -49,9 +49,9 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 				PLAYER)
 	, Subject()
 {
-	weapons.push_back(new HeartWeapon);
-	weapons.push_back(new MarioWeapon);
-	weapon_equipped_ = weapons.begin();
+	weapons_.push_back(new HeartWeapon);
+	weapons_.push_back(new MarioWeapon);
+	weapon_equipped_ = weapons_.begin();
 	weapon_ = *weapon_equipped_;
 	weapon_switch_timer_ = 0;
 	weapon_switch_ready_ = true;
@@ -62,6 +62,11 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 	dash_cooldown_timer_ = 0;
 	dash_ready_ = true;
 	bomb_launched_ = false;
+}
+
+Player::~Player()
+{
+	weapons_.clear();
 }
 
 void Player::update(const float delta_time, LevelBase* level)
@@ -285,7 +290,7 @@ void Player::do_dashes(const float delta_time)
 
 void Player::switch_weapon_right()
 {
-	if ( weapon_ != weapons.back())
+	if ( weapon_ != weapons_.back())
 	{
 		weapon_ = nullptr;
 		++weapon_equipped_;
@@ -295,7 +300,7 @@ void Player::switch_weapon_right()
 
 void Player::switch_weapon_left()
 {
-	if (weapon_ != weapons.front())
+	if (weapon_ != weapons_.front())
 	{
 		weapon_ = nullptr;
 		--weapon_equipped_;
