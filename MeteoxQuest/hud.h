@@ -8,6 +8,9 @@ public:
 	void draw(sf::RenderWindow* window) const;
 	void notifier(Subject* subject, float delta_time) override;
 	static sf::Texture* player_icon_texture_;
+	static sf::Texture* heart_icon_texture_;
+	static sf::Texture* mario_icon_texture_;
+	//static sf::Texture* roller_coaster_icon_texture_;
 	static sf::Texture* incoming_warning_;
 	static sf::Texture* incoming_arrow_;
 private:
@@ -16,7 +19,11 @@ private:
 	sf::Sprite arrows[number_of_arrows_];
 	int life_;
 	unsigned int score_;
+	sf::CircleShape selected_weapon_;
 	sf::Sprite player_icon_;
+	sf::Sprite heart_weapon_icon_;
+	sf::Sprite mario_weapon_icon_;
+	//sf::Sprite roller_coaster_weapon_icon_;
 	sf::Sprite warning_sprite_;
 	sf::Text score_text_;
 	sf::Text life_text_;

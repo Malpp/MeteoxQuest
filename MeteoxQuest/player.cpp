@@ -17,7 +17,7 @@ const float Player::max_idle_time_ = 0.1f;
 const float Player::dash_duration_ = 0.15f;
 const float Player::dash_speed_ = 1000;
 const float Player::dash_cooldown_ = 2;
-const float Player::weapon_switch_cooldown_ = 1;
+const float Player::weapon_switch_cooldown_ = 0.1f;
 
 unsigned Player::get_score() const
 {
@@ -51,7 +51,6 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 {
 	weapons.push_back(new HeartWeapon);
 	weapons.push_back(new MarioWeapon);
-	weapons.push_back(new HeartWeapon);
 	weapon_equipped_ = weapons.begin();
 	weapon_ = *weapon_equipped_;
 	weapon_switch_timer_ = 0;

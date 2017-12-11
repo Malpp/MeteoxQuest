@@ -3,8 +3,13 @@
 #include "player.h"
 #include "Game.h"
 #include "level_base.h"
+#include "heart_weapon.h"
+#include "mario_weapon.h"
 
 sf::Texture* Hud::player_icon_texture_;
+sf::Texture* Hud::heart_icon_texture_;
+sf::Texture* Hud::mario_icon_texture_;
+//sf::Texture* Hud::roller_coaster_icon_texture_;
 sf::Texture* Hud::incoming_arrow_;
 sf::Texture* Hud::incoming_warning_;
 const float Hud::blink_time_ = 0.2f;
@@ -21,11 +26,19 @@ Hud::Hud()
 	, arrows_created_(false)
 	, wave_size_(0)
 	, arrow_screen_offset_(incoming_arrow_->getSize().y * 0.5f)
+	, selected_weapon_(26)
 {
 	player_icon_.setPosition(10, 50);
 	player_icon_.setTexture(*player_icon_texture_);
+	heart_weapon_icon_.setTexture(*heart_icon_texture_);
+	heart_weapon_icon_.setPosition(1600, 20);
+	mario_weapon_icon_.setTexture(*mario_icon_texture_);
+	mario_weapon_icon_.setPosition(1675, 20);
 	score_text_.setPosition(10, 10);
 	life_text_.setPosition(95, 55);
+	selected_weapon_.setFillColor(sf::Color::Transparent);
+	selected_weapon_.setOutlineColor(sf::Color::White);
+	selected_weapon_.setOutlineThickness(5);
 
 	for(int i = 0; i < number_of_arrows_; ++i)
 	{
@@ -37,6 +50,9 @@ Hud::Hud()
 void Hud::draw(sf::RenderWindow* window) const
 {
 	window->draw(player_icon_);
+	window->draw(heart_weapon_icon_);
+	window->draw(mario_weapon_icon_);
+	window->draw(selected_weapon_);
 	window->draw(score_text_);
 	window->draw(life_text_);
 	if(should_draw_)
@@ -64,6 +80,19 @@ void Hud::notifier(Subject* subject, const float delta_time)
 		const int life = player->get_life();
 		life_stream << ((life < 0) ? "-" : "") << life;
 		life_text_.setString("X " + life_stream.str());
+
+		if (const auto weapon = dynamic_cast<HeartWeapon*>(player->get_weapon()))
+		{
+			selected_weapon_.setPosition(1598, 14);
+		}
+		else if (const auto weapon = dynamic_cast<MarioWeapon*>(player->get_weapon()))
+		{
+			selected_weapon_.setPosition(1673, 14);
+		}
+		else if (const auto weapon = dynamic_cast<HeartWeapon*>(player->get_weapon()))
+		{
+			selected_weapon_.setPosition(1748, 14);
+		}
 	}
 
 	if(const auto level = dynamic_cast<LevelBase*>(subject))

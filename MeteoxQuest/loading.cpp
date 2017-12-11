@@ -70,18 +70,26 @@ void Loading::update(float delta_time)
 					add_texture("hud/player_icon.png");
 			break;
 		case 9:
+			Hud::heart_icon_texture_ = Game::resource_handler_.
+				add_texture("hud/heart_icon.png");
+			break;
+		case 10:
+			Hud::mario_icon_texture_ = Game::resource_handler_.
+				add_texture("hud/mario_icon.png");
+			break;
+		case 11:
 			Hud::incoming_arrow_ = Game::resource_handler_.
 					add_texture("hud/arrow.png");
 			break;
-		case 10:
+		case 12:
 			Hud::incoming_warning_ = Game::resource_handler_.
 					add_texture("hud/warning.png");
 			break;
-		case 11:
+		case 13:
 			ExplosiveBlast::texture_ = Game::resource_handler_.
 					add_texture("bomb_explosion.png");
 			break;
-		case 12:
+		case 14:
 			ExplosiveBomb::texture_ = Game::resource_handler_.
 					add_texture("explosive_bomb.png");
 			break;
