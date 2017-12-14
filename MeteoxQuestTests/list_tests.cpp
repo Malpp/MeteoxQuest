@@ -135,5 +135,18 @@ namespace MeteoxQuestTests
 			Assert::AreEqual(9, list.front());
 			Assert::AreEqual(10, list.back());
 		}
+
+		TEST_METHOD(listClearTest)
+		{
+			list<int> list;
+
+			for (int i = 0; i < 10; ++i)
+			{
+				list.push_front(10);
+			}
+
+			list.clear();
+			Assert::AreEqual(0, (int)list.size());
+		}
 	};
 }

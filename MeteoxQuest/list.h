@@ -315,19 +315,25 @@ void list<T>::push_front(const T& elem)
 template <class T>
 void list<T>::pop_back()
 {
-	box* temp = after_.prev;
-	after_.prev = temp->prev;
-	delete temp;
-	--size_;
+	if (size_ > 0)
+	{
+		box* temp = after_.prev;
+		after_.prev = temp->prev;
+		delete temp;
+		--size_;
+	}
 }
 
 template <class T>
 void list<T>::pop_front()
 {
-	box* temp = before_.next;
-	before_.next = temp->next;
-	delete temp;
-	--size_;
+	if (size_ > 0)
+	{
+		box* temp = before_.next;
+		before_.next = temp->next;
+		delete temp;
+		--size_;
+	}
 }
 
 template <class T>
@@ -363,6 +369,7 @@ void list<T>::clear()
 		before_.next = temp->next;
 		delete temp;
 	}
+	after_.prev = nullptr;
 	size_ = 0;
 }
 

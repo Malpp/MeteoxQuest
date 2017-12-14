@@ -24,7 +24,8 @@ Cloud9Enemy::Cloud9Enemy(
 	        movespeed_,
 	        base_life_,
 	        color,
-	        score_worth_)
+	        score_worth_,
+			drop_rate_)
 {
 	weapon_ = new Cloud9Weapon(color);
 }

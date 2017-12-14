@@ -4,6 +4,8 @@
 #include "projectile.h"
 #include "player.h"
 #include "level_base.h"
+#include "explosive_bomb.h";
+#include "emp_bomb.h";
 
 Enemy::Enemy(
 	const sf::Vector2f& pos,
@@ -16,7 +18,8 @@ Enemy::Enemy(
 	const float move_speed,
 	const int base_life,
 	const Color color,
-	const unsigned int score_worth)
+	const unsigned int score_worth,
+	const unsigned int drop_rate)
 	: Character(pos,
 				angle,
 				texture,
@@ -31,6 +34,7 @@ Enemy::Enemy(
 				ENEMY)
 {
 	score_worth_ = score_worth;
+	drop_rate_ = drop_rate;
 }
 
 bool Enemy::is_at_edge()
@@ -64,6 +68,21 @@ void Enemy::handle_edge()
 void Enemy::on_death(LevelBase* level)
 {
 	level->add_score( score_worth_ );
+	if (should_drop())
+	{
+		int random_bonus = rand() % 2 + 1;
+		switch (random_bonus)
+		{
+		case 1:
+			level->add_game_object(new EmpBomb(getPosition(), 0));
+			break;
+		case 2:
+			level->add_game_object(new ExplosiveBomb(getPosition(), 0));
+			break;
+		default:
+			break;
+		}
+	}
 	despawn();
 }
 
@@ -84,3 +103,9 @@ void Enemy::handle_collision(GameObject* other, LevelBase* level)
 		take_damage( other, level );
 	}
 }
+
+bool Enemy::should_drop() const
+{
+	return drop_rate_ >= rand() % 100 + 1;
+}
+
