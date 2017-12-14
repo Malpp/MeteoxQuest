@@ -5,7 +5,10 @@
 class GCEnemy : public Enemy
 {
 public:
-	GCEnemy(const sf::Vector2f& pos, const float angle, const Color color);
+	GCEnemy(
+		const sf::Vector2f& pos,
+		const float angle,
+		const Color color);
 	void update(const float delta_time, LevelBase* level) override;
 	static sf::Texture* textures_[3];
 	static const std::string texture_name_;
@@ -17,4 +20,5 @@ private:
 	static const float frame_delay_;
 	static const int base_life_ = 2;
 	static const unsigned int score_worth_ = 100;
+	static const unsigned int drop_rate_ = 5;
 };

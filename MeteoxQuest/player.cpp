@@ -66,7 +66,7 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 
 Player::~Player()
 {
-	weapons_.clear();
+	
 }
 
 void Player::update(const float delta_time, LevelBase* level)

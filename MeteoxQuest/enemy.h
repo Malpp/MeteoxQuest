@@ -16,8 +16,10 @@ public:
 		const float move_speed,
 		const int base_life,
 		const Color color,
-		const unsigned int score_worth);
+		const unsigned int score_worth,
+		const unsigned int drop_rate);
 	void on_death(LevelBase* level) override;
+	bool should_drop() const;
 protected:
 	void handle_collision(GameObject* other, LevelBase* level) override;
 	bool is_at_edge() override;
@@ -25,4 +27,5 @@ protected:
 private:
 	static const int base_damage_ = 1;
 	unsigned int score_worth_;
+	unsigned int drop_rate_;
 };

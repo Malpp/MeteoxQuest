@@ -18,7 +18,10 @@ const sf::Vector2f LOLEnemy::size_ = sf::Vector2f(75, 75);
 const float	LOLEnemy::movespeed_ = 600;
 const float LOLEnemy::frame_delay_ = 0.1f;
 
-LOLEnemy::LOLEnemy(const sf::Vector2f& pos, const float angle, const Color color)
+LOLEnemy::LOLEnemy(
+	const sf::Vector2f& pos,
+	const float angle,
+	const Color color)
 	:Enemy(pos,
 		angle,
 		textures_[color],
@@ -29,7 +32,8 @@ LOLEnemy::LOLEnemy(const sf::Vector2f& pos, const float angle, const Color color
 		movespeed_,
 		base_life_,
 		color,
-		score_worth_), target_height_((Game::GAME_HEIGHT * 0.9f) * (float)rand() / RAND_MAX)
+		score_worth_,
+		drop_rate_), target_height_((Game::GAME_HEIGHT * 0.9f) * (float)rand() / RAND_MAX)
 {
 	weapon_ = new LOLWeapon(color);
 }

@@ -17,7 +17,10 @@ const sf::Vector2f OrcEnemy::size_ = sf::Vector2f(80, 83);
 const float OrcEnemy::movespeed_ = 600;
 const float OrcEnemy::frame_delay_ = 0.1f;
 
-OrcEnemy::OrcEnemy(const sf::Vector2f& pos, const float angle, const Color color)
+OrcEnemy::OrcEnemy(
+	const sf::Vector2f& pos,
+	const float angle,
+	const Color color)
 	: Enemy(pos,
 			angle,
 			textures_[color],
@@ -28,7 +31,8 @@ OrcEnemy::OrcEnemy(const sf::Vector2f& pos, const float angle, const Color color
 			movespeed_,
 			base_life_,
 			color,
-			score_worth_)
+			score_worth_,
+			drop_rate_)
 {
 	weapon_ = new OrcWeapon(color_);
 }
