@@ -9,7 +9,7 @@
 #include "mario_weapon.h"
 
 sf::Texture* Player::texture_ = Game::resource_handler_.add_texture(
-																	 "player.png");
+	"player.png");
 const sf::Vector2f Player::size_ = sf::Vector2f(140, 80);
 const float Player::movespeed_ = 600;
 const float Player::frame_delay_ = 0.1f;
@@ -29,24 +29,19 @@ void Player::add_score(const int score_to_add)
 	score_ += score_to_add;
 }
 
-int Player::get_life() const
-{
-	return life_;
-}
-
 Player::Player(const sf::Vector2f& pos, const float angle)
 	: Character(pos,
-				angle,
-				texture_,
-				size_,
-				no_frames_,
-				COUNT,
-				frame_delay_,
-				movespeed_,
-				base_life_,
-				NONE,
-				base_damage_,
-				PLAYER)
+	            angle,
+	            texture_,
+	            size_,
+	            no_frames_,
+	            COUNT,
+	            frame_delay_,
+	            movespeed_,
+	            base_life_,
+	            NONE,
+	            base_damage_,
+	            PLAYER)
 	, Subject()
 {
 	weapons_.push_back(new HeartWeapon);
@@ -62,6 +57,7 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 	dash_cooldown_timer_ = 0;
 	dash_ready_ = true;
 	bomb_launched_ = false;
+	shields_.push(new Shield(this));
 }
 
 Player::~Player()
@@ -72,10 +68,16 @@ Player::~Player()
 		if(*iterator != weapon_)
 			delete (*iterator);
 		++iterator;
-	} while (iterator != weapons_.end());
-	if (*iterator != weapon_)
+	} while(iterator != weapons_.end());
+	if(*iterator != weapon_)
 		delete (*iterator);
 	weapons_.clear();
+
+	while(shields_.size() != 0)
+	{
+		delete shields_.top();
+		shields_.pop();
+	}
 }
 
 void Player::update(const float delta_time, LevelBase* level)
@@ -88,13 +90,13 @@ void Player::update(const float delta_time, LevelBase* level)
 		down();
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 		right();
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && weapon_switch_ready_)
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Q) && weapon_switch_ready_)
 	{
 		switch_weapon_left();
 		weapon_switch_ready_ = false;
 	}
-		
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) && weapon_switch_ready_)
+
+	if(sf::Keyboard::isKeyPressed(sf::Keyboard::E) && weapon_switch_ready_)
 	{
 		switch_weapon_right();
 		weapon_switch_ready_ = false;
@@ -150,10 +152,10 @@ void Player::update(const float delta_time, LevelBase* level)
 		}
 	}
 
-	if (!weapon_switch_ready_)
+	if(!weapon_switch_ready_)
 	{
 		weapon_switch_timer_ += delta_time;
-		if (weapon_switch_timer_ > weapon_switch_cooldown_)
+		if(weapon_switch_timer_ > weapon_switch_cooldown_)
 		{
 			weapon_switch_ready_ = true;
 			weapon_switch_timer_ = 0;
@@ -201,12 +203,12 @@ void Player::handle_collision(GameObject* other, LevelBase* level)
 	if(dynamic_cast<Projectile*>(other) && dynamic_cast<Projectile*>(other)->
 		get_type() == Projectile::ENEMY)
 	{
-		//take_damage( other );
+		take_damage(other, level);
 	}
 
 	if(dynamic_cast<Enemy*>(other))
 	{
-		//despawn();
+		take_damage(other, level);
 	}
 
 	if(const auto bomb = dynamic_cast<Bomb*>(other))
@@ -297,7 +299,7 @@ void Player::do_dashes(const float delta_time)
 
 void Player::switch_weapon_right()
 {
-	if ( weapon_ != weapons_.back())
+	if(weapon_ != weapons_.back())
 	{
 		weapon_ = nullptr;
 		++weapon_equipped_;
@@ -305,9 +307,46 @@ void Player::switch_weapon_right()
 	}
 }
 
+int Player::take_damage(
+	const GameObject* object,
+	LevelBase* level,
+	const int damage)
+{
+	int damage_remaining = object->get_damage();
+	if(shields_.size() > 0)
+	{
+		while(shields_.size() > 0 && (damage_remaining = shields_.top()->
+			  take_damage(
+			  object,
+			  level,
+			  damage_remaining)
+			  ) != -1)
+		{
+			if(shields_.top()->get_life() < 1)
+			{
+				std::cout << "popped\n";
+				delete shields_.top();
+				shields_.pop();
+			}
+		}
+	}
+	damage_remaining = damage_remaining == -1 ? 0 : damage_remaining;
+	return GameObject::take_damage(object, level, damage_remaining);
+}
+
+Shield* Player::get_shield()
+{
+	return shields_.top();
+}
+
+bool Player::shield_exists() const
+{
+	return shields_.size();
+}
+
 void Player::switch_weapon_left()
 {
-	if (weapon_ != weapons_.front())
+	if(weapon_ != weapons_.front())
 	{
 		weapon_ = nullptr;
 		--weapon_equipped_;

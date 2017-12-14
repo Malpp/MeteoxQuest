@@ -66,6 +66,7 @@ void LevelBase::input()
 
 void LevelBase::update(const float delta_time)
 {
+	//Update waves
 	if(!waves_.empty())
 	{
 		Wave* current_wave = waves_.front();
@@ -79,6 +80,7 @@ void LevelBase::update(const float delta_time)
 		}
 	}
 
+	//Update all game objects
 	for(int i = objects_.size() - 1; i >= 0; --i)
 	{
 		objects_[i]->update(delta_time, this);
@@ -95,6 +97,7 @@ void LevelBase::update(const float delta_time)
 		}
 	}
 
+	//Update background
 	for(int i = 0; i < 2; ++i)
 	{
 		sf::Vector2f pos = background_sprites_[i].getPosition();
@@ -109,8 +112,12 @@ void LevelBase::update(const float delta_time)
 		background_sprites_[i].setPosition(pos);
 	}
 
-	fps_timer_ += delta_time;
+	//Update shield
+	if(player_->shield_exists())
+		player_->get_shield()->update(delta_time);
 
+	//Update FPS
+	fps_timer_ += delta_time;
 	if(fps_timer_ > 1)
 	{
 		std::ostringstream oss;
@@ -121,6 +128,7 @@ void LevelBase::update(const float delta_time)
 	}
 	++fps_;
 
+	//REEEEEEEEEEEEEE
 	notify_all_observers(delta_time);
 }
 
@@ -134,6 +142,9 @@ void LevelBase::draw()
 	{
 		window_->draw(*object);
 	}
+
+	if(player_->shield_exists())
+		window_->draw(*player_->get_shield());
 
 	hud.draw(window_);
 }

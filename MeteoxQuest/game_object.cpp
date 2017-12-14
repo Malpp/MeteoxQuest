@@ -141,6 +141,16 @@ void GameObject::add_effector(Effector* effector)
 	effectors_.push_back(effector);
 }
 
+int GameObject::get_life() const
+{
+	return life_;
+}
+
+int GameObject::get_damage() const
+{
+	return damage_;
+}
+
 bool GameObject::is_at_edge()
 {
 	const sf::Vector2f current_pos = getPosition();
@@ -167,9 +177,17 @@ void GameObject::handle_edge()
 	));
 }
 
-void GameObject::take_damage(const GameObject* object, LevelBase* level)
+int GameObject::take_damage(const GameObject* object, LevelBase* level, const int damage)
 {
-	life_ -= object->damage_;
+	if(color_ == object->color_)
+		life_ += damage ? damage : object->damage_;
+	else
+		life_ -= damage ? damage : object->damage_;
+
 	if(life_ < 1)
+	{
 		on_death(level);
+		return std::abs(life_);
+	}
+	return -1;
 }

@@ -9,6 +9,7 @@
 #include "hud.h"
 #include "explosive_projectile.h"
 #include "explosive_bomb.h"
+#include "shield.h"
 
 Loading::Loading(sf::RenderWindow* window)
 	: Scene(window)
@@ -92,6 +93,10 @@ void Loading::update(float delta_time)
 		case 14:
 			ExplosiveBomb::texture_ = Game::resource_handler_.
 					add_texture("explosive_bomb.png");
+			break;
+		case 15:
+			Shield::shield_texture = Game::resource_handler_.
+				add_texture("shield.png");
 			break;
 		default:
 			change_scene(MENU);
