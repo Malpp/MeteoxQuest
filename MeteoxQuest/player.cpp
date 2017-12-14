@@ -240,39 +240,37 @@ void Player::do_dashes(const float delta_time)
 	//This is so the player must hold a direction before being able to dash
 	//in that direction
 	const int no_commands = commands.size();
-	if(no_commands == 2)
+	if(no_commands >= 2)
 	{
 		const unsigned last_command = commands.rbegin()[0]->move_;
-		if(last_command != command_manager_.last_removed_)
-			return;
+		const unsigned second_last_command = commands.rbegin()[1]->move_;
 		dash_direction_.x = 0;
 		dash_direction_.y = 0;
-		const unsigned second_last_command = commands.rbegin()[1]->move_;
 
 		//Dash left
 		if(last_command == LEFT && second_last_command
-			== RIGHT)
+			== LEFT)
 		{
 			dash_direction_.x = -1;
 			command_manager_.remove_commands(no_commands);
 		}
 			//Dash right
 		else if(last_command == RIGHT &&
-			second_last_command == LEFT)
+			second_last_command == RIGHT)
 		{
 			dash_direction_.x = 1;
 			command_manager_.remove_commands(no_commands);
 		}
 			//Dash up
 		else if(last_command == UP &&
-			second_last_command == DOWN)
+			second_last_command == UP)
 		{
 			dash_direction_.y = -1;
 			command_manager_.remove_commands(no_commands);
 		}
 			//Dash down
 		else if(last_command == DOWN &&
-			second_last_command == UP)
+			second_last_command == DOWN)
 		{
 			dash_direction_.y = 1;
 			command_manager_.remove_commands(no_commands);
