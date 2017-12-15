@@ -7,11 +7,12 @@ class Shield : public GameObject
 {
 public:
 	Shield(Player* player);
-	void update(const float delta_time);
+	void update(const float delta_time, LevelBase* level) override;
 	static sf::Texture* shield_texture;
 protected:
 	void handle_collision(GameObject* other, LevelBase* level) override;
 	void on_death(LevelBase* level) override;
+	void handle_edge() override;
 private:
 	static const sf::Vector2f size_;
 	static const int no_frames_ = 10;

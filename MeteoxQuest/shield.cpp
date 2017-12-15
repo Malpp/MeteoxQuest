@@ -3,7 +3,7 @@
 #include "player.h"
 
 sf::Texture* Shield::shield_texture;
-const float Shield::frame_delay_ = 0.01f;
+const float Shield::frame_delay_ = 0.1f;
 const float Shield::movespeed_ = 0;
 const sf::Vector2f Shield::size_ = sf::Vector2f(146, 88);
 
@@ -22,28 +22,13 @@ Shield::Shield(Player* player)
 	)
 	, player_(player)
 {
-	sf::Color color;
-	switch(color_)
-	{
-		case BLUE:
-			color = sf::Color::Blue;
-			break;
-		case RED:
-			color = sf::Color::Red;
-			break;
-		case GREEN:
-			color = sf::Color::Green;
-			break;
-		default:
-			color = sf::Color::White;
-			break;
-	}
-	setColor(color);
+	set_color_to_match();
 }
 
-void Shield::update(const float delta_time)
+void Shield::update(const float delta_time, LevelBase* level)
 {
 	setPosition(player_->getPosition());
+	GameObject::update(delta_time, level);
 }
 
 void Shield::handle_collision(GameObject* other, LevelBase* level)
@@ -51,5 +36,9 @@ void Shield::handle_collision(GameObject* other, LevelBase* level)
 }
 
 void Shield::on_death(LevelBase* level)
+{
+}
+
+void Shield::handle_edge()
 {
 }

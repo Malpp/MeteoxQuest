@@ -114,7 +114,7 @@ void LevelBase::update(const float delta_time)
 
 	//Update shield
 	if(player_->shield_exists())
-		player_->get_shield()->update(delta_time);
+		player_->get_shield()->update(delta_time, this);
 
 	//Update FPS
 	fps_timer_ += delta_time;

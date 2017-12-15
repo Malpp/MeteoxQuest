@@ -151,6 +151,27 @@ int GameObject::get_damage() const
 	return damage_;
 }
 
+void GameObject::set_color_to_match()
+{
+	sf::Color color;
+	switch(color_)
+	{
+		case BLUE:
+			color = sf::Color::Blue;
+			break;
+		case RED:
+			color = sf::Color::Red;
+			break;
+		case GREEN:
+			color = sf::Color::Green;
+			break;
+		default:
+			color = sf::Color::White;
+			break;
+	}
+	setColor(color);
+}
+
 bool GameObject::is_at_edge()
 {
 	const sf::Vector2f current_pos = getPosition();

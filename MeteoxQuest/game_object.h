@@ -48,6 +48,7 @@ public:
 	void add_effector(Effector* effector);
 	int get_life() const;
 	int get_damage() const;
+	void set_color_to_match();
 protected:
 	virtual void handle_collision(GameObject* other, LevelBase* level) = 0;
 	virtual bool is_at_edge();
