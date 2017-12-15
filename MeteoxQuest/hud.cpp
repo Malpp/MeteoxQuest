@@ -78,7 +78,7 @@ void Hud::notifier(Subject* subject, const float delta_time)
 
 		std::stringstream life_stream;
 		const int life = player->get_life();
-		life_stream << ((life < 0) ? "-" : "") << life;
+		life_stream << life;
 		life_text_.setString("X " + life_stream.str());
 
 		if (const auto weapon = dynamic_cast<HeartWeapon*>(player->get_weapon()))

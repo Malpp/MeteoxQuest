@@ -28,7 +28,7 @@ public:
 	virtual void update(const float delta_time, LevelBase* level);
 	void despawn();
 	bool get_despawn() const;
-	void take_damage(const GameObject* object, LevelBase* level);
+	virtual int take_damage(const GameObject* object, LevelBase* level, const int damage = 0);
 	GameObject(
 		const sf::Vector2f pos,
 		const float angle,
@@ -46,6 +46,9 @@ public:
 	static Color generate_random_color();
 	GameType get_type() const;
 	void add_effector(Effector* effector);
+	int get_life() const;
+	int get_damage() const;
+	void set_color_to_match();
 protected:
 	virtual void handle_collision(GameObject* other, LevelBase* level) = 0;
 	virtual bool is_at_edge();
