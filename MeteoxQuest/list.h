@@ -187,12 +187,14 @@ list<T>::list()
 template <class T>
 list<T>::~list()
 {
+	box* temp = before_.next;
 	while(before_.next != nullptr)
 	{
-		box* temp = before_.next;
+		temp = before_.next;
 		before_.next = temp->next;
 		delete temp;
 	}
+	before_.next, after_.prev = nullptr;
 	size_ = 0;
 }
 
@@ -363,13 +365,14 @@ T& list<T>::back() const
 template <class T>
 void list<T>::clear()
 {
-	while(before_.next != nullptr)
+	box* temp = before_.next;
+	while (before_.next != nullptr)
 	{
-		box* temp = before_.next;
+		temp = before_.next;
 		before_.next = temp->next;
 		delete temp;
 	}
-	after_.prev = nullptr;
+	before_.next, after_.prev = nullptr;
 	size_ = 0;
 }
 
@@ -395,22 +398,24 @@ typename list<T>::iterator list<T>::begin()
 template <class T>
 typename list<T>::iterator list<T>::end()
 {
-	iterator i(after_.prev);
+	iterator i(after_);
 	return i;
 }
 
 template <class T>
 typename list<T>::iterator list<T>::insert(iterator pos, const T& value)
 {
-	insert(pos.pointer_, value);
-	return --pos;
+	iterator i(insert(pos.pointer_, value));
+	return i;
 }
 
 template <class T>
 typename list<T>::iterator list<T>::erase(iterator pos)
 {
-	erase(pos.pointer_);
-	return ++pos;
+	iterator i(erase(pos.pointer_));
+	if (i.pointer_ == nullptr)
+		return end();
+	return i;
 }
 
 template <class T>
@@ -427,12 +432,35 @@ typename list<T>::box* list<T>::insert(box* box, const T& value)
 template <class T>
 typename list<T>::box* list<T>::erase(box* box)
 {
-	typename list<T>::box* temp = box->next;
-	box->prev->next = box->next;
-	box->next->prev = box->prev;
+	if (box == before_.next)
+	{
+		typename list<T>::box* temp = before_.next;
+		before_.next = before_.next->next;
+		before_.next->prev = nullptr;
+		delete temp;
+		return before_.next;
+	}
 
-	delete box;
-	return temp;
+	if (box == after_.prev)
+	{
+		typename list<T>::box* temp = after_.prev;
+		after_.prev = after_.prev->prev;
+		after_.prev->next = nullptr;
+		delete temp;
+		return nullptr;
+	}
+
+	if (box != before_.next && box != after_.prev)
+	{
+		typename list<T>::box* temp = box;
+		typename list<T>::box* box_prev = box->prev;
+		typename list<T>::box* box_next = box->next;
+		box_next->prev = box_prev;
+		box_prev->next = box_next;
+		delete temp;
+		return box_next;
+	}
+
 }
 
 template <class T>

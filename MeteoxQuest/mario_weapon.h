@@ -8,6 +8,6 @@ public:
 	MarioWeapon();
 	void handle_fire( LevelBase* level, Character* character ) override;
 private:
-	static const int ammo_ = -1;
+	static const int ammo_ = 10;
 	static const float fire_speed_;
 };
