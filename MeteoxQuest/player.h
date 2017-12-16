@@ -47,6 +47,7 @@ public:
 	Shield* get_shield();
 	bool shield_exists() const;
 	int get_no_shields() const;
+	static sf::SoundBuffer* player_hit_sound;
 protected:
 	void handle_collision(GameObject* other, LevelBase* level) override;
 private:

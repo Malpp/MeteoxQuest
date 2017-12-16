@@ -128,6 +128,9 @@ void LevelBase::update(const float delta_time)
 	}
 	++fps_;
 
+	//Update sounds
+	update_sounds();
+
 	//REEEEEEEEEEEEEE
 	notify_all_observers(delta_time);
 }
@@ -214,4 +217,21 @@ void LevelBase::add_score(const int score_to_add) const
 Player* LevelBase::get_player() const
 {
 	return player_;
+}
+
+void LevelBase::play_sound(sf::SoundBuffer* buffer)
+{
+	sound_queue_.push_back(sf::Sound(*buffer));
+	sound_queue_.back().play();
+}
+
+void LevelBase::update_sounds()
+{
+	if(sound_queue_.size() > 0)
+	{
+		if(sound_queue_.front().getStatus() == sf::SoundSource::Stopped)
+		{
+			sound_queue_.pop_front();
+		}
+	}
 }

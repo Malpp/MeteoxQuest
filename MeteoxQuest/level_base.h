@@ -24,7 +24,9 @@ public:
 	void add_game_object(GameObject* projectile);
 	void add_score( const int score_to_add ) const;
 	Player* get_player() const;
+	void play_sound(sf::SoundBuffer* buffer);
 private:
+	void update_sounds();
 	Player* player_;
 	float scroll_speed_;
 	sf::Sprite background_sprites_[2];
@@ -33,6 +35,7 @@ private:
 	int fps_;
 	Deque<Wave*> waves_;
 	Hud hud;
+	Deque<sf::Sound> sound_queue_;
 protected:
 	bool load_level(const std::string path);
 	sf::Vector2f background_size_;
