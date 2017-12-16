@@ -2,6 +2,7 @@
 #define _LIST_H_
 #include <algorithm>
 #include <list>
+#include <complex.h>
 
 /**********************************************************
 Description de la representation
@@ -203,47 +204,33 @@ list<T>::list(const list& other)
 	: before_(NULL, nullptr, nullptr)
 	, after_(NULL, nullptr, nullptr)
 {
-	box* current = nullptr;
-	box* other_current = nullptr;
-	if(other.before_.next == nullptr)
-		before_.next, after_.prev = nullptr;
-	else
-	{
-		before_.next = new box(other.before_.next->value, nullptr, nullptr);
-		current = before_.next;
-		other_current = other.before_.next;
-	}
-
-	while(other_current != nullptr)
-	{
-		current->next = new box(other_current->next->value, nullptr, current);
-		current = current->next;
-		other_current = other_current->next;
-	}
-	after_.prev = current;
-	size_ = other.size_;
+	*this = other;
 }
 
 template <class T>
 list<T>& list<T>::operator=(const list& other)
 {
-	box* current = nullptr;
-	box* other_current = nullptr;
-	if(other.before_.next == nullptr)
-		before_.next, after_.prev = nullptr;
-	else
+	if (!empty())
 	{
-		before_.next = new box(other.before_.value, nullptr, nullptr);
-		current = before_.next;
-		other_current = other.before_.next;
+		clear();
 	}
 
-	while(other_current != nullptr)
+	box* current = nullptr;
+	box* other_current = other.before_.next;
+	while (other_current != nullptr)
 	{
-		current->next = new box(other_current->next->value, nullptr, current);
-		current = current->next;
+		if (current == nullptr)
+		{
+			before_.next = current = new box(other_current->value, nullptr, nullptr);
+		}
+		else
+		{
+			current->next = new box(other_current->value, nullptr, current);
+			current = current->next;
+		}
 		other_current = other_current->next;
 	}
+	after_.prev = current;
 	size_ = other.size_;
 	return *this;
 }

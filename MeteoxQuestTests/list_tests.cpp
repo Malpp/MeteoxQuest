@@ -34,6 +34,7 @@ namespace MeteoxQuestTests
 			Assert::AreEqual(2, list2.front());
 			Assert::AreEqual(3, list2.back());
 		}
+
 		TEST_METHOD(listFront1)
 		{
 			list<int> list;
