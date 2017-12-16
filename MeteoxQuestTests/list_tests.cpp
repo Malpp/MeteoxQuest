@@ -92,6 +92,56 @@ namespace MeteoxQuestTests
 			Assert::AreEqual(4, list.back());
 		}
 
+		TEST_METHOD(listEmptyTrue)
+		{
+			list<int> list;
+
+			Assert::IsTrue(list.empty());
+		}
+
+		TEST_METHOD(listEmptyFalse)
+		{
+			list<int> list;
+
+			list.push_front(1);
+
+			Assert::IsFalse(list.empty());
+		}
+
+		TEST_METHOD(listSize1)
+		{
+			list<int> list;
+
+			Assert::AreEqual(0, (int)list.size());
+		}
+
+		TEST_METHOD(listSize2)
+		{
+			list<int> list;
+
+			list.push_front(1);
+
+			Assert::AreEqual(1, (int)list.size());
+		}
+
+		TEST_METHOD(listSize3)
+		{
+			list<int> list;
+
+			list.push_front(1);
+			list.push_back(1);
+			Assert::AreEqual(2, (int)list.size());
+		}
+
+		TEST_METHOD(listSize4)
+		{
+			list<int> list;
+
+			for (int i = 0; i < 10; ++i)
+				list.push_front(1);
+			Assert::AreEqual(10, (int)list.size());
+		}
+
 		TEST_METHOD(listPushBack1)
 		{
 			list<int> list;
