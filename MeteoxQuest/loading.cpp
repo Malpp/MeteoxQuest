@@ -99,7 +99,7 @@ void Loading::update(float delta_time)
 				add_texture("shield.png");
 			break;
 		case 16:
-			Player::player_hit_sound->loadFromFile("Assets/Sounds/hit.ogg");
+			Player::player_hit_sound.loadFromFile("Assets/Sounds/hit.ogg");
 			break;
 		default:
 			change_scene(MENU);

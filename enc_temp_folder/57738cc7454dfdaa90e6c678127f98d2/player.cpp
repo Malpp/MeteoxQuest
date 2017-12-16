@@ -63,6 +63,13 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 
 Player::~Player()
 {
+
+	for(auto i = weapons_.begin(); i != weapons_.end(); ++i)
+	{
+		if(*i != nullptr && *i != weapon_)
+			delete *i;
+	}
+
 	weapons_.clear();
 
 	while(shields_.size() != 0)
