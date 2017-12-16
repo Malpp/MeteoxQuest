@@ -18,6 +18,7 @@ const float Player::dash_duration_ = 0.15f;
 const float Player::dash_speed_ = 1000;
 const float Player::dash_cooldown_ = 2;
 const float Player::weapon_switch_cooldown_ = 0.1f;
+sf::SoundBuffer Player::player_hit_sound;
 
 unsigned Player::get_score() const
 {
@@ -303,6 +304,7 @@ int Player::take_damage(
 	LevelBase* level,
 	const int damage)
 {
+	level->play_sound(&player_hit_sound);
 	int damage_remaining = object->get_damage();
 	if(shields_.size() > 0)
 	{

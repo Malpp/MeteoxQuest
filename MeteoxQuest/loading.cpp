@@ -4,12 +4,12 @@
 #include "cloud9_enemy.h"
 #include "emp_bomb.h"
 #include "GC_enemy.h"
-#include <windows.h>
 #include "emp_projectile.h"
 #include "hud.h"
 #include "explosive_projectile.h"
 #include "explosive_bomb.h"
 #include "shield.h"
+#include "player.h"
 
 Loading::Loading(sf::RenderWindow* window)
 	: Scene(window)
@@ -97,6 +97,9 @@ void Loading::update(float delta_time)
 		case 15:
 			Shield::shield_texture = Game::resource_handler_.
 				add_texture("shield.png");
+			break;
+		case 16:
+			Player::player_hit_sound.loadFromFile("Assets/Sounds/hit.ogg");
 			break;
 		default:
 			change_scene(MENU);
