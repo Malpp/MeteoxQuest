@@ -63,15 +63,6 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 
 Player::~Player()
 {
-	auto iterator = weapons_.begin();
-	do
-	{
-		if(*iterator != weapon_)
-			delete (*iterator);
-		++iterator;
-	} while(iterator != weapons_.end());
-	if(*iterator != weapon_)
-		delete (*iterator);
 	weapons_.clear();
 
 	while(shields_.size() != 0)
@@ -375,3 +366,5 @@ void Player::fire(LevelBase* level)
 		Character::fire(level);
 	}
 }
+
+
