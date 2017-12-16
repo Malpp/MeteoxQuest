@@ -33,4 +33,6 @@ private:
 	bool wave_incoming_;
 	int wave_size_;
 	bool arrows_created_;
+	sf::Text shield_hp_;
+	sf::Text no_shields_;
 };

@@ -341,6 +341,11 @@ Shield* Player::get_shield()
 
 bool Player::shield_exists() const
 {
+	return shields_.size() > 0;
+}
+
+int Player::get_no_shields() const
+{
 	return shields_.size();
 }
 
