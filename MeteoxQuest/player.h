@@ -35,6 +35,7 @@ public:
 	void down() override;
 	void left() override;
 	void right() override;
+	void fire(LevelBase* level) override;
 	void on_death(LevelBase* level) override;
 	void add_powerup(const PowerUp::PowerUpType power_up);
 	void switch_weapon_left();

@@ -358,3 +358,18 @@ void Player::switch_weapon_left()
 		weapon_ = *weapon_equipped_;
 	}
 }
+
+void Player::fire(LevelBase* level)
+{
+	if (weapon_->get_ammo() == 0)
+	{
+		weapon_ = nullptr;
+		weapons_.erase(weapon_equipped_);
+		weapon_equipped_ = weapons_.begin();
+		weapon_ = *weapon_equipped_;
+	}
+	else
+	{
+		Character::fire(level);
+	}
+}
