@@ -46,6 +46,7 @@ public:
 		const int damage = 0) override;
 	Shield* get_shield();
 	bool shield_exists() const;
+	int get_no_shields() const;
 protected:
 	void handle_collision(GameObject* other, LevelBase* level) override;
 private:
