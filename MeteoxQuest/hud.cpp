@@ -93,6 +93,7 @@ void Hud::notifier(Subject* subject, const float delta_time)
 		{
 			selected_weapon_.setPosition(1748, 14);
 		}
+
 	}
 
 	if(const auto level = dynamic_cast<LevelBase*>(subject))

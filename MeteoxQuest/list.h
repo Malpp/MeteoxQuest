@@ -209,7 +209,7 @@ list<T>::list(const list& other)
 		before_.next, after_.prev = nullptr;
 	else
 	{
-		before_.next = new box(other.before_.value, nullptr, nullptr);
+		before_.next = new box(other.before_.next->value, nullptr, nullptr);
 		current = before_.next;
 		other_current = other.before_.next;
 	}
@@ -222,32 +222,6 @@ list<T>::list(const list& other)
 	}
 	after_.prev = current;
 	size_ = other.size_;
-	return *this;
-}
-
-template <class T>
-list<T>::list(std::initializer_list<T> other)
-{
-	box* current = nullptr;
-	box* other_current = nullptr;
-	if(other.begin() == nullptr)
-		before_.next, after_.prev = nullptr;
-	else
-	{
-		before_.next = new box(*other.begin(), nullptr, nullptr);
-		current = before_.next;
-		other_current = other.begin();
-	}
-
-	while(other_current != nullptr)
-	{
-		current->next = new box(other_current->next->value, nullptr, current);
-		current = current->next;
-		other_current = other_current->next;
-	}
-	after_.prev = current;
-	size_ = other.size();
-	return *this;
 }
 
 template <class T>
@@ -317,25 +291,37 @@ void list<T>::push_front(const T& elem)
 template <class T>
 void list<T>::pop_back()
 {
-	if (size_ > 0)
+	box* temp = after_.prev;
+	if (after_.prev != before_.next)
 	{
-		box* temp = after_.prev;
-		after_.prev = temp->prev;
-		delete temp;
-		--size_;
+		after_.prev = after_.prev->prev;
+		after_.prev->next = nullptr;
 	}
+	else
+	{
+		before_.next, after_.prev = nullptr;
+	}
+		
+	delete temp;
+	--size_;
 }
 
 template <class T>
 void list<T>::pop_front()
 {
-	if (size_ > 0)
+	box* temp = before_.next;	
+	if (before_.next != after_.prev)
 	{
-		box* temp = before_.next;
-		before_.next = temp->next;
-		delete temp;
-		--size_;
+		before_.next = before_.next->next;
+		before_.next->prev = nullptr;
 	}
+	else
+	{
+		before_.next, after_.prev = nullptr;
+	}
+	
+	delete temp;
+	--size_;
 }
 
 template <class T>
@@ -364,13 +350,14 @@ T& list<T>::back() const
 
 template <class T>
 void list<T>::clear()
-{
-	box* temp = before_.next;
+{	
 	while (before_.next != nullptr)
 	{
-		temp = before_.next;
-		before_.next = temp->next;
+		box* temp = before_.next;
+		before_.next = before_.next->next;		
 		delete temp;
+		if (before_.next != nullptr)
+			before_.next->prev = nullptr;
 	}
 	before_.next, after_.prev = nullptr;
 	size_ = 0;
@@ -385,27 +372,26 @@ size_t list<T>::size() const
 template <class T>
 bool list<T>::empty() const
 {
-	return size_ == 0;
+	return before_.next == nullptr && after_.prev == nullptr;
 }
 
 template <class T>
 typename list<T>::iterator list<T>::begin()
 {
-	iterator i(before_.next);
-	return i;
+	return before_.next;
 }
 
 template <class T>
 typename list<T>::iterator list<T>::end()
 {
-	iterator i(after_);
-	return i;
+	return &after_;
 }
 
 template <class T>
 typename list<T>::iterator list<T>::insert(iterator pos, const T& value)
 {
 	iterator i(insert(pos.pointer_, value));
+	++size_;
 	return i;
 }
 
@@ -413,20 +399,34 @@ template <class T>
 typename list<T>::iterator list<T>::erase(iterator pos)
 {
 	iterator i(erase(pos.pointer_));
-	if (i.pointer_ == nullptr)
-		return end();
+	--size_;
 	return i;
 }
 
 template <class T>
 typename list<T>::box* list<T>::insert(box* box, const T& value)
 {
-	typename list<T>::box* temp = box->prev;
-	typename list<T>::box* new_box = new typename list<T>::box
-			(value, temp, box);
-	box->prev = new_box;
-	temp->next = new_box;
-	return new_box;
+	if (box == before_.next)
+	{
+		before_.next->prev = new typename list<T>::box(value, before_.next, nullptr);
+		before_.next = before_.next->prev;
+		return before_.next;
+	}
+
+	if (box == &after_)
+	{
+		after_.prev->next = new typename list<T>::box(value, nullptr, after_.prev);
+		after_.prev = after_.prev->next;
+		return after_.prev;
+	}
+
+	if (box != before_.next && box != &after_)
+	{
+		typename list<T>::box* new_box = new typename list<T>::box(value,box->next,box->prev);
+		box->prev->next = new_box;
+		box->prev = new_box;
+		return new_box;
+	}
 }
 
 template <class T>
@@ -447,7 +447,7 @@ typename list<T>::box* list<T>::erase(box* box)
 		after_.prev = after_.prev->prev;
 		after_.prev->next = nullptr;
 		delete temp;
-		return nullptr;
+		return &after_;
 	}
 
 	if (box != before_.next && box != after_.prev)
@@ -460,7 +460,6 @@ typename list<T>::box* list<T>::erase(box* box)
 		delete temp;
 		return box_next;
 	}
-
 }
 
 template <class T>
