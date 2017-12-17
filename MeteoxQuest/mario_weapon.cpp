@@ -6,6 +6,7 @@
 #include "helper.h"
 
 const float MarioWeapon::fire_speed_ = 0.5f;
+sf::SoundBuffer MarioWeapon::fire_sound;
 
 MarioWeapon::MarioWeapon()
 	: Weapon(ammo_, fire_speed_, GameObject::NONE)
@@ -26,4 +27,5 @@ void MarioWeapon::handle_fire(LevelBase* level, Character* character)
 						 new MarioProjectile(character->getPosition(),
 											0,
 											Helper::movePointByAngle(1, -30)));
+	level->play_sound(&fire_sound);
 }
