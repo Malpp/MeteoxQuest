@@ -1,0 +1,94 @@
+{
+  "Enemies": {
+    "Wave1": {
+      "enemies_to_spawn": [
+        {
+          "type": "GC",
+          "posX": 1,
+          "posY": -1
+        },
+        {
+          "type": "GC",
+          "posX": 1,
+          "posY": -1
+        }
+      ],
+      "delay": 0
+    },
+    "Wave2": {
+      "enemies_to_spawn": [
+        {
+          "type": "GC",
+          "posX": 1,
+          "posY": -1
+        },
+        {
+          "type": "GC",
+          "posX": 1,
+          "posY": -1
+        },
+        {
+          "type": "GC",
+          "posX": 1,
+          "posY": -1
+        },
+        {
+          "type": "SMORC",
+          "posX": 1,
+          "posY": 0.5
+        }
+      ],
+      "delay": 15
+    },
+    "Wave3": {
+      "enemies_to_spawn": [
+        {
+          "type": "GC",
+          "posX": 1,
+          "posY": -1
+        },
+        {
+          "type": "GC",
+          "posX": 1,
+          "posY": -1
+        },
+        {
+          "type": "GC",
+          "posX": 1,
+          "posY": -1
+        },
+        {
+          "type": "SMORC",
+          "posX": 1,
+          "posY": 0.25
+        },
+        {
+          "type": "SMORC",
+          "posX": 1,
+          "posY": 0.5
+        },
+        {
+          "type": "SMORC",
+          "posX": 1,
+          "posY": 0.75
+        }
+      ],
+      "delay": 30
+    },
+    "Wave4": {
+      "enemies_to_spawn": [
+        {
+          "type": "NorMeteox",
+          "posX": 1,
+          "posY": 0.5
+        }
+      ],
+      "delay": 50
+    }
+  },
+  "test": [
+    "value",
+    "value2",
+    "value3"
+  ]
+}

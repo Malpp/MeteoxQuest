@@ -14,7 +14,10 @@ public:
 	{
 		EXIT,
 		SPLASH,
-		GAME,
+		LEVEL1,
+		LEVEL2,
+		LEVEL3,
+		LEVEL4,
 		MENU,
 		LOADING,
 		END

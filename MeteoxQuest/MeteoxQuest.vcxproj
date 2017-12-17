@@ -138,6 +138,9 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="ken_weapon.h" />
     <ClInclude Include="label.h" />
     <ClInclude Include="level1.h" />
+    <ClInclude Include="level2.h" />
+    <ClInclude Include="level3.h" />
+    <ClInclude Include="level4.h" />
     <ClInclude Include="level_base.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="loading.h" />
@@ -198,6 +201,9 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="ken_weapon.cpp" />
     <ClCompile Include="label.cpp" />
     <ClCompile Include="level1.cpp" />
+    <ClCompile Include="level2.cpp" />
+    <ClCompile Include="level3.cpp" />
+    <ClCompile Include="level4.cpp" />
     <ClCompile Include="level_base.cpp" />
     <ClCompile Include="loading.cpp" />
     <ClCompile Include="lol_enemy.cpp" />

@@ -36,4 +36,6 @@ private:
 	bool arrows_created_;
 	sf::Text shield_hp_;
 	sf::Text no_shields_;
+	sf::Text ammo_text_;
+	bool ammo_should_draw_;
 };

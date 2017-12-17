@@ -4,6 +4,9 @@
 #include "level1.h"
 #include "main_menu.h"
 #include "loading.h"
+#include "level2.h"
+#include "level3.h"
+#include "level4.h"
 
 ResourceHandler Game::resource_handler_;
 sf::Font Game::font;
@@ -38,8 +41,20 @@ void Game::run()
 			case Scene::EXIT:
 				running = false;
 				break;
-			case Scene::GAME:
+			case Scene::LEVEL1:
 				active_scene_ = new Level1(window);
+				current_scene_ = active_scene_->run();
+				break;
+			case Scene::LEVEL2:
+				active_scene_ = new Level2(window);
+				current_scene_ = active_scene_->run();
+				break;
+			case Scene::LEVEL3:
+				active_scene_ = new Level3(window);
+				current_scene_ = active_scene_->run();
+				break;
+			case Scene::LEVEL4:
+				active_scene_ = new Level4(window);
 				current_scene_ = active_scene_->run();
 				break;
 			case Scene::MENU:
