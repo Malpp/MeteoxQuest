@@ -46,3 +46,8 @@ void Wave::update(const float delta_time)
 {
 	delay_ -= delta_time;
 }
+
+void Wave::set_delay(int delay)
+{
+	delay_ = delay;
+}

@@ -11,6 +11,11 @@
           "type": "GC",
           "posX": 1,
           "posY": -1
+        },
+        {
+          "type": "SMORC",
+          "posX": 1,
+          "posY": 0.5   
         }
       ],
       "delay": 0
@@ -28,30 +33,26 @@
           "posY": -1
         },
         {
-          "type": "GC",
+          "type": "SMORC",
           "posX": 1,
-          "posY": -1
+          "posY": 0.33
         },
         {
           "type": "SMORC",
           "posX": 1,
-          "posY": 0.5
+          "posY": 0.66
+        },
+        {
+          "type": "KEN",
+          "posX": 1,
+          "posY": 0.5   
         }
+
       ],
-      "delay": 15
+      "delay": 25
     },
     "Wave3": {
       "enemies_to_spawn": [
-        {
-          "type": "GC",
-          "posX": 1,
-          "posY": -1
-        },
-        {
-          "type": "GC",
-          "posX": 1,
-          "posY": -1
-        },
         {
           "type": "GC",
           "posX": 1,
@@ -71,9 +72,19 @@
           "type": "SMORC",
           "posX": 1,
           "posY": 0.75
+        },
+        {
+          "type": "KEN",
+          "posX": 1,
+          "posY": 0.33   
+        },
+        {
+          "type": "KEN",
+          "posX": 1,
+          "posY": 0.66   
         }
       ],
-      "delay": 30
+      "delay": 45
     },
     "Wave4": {
       "enemies_to_spawn": [
@@ -83,7 +94,7 @@
           "posY": 0.5
         }
       ],
-      "delay": 50
+      "delay": 75
     }
   },
   "test": [

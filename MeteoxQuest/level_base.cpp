@@ -72,9 +72,15 @@ void LevelBase::update(const float delta_time)
 		Wave* current_wave = waves_.front();
 		current_wave->update(delta_time);
 
+		if (nbr_enemies_ == 0 && current_wave->get_delay() > 5)
+		{
+			current_wave->set_delay(5);
+		}
+
 		if(current_wave->get_delay() <= 0)
 		{
 			current_wave->spawn_enemies(this);
+			nbr_enemies_ += current_wave->get_size();
 			delete waves_.front();
 			waves_.pop_front();
 		}
@@ -92,6 +98,8 @@ void LevelBase::update(const float delta_time)
 
 		if(objects_[i]->get_despawn())
 		{
+			if (const auto weapon = dynamic_cast<Enemy*>(objects_[i]))
+				--nbr_enemies_;
 			delete objects_[i];
 			objects_.erase(objects_.begin() + i);
 		}

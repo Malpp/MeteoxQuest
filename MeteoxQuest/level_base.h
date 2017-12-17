@@ -32,6 +32,7 @@ private:
 	sf::Sprite background_sprites_[2];
 	std::vector<GameObject*> objects_;
 	float fps_timer_;
+	unsigned int nbr_enemies_;
 	int fps_;
 	Deque<Wave*> waves_;
 	Hud hud;

@@ -15,6 +15,7 @@ public:
 	void add_enemy(Enemy* enemy);
 	void spawn_enemies(LevelBase* level);
 	void update(const float delta_time);
+	void set_delay(int delay);
 private:
 	std::vector<GameObject*> objects_;
 	float delay_;
