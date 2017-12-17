@@ -59,6 +59,7 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 	dash_ready_ = true;
 	bomb_launched_ = false;
 	shields_.push(new Shield(this));
+	shields_.push(new Shield(this));
 }
 
 Player::~Player()
