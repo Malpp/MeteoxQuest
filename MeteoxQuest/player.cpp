@@ -304,18 +304,17 @@ int Player::take_damage(
 	LevelBase* level,
 	const int damage)
 {
-	level->play_sound(&player_hit_sound);
 	int damage_remaining = object->get_damage();
 	if(shields_.size() > 0)
 	{
-		while(shields_.size() > 0 && (damage_remaining = shields_.top()->
-			  take_damage(
-			  object,
-			  level,
-			  damage_remaining)
-			  ) != -1)
+		damage_remaining = shields_.top()->
+		                            take_damage(
+			                            object,
+			                            level,
+			                            damage_remaining);
+		while(shields_.size() > 0 && damage_remaining != -1)
 		{
-			if(shields_.top()->get_life() < 1)
+			if(shields_.top()->get_despawn())
 			{
 				std::cout << "popped\n";
 				delete shields_.top();
@@ -323,8 +322,12 @@ int Player::take_damage(
 			}
 		}
 	}
-	damage_remaining = damage_remaining == -1 ? 0 : damage_remaining;
-	return GameObject::take_damage(object, level, damage_remaining);
+	if(damage_remaining != -1)
+	{
+		level->play_sound(&player_hit_sound);		
+		return GameObject::take_damage(object, level, damage_remaining);
+	}
+	return -1;
 }
 
 Shield* Player::get_shield()
@@ -354,7 +357,7 @@ void Player::switch_weapon_left()
 
 void Player::fire(LevelBase* level)
 {
-	if (weapon_->get_ammo() == 0)
+	if(weapon_->get_ammo() == 0)
 	{
 		weapon_ = nullptr;
 		weapons_.erase(weapon_equipped_);
@@ -366,5 +369,3 @@ void Player::fire(LevelBase* level)
 		Character::fire(level);
 	}
 }
-
-
