@@ -20,6 +20,6 @@ void MainMenu::update(float delta_time)
 {
 	menu_manager_.update(delta_time);
 	if(play_button_->get_active())
-		change_scene(Scene::Scenes::LEVEL4);
+		change_scene(Scene::Scenes::LEVEL1);
 	MenuBase::update(delta_time);
 }
