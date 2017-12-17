@@ -10,7 +10,7 @@ public:
 	void draw() override;
 private:
 	int current_element_;
-	static const int elements_to_load_ = 17;
+	static const int elements_to_load_ = 19;
 	sf::RectangleShape loading_bar_;
 	sf::Text text_;
 };

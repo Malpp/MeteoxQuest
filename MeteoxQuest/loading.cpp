@@ -10,6 +10,8 @@
 #include "explosive_bomb.h"
 #include "shield.h"
 #include "player.h"
+#include "heart_weapon.h"
+#include "mario_weapon.h"
 
 Loading::Loading(sf::RenderWindow* window)
 	: Scene(window)
@@ -100,6 +102,12 @@ void Loading::update(float delta_time)
 			break;
 		case 16:
 			Player::player_hit_sound.loadFromFile("Assets/Sounds/hit.ogg");
+			break;
+		case 17:
+			HeartWeapon::fire_sound.loadFromFile("Assets/Sounds/heart.ogg");
+			break;
+		case 18:
+			MarioWeapon::fire_sound.loadFromFile("Assets/Sounds/mario.wav");
 			break;
 		default:
 			change_scene(MENU);

@@ -37,6 +37,7 @@ void Shield::handle_collision(GameObject* other, LevelBase* level)
 
 void Shield::on_death(LevelBase* level)
 {
+	despawn();
 }
 
 void Shield::handle_edge()
