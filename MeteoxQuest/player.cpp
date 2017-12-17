@@ -308,12 +308,12 @@ int Player::take_damage(
 	int damage_remaining = object->get_damage();
 	if(shields_.size() > 0)
 	{
-		damage_remaining = shields_.top()->
-		                            take_damage(
-			                            object,
-			                            level,
-			                            damage_remaining);
-		while(shields_.size() > 0 && damage_remaining != -1)
+		while(shields_.size() > 0 && (damage_remaining = shields_.top()->
+		                                                          take_damage(
+			                                                          object,
+			                                                          level,
+			                                                          damage_remaining)
+		) != -1)
 		{
 			if(shields_.top()->get_despawn())
 			{
@@ -325,7 +325,7 @@ int Player::take_damage(
 	}
 	if(damage_remaining != -1)
 	{
-		level->play_sound(&player_hit_sound);		
+		level->play_sound(&player_hit_sound);
 		return GameObject::take_damage(object, level, damage_remaining);
 	}
 	return -1;

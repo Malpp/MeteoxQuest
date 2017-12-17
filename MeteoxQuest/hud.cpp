@@ -17,7 +17,7 @@ const float Hud::blink_time_ = 0.2f;
 Hud::Hud()
 	: life_(0)
 	, score_(0)
-	, score_text_("0", Game::font)
+	, score_text_("0", Game::font, 50)
 	, life_text_("", Game::font)
 	, blink_timer_(0)
 	, should_draw_(false)
@@ -30,14 +30,15 @@ Hud::Hud()
 	, shield_hp_("", Game::font)
 	, no_shields_("", Game::font)
 {
-	player_icon_.setPosition(10, 50);
+	player_icon_.setPosition(10, 10);
 	player_icon_.setTexture(*player_icon_texture_);
 	heart_weapon_icon_.setTexture(*heart_icon_texture_);
 	heart_weapon_icon_.setPosition(1600, 20);
 	mario_weapon_icon_.setTexture(*mario_icon_texture_);
 	mario_weapon_icon_.setPosition(1675, 20);
-	score_text_.setPosition(10, 10);
-	life_text_.setPosition(95, 55);
+	center_text(score_text_);
+	score_text_.setPosition(Game::GAME_WIDTH * 0.5f, 40);
+	life_text_.setPosition(95, 10);
 	selected_weapon_.setFillColor(sf::Color::Transparent);
 	selected_weapon_.setOutlineColor(sf::Color::White);
 	selected_weapon_.setOutlineThickness(5);
@@ -97,12 +98,13 @@ void Hud::notifier(Subject* subject, const float delta_time)
 
 		std::stringstream score_stream;
 		score_stream << player->get_score();
-		score_text_.setString("SCORE: " + score_stream.str());
+		score_text_.setString(score_stream.str());
+		center_text(score_text_);
 
 		std::stringstream life_stream;
 		const int life = player->get_life();
 		life_stream << life;
-		life_text_.setString("X " + life_stream.str());
+		life_text_.setString("x " + life_stream.str());
 
 		if(const auto weapon = dynamic_cast<HeartWeapon*>(player->get_weapon()))
 		{
@@ -157,3 +159,11 @@ void Hud::notifier(Subject* subject, const float delta_time)
 		}
 	}
 }
+
+void Hud::center_text(sf::Text& text)
+{
+	const int char_size = text.getCharacterSize();
+	text.setOrigin(char_size * text.getString().getSize() * 0.5f, char_size * 0.5f);
+}
+
+

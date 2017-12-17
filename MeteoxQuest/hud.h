@@ -14,6 +14,7 @@ public:
 	static sf::Texture* incoming_warning_;
 	static sf::Texture* incoming_arrow_;
 private:
+	static void center_text(sf::Text& text);
 	static const int number_of_arrows_ = 50;
 	float arrow_screen_offset_;
 	sf::Sprite arrows[number_of_arrows_];
