@@ -315,6 +315,9 @@
     <ClInclude Include="level4.h">
       <Filter>Source Files\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="transition.h">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -467,9 +470,6 @@
     <ClCompile Include="explosive_bomb.cpp">
       <Filter>Source Files\Game\powerups</Filter>
     </ClCompile>
-    <ClCompile Include="explosive_projectile.cpp">
-      <Filter>Header Files\Game\projectiles</Filter>
-    </ClCompile>
     <ClCompile Include="shield.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
@@ -481,6 +481,12 @@
     </ClCompile>
     <ClCompile Include="level4.cpp">
       <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="transition.cpp">
+      <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="explosive_projectile.cpp">
+      <Filter>Source Files\Game\projectiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
