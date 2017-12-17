@@ -16,7 +16,7 @@ MainMenu::~MainMenu()
 {
 }
 
-void MainMenu::update(float delta_time)
+void MainMenu::update(const float delta_time)
 {
 	menu_manager_.update(delta_time);
 	if(play_button_->get_active())
