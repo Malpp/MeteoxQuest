@@ -15,20 +15,22 @@ sf::Texture* Hud::incoming_warning_;
 const float Hud::blink_time_ = 0.2f;
 
 Hud::Hud()
-	: life_(0)
+	: arrow_screen_offset_(incoming_arrow_->getSize().y * 0.5f)
+	, life_(0)
 	, score_(0)
+	, selected_weapon_(26)
+	, warning_sprite_(*incoming_warning_)
 	, score_text_("0", Game::font, 50)
 	, life_text_("", Game::font)
 	, blink_timer_(0)
 	, should_draw_(false)
-	, warning_sprite_(*incoming_warning_)
 	, wave_incoming_(false)
-	, arrows_created_(false)
 	, wave_size_(0)
-	, arrow_screen_offset_(incoming_arrow_->getSize().y * 0.5f)
-	, selected_weapon_(26)
+	, arrows_created_(false)
 	, shield_hp_("", Game::font)
 	, no_shields_("", Game::font)
+	, ammo_text_("", Game::font)
+	, ammo_should_draw_(false)
 {
 	player_icon_.setPosition(10, 10);
 	player_icon_.setTexture(*player_icon_texture_);
@@ -44,6 +46,8 @@ Hud::Hud()
 	selected_weapon_.setOutlineThickness(5);
 	shield_hp_.setPosition(10, Game::GAME_HEIGHT - 80);
 	no_shields_.setPosition(10, Game::GAME_HEIGHT - 40);
+	center_text(ammo_text_);
+	ammo_text_.setPosition(1675, 100);
 
 	for(int i = 0; i < number_of_arrows_; ++i)
 	{
@@ -63,6 +67,8 @@ void Hud::draw(sf::RenderWindow* window) const
 	window->draw(life_text_);
 	window->draw(shield_hp_);
 	window->draw(no_shields_);
+	if(ammo_should_draw_)
+		window->draw(ammo_text_);
 	if(should_draw_)
 	{
 		window->draw(warning_sprite_);
@@ -101,6 +107,20 @@ void Hud::notifier(Subject* subject, const float delta_time)
 		score_text_.setString(score_stream.str());
 		center_text(score_text_);
 
+		const int ammo = player->get_weapon()->get_ammo();
+		if(ammo > -1)
+		{
+			ammo_should_draw_ = true;
+			std::stringstream ammo_stream;
+			ammo_stream << ammo;
+			ammo_text_.setString(ammo_stream.str());
+			center_text(ammo_text_);
+		}
+		else
+		{
+			ammo_should_draw_ = false;
+		}
+
 		std::stringstream life_stream;
 		const int life = player->get_life();
 		life_stream << life;
@@ -120,7 +140,6 @@ void Hud::notifier(Subject* subject, const float delta_time)
 		{
 			selected_weapon_.setPosition(1748, 14);
 		}
-
 	}
 
 	if(const auto level = dynamic_cast<LevelBase*>(subject))
@@ -163,7 +182,6 @@ void Hud::notifier(Subject* subject, const float delta_time)
 void Hud::center_text(sf::Text& text)
 {
 	const int char_size = text.getCharacterSize();
-	text.setOrigin(char_size * text.getString().getSize() * 0.5f, char_size * 0.5f);
+	text.setOrigin(char_size * text.getString().getSize() * 0.5f,
+	               char_size * 0.5f);
 }
-
-
