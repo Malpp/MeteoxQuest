@@ -6,16 +6,24 @@
 #include "ken_enemy.h"
 #include <fstream>
 #include "src/json.hpp"
+#include "meteox1.h"
+#include "meteox3.h"
+#include "meteox2.h"
+#include "meteox4.h"
+
+const float LevelBase::combo_time_ = 3;
 
 LevelBase::LevelBase(
 	sf::RenderWindow* window,
 	sf::Texture* texture,
 	const float scroll_speed)
 	: Scene(window)
+	, combo_(1)
+	, combo_timer_(0)
 {
 	player_ = new Player(sf::Vector2f(100, Game::GAME_HEIGHT * 0.5f), 0);
 	player_->add_observer(&hud);
-	add_observer( &hud );
+	add_observer(&hud);
 	add_game_object(player_);
 	scroll_speed_ = scroll_speed;
 	background_size_ = static_cast<sf::Vector2f>(texture->getSize());
@@ -75,7 +83,7 @@ void LevelBase::update(const float delta_time)
 		Wave* current_wave = waves_.front();
 		current_wave->update(delta_time);
 
-		if (nbr_enemies_ == 0 && current_wave->get_delay() > 5)
+		if(nbr_enemies_ == 0 && current_wave->get_delay() > 5)
 		{
 			current_wave->set_delay(5);
 		}
@@ -101,7 +109,7 @@ void LevelBase::update(const float delta_time)
 
 		if(objects_[i]->get_despawn())
 		{
-			if (const auto weapon = dynamic_cast<Enemy*>(objects_[i]))
+			if(const auto weapon = dynamic_cast<Enemy*>(objects_[i]))
 				--nbr_enemies_;
 			delete objects_[i];
 			objects_.erase(objects_.begin() + i);
@@ -142,9 +150,19 @@ void LevelBase::update(const float delta_time)
 	//Update sounds
 	update_sounds();
 
+	//Update combo
+	if(combo_ > 1)
+	{
+		combo_timer_ += delta_time;
+		if(combo_timer_ > combo_time_)
+		{
+			combo_ *= 0.5f;
+			combo_timer_ = 0;
+		}
+	}
+
 	//REEEEEEEEEEEEEE
 	notify_all_observers(delta_time);
-
 }
 
 void LevelBase::draw()
@@ -197,33 +215,50 @@ bool LevelBase::load_level(const std::string path)
 
 			if(type == "GC")
 				wave->add_enemy(new GCEnemy(
-											 sf::Vector2f(posX * Game::GAME_WIDTH,
-														posY * Game::GAME_HEIGHT),
-											 0,
-											 GameObject::generate_random_color()));
+					sf::Vector2f(posX * Game::GAME_WIDTH,
+					             posY * Game::GAME_HEIGHT),
+					0,
+					GameObject::generate_random_color()));
 			else if(type == "SMORC")
 				wave->add_enemy(new OrcEnemy(
-											 sf::Vector2f(posX * Game::GAME_WIDTH,
-														posY * Game::GAME_HEIGHT),
-											 0,
-											 GameObject::generate_random_color()));
+					sf::Vector2f(posX * Game::GAME_WIDTH,
+					             posY * Game::GAME_HEIGHT),
+					0,
+					GameObject::generate_random_color()));
 			else if(type == "KEN")
 				wave->add_enemy(new KenEnemy(
-											 sf::Vector2f(posX * Game::GAME_WIDTH,
-														posY * Game::GAME_HEIGHT),
-											 0,
-											 GameObject::generate_random_color()));
+					sf::Vector2f(posX * Game::GAME_WIDTH,
+					             posY * Game::GAME_HEIGHT),
+					0,
+					GameObject::generate_random_color()));
+			else if(type == "METEOX1")
+				wave->add_enemy(new Meteox1(sf::Vector2f(posX * Game::GAME_WIDTH,
+				                                         posY * Game::GAME_HEIGHT),
+				                            0));
+			else if(type == "METEOX2")
+				wave->add_enemy(new Meteox2(sf::Vector2f(posX * Game::GAME_WIDTH,
+				                                         posY * Game::GAME_HEIGHT),
+				                            0));
+			else if(type == "METEOX3")
+				wave->add_enemy(new Meteox3(sf::Vector2f(posX * Game::GAME_WIDTH,
+				                                         posY * Game::GAME_HEIGHT),
+				                            0));
+			else if(type == "METEOX4")
+				wave->add_enemy(new Meteox4(sf::Vector2f(posX * Game::GAME_WIDTH,
+				                                         posY * Game::GAME_HEIGHT),
+				                            0));
 		}
 
 		waves_.push_back(wave);
 	}
-
 	return true;
 }
 
-void LevelBase::add_score(const int score_to_add) const
+void LevelBase::add_score(const int score_to_add)
 {
-	player_->add_score(score_to_add);
+	player_->add_score(score_to_add * combo_);
+	combo_ *= 2;
+	combo_timer_ = 0;
 }
 
 Player* LevelBase::get_player() const
@@ -235,6 +270,11 @@ void LevelBase::play_sound(sf::SoundBuffer* buffer)
 {
 	sound_queue_.push_back(sf::Sound(*buffer));
 	sound_queue_.back().play();
+}
+
+int LevelBase::get_combo() const
+{
+	return combo_;
 }
 
 void LevelBase::update_sounds()

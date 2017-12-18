@@ -22,9 +22,10 @@ public:
 	void draw() override;
 	virtual void manage_input(sf::Event event);
 	void add_game_object(GameObject* projectile);
-	void add_score( const int score_to_add ) const;
+	void add_score( const int score_to_add );
 	Player* get_player() const;
 	void play_sound(sf::SoundBuffer* buffer);
+	int get_combo() const;
 private:
 	void update_sounds();
 	Player* player_;
@@ -35,6 +36,9 @@ private:
 	int fps_;
 	Hud hud;
 	Deque<sf::Sound> sound_queue_;
+	int combo_;
+	float combo_timer_;
+	static const float combo_time_;
 protected:
 	unsigned int nbr_enemies_;
 	bool load_level(const std::string path);

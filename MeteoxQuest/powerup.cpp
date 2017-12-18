@@ -1,5 +1,7 @@
 ﻿#include "stdafx.h"
 #include "powerup.h"
+#include "helper.h"
+#include "level_base.h"
 
 PowerUp::PowerUp(const sf::Vector2f& pos,
 				const float angle,
@@ -22,6 +24,16 @@ PowerUp::PowerUp(const sf::Vector2f& pos,
 					ENEMY,
 					movespeed)
 {
+}
+
+void PowerUp::update(const float delta_time, LevelBase* level)
+{
+	direction_ = Helper::movePointByAngle(1,
+										  Helper::angleBetweenTwoPoints(
+										  getPosition(),
+										  level->get_player()->
+										  getPosition()));
+	NonCharacter::update(delta_time, level);
 }
 
 void PowerUp::on_death(LevelBase* level)

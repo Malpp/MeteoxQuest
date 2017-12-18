@@ -12,6 +12,11 @@
 #include "player.h"
 #include "heart_weapon.h"
 #include "mario_weapon.h"
+#include "shield_powerup.h"
+#include "meteox1.h"
+#include "meteox2.h"
+#include "meteox3.h"
+#include "meteox4.h"
 
 Loading::Loading(sf::RenderWindow* window)
 	: Scene(window)
@@ -74,11 +79,11 @@ void Loading::update(float delta_time)
 			break;
 		case 9:
 			Hud::heart_icon_texture_ = Game::resource_handler_.
-				add_texture("hud/heart_icon.png");
+					add_texture("hud/heart_icon.png");
 			break;
 		case 10:
 			Hud::mario_icon_texture_ = Game::resource_handler_.
-				add_texture("hud/mario_icon.png");
+					add_texture("hud/mario_icon.png");
 			break;
 		case 11:
 			Hud::incoming_arrow_ = Game::resource_handler_.
@@ -98,7 +103,7 @@ void Loading::update(float delta_time)
 			break;
 		case 15:
 			Shield::shield_texture = Game::resource_handler_.
-				add_texture("shield.png");
+					add_texture("shield.png");
 			break;
 		case 16:
 			Player::player_hit_sound.loadFromFile("Assets/Sounds/hit.ogg");
@@ -108,6 +113,26 @@ void Loading::update(float delta_time)
 			break;
 		case 18:
 			MarioWeapon::fire_sound.loadFromFile("Assets/Sounds/mario.wav");
+			break;
+		case 19:
+			ShieldPowerup::texture_ = Game::resource_handler_.
+					add_texture("shield_powerup.png");
+			break;
+		case 20:
+			Meteox1::texture = Game::resource_handler_.
+				add_texture("Enemies/Meteox/1.png");
+			break;
+		case 21:
+			Meteox2::texture = Game::resource_handler_.
+				add_texture("Enemies/Meteox/2.png");
+			break;
+		case 22:
+			Meteox3::texture = Game::resource_handler_.
+				add_texture("Enemies/Meteox/3.png");
+			break;
+		case 23:
+			Meteox4::texture = Game::resource_handler_.
+				add_texture("Enemies/Meteox/4.png");
 			break;
 		default:
 			change_scene(MENU);

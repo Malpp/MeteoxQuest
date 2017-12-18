@@ -20,6 +20,8 @@ public:
 		int no_states,
 		float frame_delay,
 		const float movespeed);
+
+	void update(const float delta_time, LevelBase* level) override;
 protected:
 	void on_death(LevelBase* level) override;
 	static const int powerup_life_ = 1;

@@ -15,6 +15,7 @@ public:
 	static sf::Texture* incoming_arrow_;
 private:
 	static void center_text(sf::Text& text);
+	static void color_text_combo(sf::Text& text, int combo);
 	static const int number_of_arrows_ = 50;
 	float arrow_screen_offset_;
 	sf::Sprite arrows[number_of_arrows_];
@@ -38,4 +39,5 @@ private:
 	sf::Text no_shields_;
 	sf::Text ammo_text_;
 	bool ammo_should_draw_;
+	sf::Text combo_text_;
 };

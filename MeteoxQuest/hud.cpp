@@ -31,6 +31,7 @@ Hud::Hud()
 	, no_shields_("", Game::font)
 	, ammo_text_("", Game::font)
 	, ammo_should_draw_(false)
+	, combo_text_("", Game::font)
 {
 	player_icon_.setPosition(10, 10);
 	player_icon_.setTexture(*player_icon_texture_);
@@ -40,6 +41,8 @@ Hud::Hud()
 	mario_weapon_icon_.setPosition(1675, 20);
 	center_text(score_text_);
 	score_text_.setPosition(Game::GAME_WIDTH * 0.5f, 40);
+	center_text(combo_text_);
+	combo_text_.setPosition(Game::GAME_WIDTH * 0.5f, 85);
 	life_text_.setPosition(95, 10);
 	selected_weapon_.setFillColor(sf::Color::Transparent);
 	selected_weapon_.setOutlineColor(sf::Color::White);
@@ -69,6 +72,7 @@ void Hud::draw(sf::RenderWindow* window) const
 	window->draw(no_shields_);
 	if(ammo_should_draw_)
 		window->draw(ammo_text_);
+	window->draw(combo_text_);
 	if(should_draw_)
 	{
 		window->draw(warning_sprite_);
@@ -176,6 +180,12 @@ void Hud::notifier(Subject* subject, const float delta_time)
 				should_draw_ = false;
 			}
 		}
+
+		std::stringstream combo_stream;
+		combo_stream << "x" << level->get_combo();
+		combo_text_.setString(combo_stream.str());
+		center_text(combo_text_);
+		color_text_combo(combo_text_, level->get_combo());
 	}
 }
 
@@ -184,4 +194,13 @@ void Hud::center_text(sf::Text& text)
 	const int char_size = text.getCharacterSize();
 	text.setOrigin(char_size * text.getString().getSize() * 0.5f,
 	               char_size * 0.5f);
+}
+
+void Hud::color_text_combo(sf::Text& text, int combo)
+{
+	combo = sqrtf(combo) - 1;
+	const sf::Color color(std::min(15, combo) * 17,
+	                      (15 - std::min(15, combo)) * 17,
+	                      0);
+	text.setFillColor(color);
 }
