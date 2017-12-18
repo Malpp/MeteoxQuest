@@ -45,8 +45,10 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 	            PLAYER)
 	, Subject()
 {
-	weapons_.push_back(new HeartWeapon);
-	weapons_.push_back(new MarioWeapon);
+	weapons_to_delete_.push_back(new HeartWeapon);
+	weapons_.push_back(weapons_to_delete_.rbegin()[0]);
+	weapons_to_delete_.push_back(new MarioWeapon);
+	weapons_.push_back(weapons_to_delete_.rbegin()[0]);
 	weapon_equipped_ = weapons_.begin();
 	weapon_ = *weapon_equipped_;
 	weapon_switch_timer_ = 0;
@@ -62,6 +64,12 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 
 Player::~Player()
 {
+	for(Weapon* weapon : weapons_to_delete_)
+	{
+		if(weapon != weapon_)
+			delete weapon;
+	}
+
 	weapons_.clear();
 
 	while(shields_.size() != 0)

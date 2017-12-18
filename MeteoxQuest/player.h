@@ -80,4 +80,5 @@ private:
 	std::vector<Bomb*> bombs_;
 	bool bomb_launched_;
 	Stack<Shield*> shields_;
+	std::vector<Weapon*> weapons_to_delete_;
 };
