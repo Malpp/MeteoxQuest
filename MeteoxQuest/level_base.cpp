@@ -6,6 +6,10 @@
 #include "ken_enemy.h"
 #include <fstream>
 #include "src/json.hpp"
+#include "meteox1.h"
+#include "meteox3.h"
+#include "meteox2.h"
+#include "meteox4.h"
 
 const float LevelBase::combo_time_ = 3;
 
@@ -71,7 +75,7 @@ void LevelBase::input()
 void LevelBase::update(const float delta_time)
 {
 	// Check if we should go to the next level
-	if (waves_.empty())
+	if(waves_.empty())
 	{
 		change_scene(TRANSITION);
 	}
@@ -162,7 +166,6 @@ void LevelBase::update(const float delta_time)
 
 	//REEEEEEEEEEEEEE
 	notify_all_observers(delta_time);
-
 }
 
 void LevelBase::draw()
@@ -215,22 +218,38 @@ bool LevelBase::load_level(const std::string path)
 
 			if(type == "GC")
 				wave->add_enemy(new GCEnemy(
-				sf::Vector2f(posX * Game::GAME_WIDTH,
-				posY * Game::GAME_HEIGHT),
-				0,
-				GameObject::generate_random_color()));
+					sf::Vector2f(posX * Game::GAME_WIDTH,
+					             posY * Game::GAME_HEIGHT),
+					0,
+					GameObject::generate_random_color()));
 			else if(type == "SMORC")
 				wave->add_enemy(new OrcEnemy(
-				sf::Vector2f(posX * Game::GAME_WIDTH,
-				posY * Game::GAME_HEIGHT),
-				0,
-				GameObject::generate_random_color()));
+					sf::Vector2f(posX * Game::GAME_WIDTH,
+					             posY * Game::GAME_HEIGHT),
+					0,
+					GameObject::generate_random_color()));
 			else if(type == "KEN")
 				wave->add_enemy(new KenEnemy(
-				sf::Vector2f(posX * Game::GAME_WIDTH,
-				posY * Game::GAME_HEIGHT),
-				0,
-				GameObject::generate_random_color()));
+					sf::Vector2f(posX * Game::GAME_WIDTH,
+					             posY * Game::GAME_HEIGHT),
+					0,
+					GameObject::generate_random_color()));
+			else if(type == "METEOX1")
+				wave->add_enemy(new Meteox1(sf::Vector2f(posX * Game::GAME_WIDTH,
+				                                         posY * Game::GAME_HEIGHT),
+				                            0));
+			else if(type == "METEOX2")
+				wave->add_enemy(new Meteox2(sf::Vector2f(posX * Game::GAME_WIDTH,
+				                                         posY * Game::GAME_HEIGHT),
+				                            0));
+			else if(type == "METEOX3")
+				wave->add_enemy(new Meteox3(sf::Vector2f(posX * Game::GAME_WIDTH,
+				                                         posY * Game::GAME_HEIGHT),
+				                            0));
+			else if(type == "METEOX4")
+				wave->add_enemy(new Meteox4(sf::Vector2f(posX * Game::GAME_WIDTH,
+				                                         posY * Game::GAME_HEIGHT),
+				                            0));
 		}
 
 		waves_.push_back(wave);

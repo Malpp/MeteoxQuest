@@ -29,6 +29,5 @@ public:
 	Weapon* get_weapon() const;
 protected:
 	Weapon* weapon_;
-private:
 	float movespeed_;
 };

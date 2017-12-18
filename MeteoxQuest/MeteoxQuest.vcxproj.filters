@@ -109,6 +109,12 @@
     <Filter Include="Header Files\Game\projectiles\powerups">
       <UniqueIdentifier>{d88ba4c2-e9d0-416b-b6d8-2c98997c1d3c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Game\enemies\boss">
+      <UniqueIdentifier>{d557d64a-45f8-4b4b-aa4f-b4f62c3d1f6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Game\enemies\boss">
+      <UniqueIdentifier>{93ce97f5-03f1-4dd8-9a5c-582afc55b8a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -321,6 +327,27 @@
     <ClInclude Include="shield_powerup.h">
       <Filter>Header Files\Game\projectiles\powerups</Filter>
     </ClInclude>
+    <ClInclude Include="boss.h">
+      <Filter>Header Files\Game\enemies\boss</Filter>
+    </ClInclude>
+    <ClInclude Include="meteox1.h">
+      <Filter>Header Files\Game\enemies\boss</Filter>
+    </ClInclude>
+    <ClInclude Include="meteox_weapon.h">
+      <Filter>Header Files\Game\weapons\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="meteox_projectile.h">
+      <Filter>Header Files\Game\projectiles\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="meteox2.h">
+      <Filter>Header Files\Game\enemies\boss</Filter>
+    </ClInclude>
+    <ClInclude Include="meteox3.h">
+      <Filter>Header Files\Game\enemies\boss</Filter>
+    </ClInclude>
+    <ClInclude Include="meteox4.h">
+      <Filter>Header Files\Game\enemies\boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -493,6 +520,27 @@
     </ClCompile>
     <ClCompile Include="shield_powerup.cpp">
       <Filter>Source Files\Game\powerups</Filter>
+    </ClCompile>
+    <ClCompile Include="boss.cpp">
+      <Filter>Source Files\Game\enemies\boss</Filter>
+    </ClCompile>
+    <ClCompile Include="meteox1.cpp">
+      <Filter>Source Files\Game\enemies\boss</Filter>
+    </ClCompile>
+    <ClCompile Include="meteox_weapon.cpp">
+      <Filter>Source Files\Game\weapons\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="meteox_projectile.cpp">
+      <Filter>Header Files\Game\projectiles\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="meteox2.cpp">
+      <Filter>Source Files\Game\enemies\boss</Filter>
+    </ClCompile>
+    <ClCompile Include="meteox3.cpp">
+      <Filter>Source Files\Game\enemies\boss</Filter>
+    </ClCompile>
+    <ClCompile Include="meteox4.cpp">
+      <Filter>Header Files\Game\enemies\boss</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -13,6 +13,10 @@
 #include "heart_weapon.h"
 #include "mario_weapon.h"
 #include "shield_powerup.h"
+#include "meteox1.h"
+#include "meteox2.h"
+#include "meteox3.h"
+#include "meteox4.h"
 
 Loading::Loading(sf::RenderWindow* window)
 	: Scene(window)
@@ -113,6 +117,22 @@ void Loading::update(float delta_time)
 		case 19:
 			ShieldPowerup::texture_ = Game::resource_handler_.
 					add_texture("shield_powerup.png");
+			break;
+		case 20:
+			Meteox1::texture = Game::resource_handler_.
+				add_texture("Enemies/Meteox/1.png");
+			break;
+		case 21:
+			Meteox2::texture = Game::resource_handler_.
+				add_texture("Enemies/Meteox/2.png");
+			break;
+		case 22:
+			Meteox3::texture = Game::resource_handler_.
+				add_texture("Enemies/Meteox/3.png");
+			break;
+		case 23:
+			Meteox4::texture = Game::resource_handler_.
+				add_texture("Enemies/Meteox/4.png");
 			break;
 		default:
 			change_scene(MENU);
