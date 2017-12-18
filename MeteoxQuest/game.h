@@ -33,6 +33,7 @@ public:
 	static int get_score();
 	static void increase_score(int points);
 	static void player_damage(int damage);
+	static void reset();
 	/// <summary>
 	/// The Game width
 	/// </summary>

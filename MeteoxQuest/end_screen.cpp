@@ -14,6 +14,7 @@ EndScreen::EndScreen(sf::RenderWindow* window)
 	death_sprite_.setTexture(
 		*resource_handler_.add_texture("death_screen.jpg"));
 	death_sprite_.setPosition(Game::CAMARA_WIDTH * 0.35f, Game::CAMERA_HEIGHT * 0.33f);
+	Game::reset();
 }
 
 

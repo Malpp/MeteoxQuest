@@ -119,3 +119,10 @@ void Game::player_damage(int damage)
 {
 	player_life_ -= damage;
 }
+
+void Game::reset()
+{
+	player_life_ = 0;
+	player_is_alive_ = true;
+	score_ = 0;
+}
