@@ -78,7 +78,7 @@
     "Wave4": {
       "enemies_to_spawn": [
         {
-          "type": "NorMeteox",
+          "type": "METEOX1",
           "posX": 1,
           "posY": 0.5
         }
