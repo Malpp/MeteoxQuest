@@ -13,6 +13,7 @@ private:
 	bool running;
 	Scene::Scenes current_scene_;
 	Scene* active_scene_;
+	Scene::Scenes last_scene_;
 
 	//
 	//TEMPLATE STUFF BELOW

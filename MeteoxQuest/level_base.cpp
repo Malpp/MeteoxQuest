@@ -70,6 +70,12 @@ void LevelBase::input()
 
 void LevelBase::update(const float delta_time)
 {
+	// Check if we should go to the next level
+	if (waves_.empty())
+	{
+		change_scene(TRANSITION);
+	}
+
 	//Update waves
 	if(!waves_.empty())
 	{
@@ -156,6 +162,7 @@ void LevelBase::update(const float delta_time)
 
 	//REEEEEEEEEEEEEE
 	notify_all_observers(delta_time);
+
 }
 
 void LevelBase::draw()

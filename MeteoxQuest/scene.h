@@ -20,6 +20,7 @@ public:
 		LEVEL4,
 		MENU,
 		LOADING,
+		TRANSITION,
 		END
 	};
 

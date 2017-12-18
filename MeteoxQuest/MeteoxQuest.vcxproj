@@ -172,6 +172,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="subject.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="textbox.h" />
+    <ClInclude Include="transition.h" />
     <ClInclude Include="wave.h" />
     <ClInclude Include="weapon.h" />
     <ClInclude Include="weapon_effector.h" />
@@ -233,6 +234,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     </ClCompile>
     <ClCompile Include="subject.cpp" />
     <ClCompile Include="textbox.cpp" />
+    <ClCompile Include="transition.cpp" />
     <ClCompile Include="wave.cpp" />
     <ClCompile Include="weapon.cpp" />
   </ItemGroup>
