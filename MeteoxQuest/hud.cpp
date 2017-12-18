@@ -202,8 +202,5 @@ void Hud::color_text_combo(sf::Text& text, int combo)
 	const sf::Color color(std::min(15, combo) * 17,
 	                      (15 - std::min(15, combo)) * 17,
 	                      0);
-	std::cout << (15 - std::min(15, combo)) << "\n";
-	std::cout << static_cast<int>(color.r) << " " << static_cast<int>(color.g)
-			<< " " << combo << "\n";
 	text.setFillColor(color);
 }
