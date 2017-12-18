@@ -122,7 +122,7 @@ void Game::player_damage(int damage)
 
 void Game::reset()
 {
-	player_life_ = 0;
+	player_life_ = 3;
 	player_is_alive_ = true;
 	score_ = 0;
 }
