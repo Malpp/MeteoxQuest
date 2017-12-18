@@ -14,6 +14,7 @@ ResourceHandler Game::resource_handler_;
 sf::Font Game::font;
 bool Game::player_is_alive_ = true;
 int Game::player_life_ = 3;
+int Game::score_ = 0;
 
 Game::Game()
 {
@@ -102,4 +103,19 @@ bool Game::get_player_alive()
 void Game::set_player_alive(bool player_is_alive)
 {
 	player_is_alive_ = player_is_alive;
+}
+
+int Game::get_score()
+{
+	return score_;
+}
+
+void Game::increase_score(int points)
+{
+	score_ += points;
+}
+
+void Game::player_damage(int damage)
+{
+	player_life_ -= damage;
 }

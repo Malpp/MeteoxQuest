@@ -17,6 +17,7 @@ private:
 	Scene::Scenes last_scene_;
 	static bool player_is_alive_;
 	static int player_life_;
+	static int score_;
 	//
 	//TEMPLATE STUFF BELOW
 	//
@@ -29,6 +30,9 @@ public:
 	static int get_player_life();
 	static bool get_player_alive();
 	static void set_player_alive(bool player_is_alive);
+	static int get_score();
+	static void increase_score(int points);
+	static void player_damage(int damage);
 	/// <summary>
 	/// The Game width
 	/// </summary>

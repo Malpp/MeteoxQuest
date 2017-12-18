@@ -58,7 +58,6 @@ private:
 	static const int no_frames_ = 4;
 	static const float movespeed_;
 	static const float frame_delay_;
-	unsigned int score_;
 	list<Weapon*> weapons_;
 	list<Weapon*>::iterator weapon_equipped_;
 	CommandManager command_manager_;

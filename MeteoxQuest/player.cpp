@@ -22,12 +22,12 @@ sf::SoundBuffer Player::player_hit_sound;
 
 unsigned Player::get_score() const
 {
-	return score_;
+	return Game::get_score();
 }
 
 void Player::add_score(const int score_to_add)
 {
-	score_ += score_to_add;
+	Game::increase_score(score_to_add);
 }
 
 Player::Player(const sf::Vector2f& pos, const float angle)
@@ -51,7 +51,6 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 	weapon_ = *weapon_equipped_;
 	weapon_switch_timer_ = 0;
 	weapon_switch_ready_ = true;
-	score_ = 0;
 	last_state_ = state_;
 	dashing_ = false;
 	dash_timer_ = 0;
@@ -326,6 +325,7 @@ int Player::take_damage(
 	if(damage_remaining != -1)
 	{
 		level->play_sound(&player_hit_sound);
+		Game::player_damage(damage_remaining);
 		return GameObject::take_damage(object, level, damage_remaining);
 	}
 	return -1;

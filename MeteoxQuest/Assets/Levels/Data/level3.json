@@ -63,31 +63,9 @@
 	  "Wave4": {
 		"enemies_to_spawn": [
 		  {
-			"type": "GC",
-			"posX": 1,
-			"posY": -1
-		  },
-		  {
-			"type": "GC",
-			"posX": 1,
-			"posY": -1
-		  },
-		  {
-			"type": "GC",
-			"posX": 1,
-			"posY": -1
-		  }
-		  ,
-		  {
-			"type": "GC",
-			"posX": 1,
-			"posY": -1
-		  }
-		  ,
-		  {
-			"type": "GC",
-			"posX": 1,
-			"posY": -1
+        "type": "CLOUD9",
+        "posX": 1,
+        "posY": 0.01  
 		  }
 		],
 		"delay": 10
