@@ -33,16 +33,16 @@ private:
 	sf::Sprite background_sprites_[2];
 	std::vector<GameObject*> objects_;
 	float fps_timer_;
-	unsigned int nbr_enemies_;
 	int fps_;
-	Deque<Wave*> waves_;
 	Hud hud;
 	Deque<sf::Sound> sound_queue_;
 	int combo_;
 	float combo_timer_;
 	static const float combo_time_;
 protected:
+	unsigned int nbr_enemies_;
 	bool load_level(const std::string path);
 	sf::Vector2f background_size_;
+	Deque<Wave*> waves_;
 
 };

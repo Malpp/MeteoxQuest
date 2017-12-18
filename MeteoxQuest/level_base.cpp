@@ -74,11 +74,8 @@ void LevelBase::input()
 
 void LevelBase::update(const float delta_time)
 {
-	// Check if we should go to the next level
-	if(waves_.empty())
-	{
-		change_scene(TRANSITION);
-	}
+	if (player_->get_life() <= 0)
+		change_scene(END);
 
 	//Update waves
 	if(!waves_.empty())
