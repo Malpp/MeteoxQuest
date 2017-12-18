@@ -37,7 +37,6 @@ public:
 	void right() override;
 	void fire(LevelBase* level) override;
 	void on_death(LevelBase* level) override;
-	void add_powerup(const PowerUp::PowerUpType power_up);
 	void switch_weapon_left();
 	void switch_weapon_right();
 	int take_damage(
@@ -48,6 +47,7 @@ public:
 	bool shield_exists() const;
 	int get_no_shields() const;
 	static sf::SoundBuffer player_hit_sound;
+	void add_shield_powerup();
 protected:
 	void handle_collision(GameObject* other, LevelBase* level) override;
 private:

@@ -6,6 +6,8 @@
 #include "level_base.h"
 #include "explosive_bomb.h";
 #include "emp_bomb.h";
+#include "helper.h"
+#include "shield_powerup.h"
 
 Enemy::Enemy(
 	const sf::Vector2f& pos,
@@ -70,7 +72,7 @@ void Enemy::on_death(LevelBase* level)
 	level->add_score( score_worth_ );
 	if (should_drop())
 	{
-		int random_bonus = rand() % 2 + 1;
+		int random_bonus = Helper::generateRandInt(1,3);
 		switch (random_bonus)
 		{
 		case 1:
@@ -78,6 +80,9 @@ void Enemy::on_death(LevelBase* level)
 			break;
 		case 2:
 			level->add_game_object(new ExplosiveBomb(getPosition(), 0));
+			break;
+		case 3:
+			level->add_game_object(new ShieldPowerup(getPosition(), 0));
 			break;
 		default:
 			break;

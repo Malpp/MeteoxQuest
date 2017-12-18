@@ -12,6 +12,7 @@
 #include "player.h"
 #include "heart_weapon.h"
 #include "mario_weapon.h"
+#include "shield_powerup.h"
 
 Loading::Loading(sf::RenderWindow* window)
 	: Scene(window)
@@ -74,11 +75,11 @@ void Loading::update(float delta_time)
 			break;
 		case 9:
 			Hud::heart_icon_texture_ = Game::resource_handler_.
-				add_texture("hud/heart_icon.png");
+					add_texture("hud/heart_icon.png");
 			break;
 		case 10:
 			Hud::mario_icon_texture_ = Game::resource_handler_.
-				add_texture("hud/mario_icon.png");
+					add_texture("hud/mario_icon.png");
 			break;
 		case 11:
 			Hud::incoming_arrow_ = Game::resource_handler_.
@@ -98,7 +99,7 @@ void Loading::update(float delta_time)
 			break;
 		case 15:
 			Shield::shield_texture = Game::resource_handler_.
-				add_texture("shield.png");
+					add_texture("shield.png");
 			break;
 		case 16:
 			Player::player_hit_sound.loadFromFile("Assets/Sounds/hit.ogg");
@@ -108,6 +109,10 @@ void Loading::update(float delta_time)
 			break;
 		case 18:
 			MarioWeapon::fire_sound.loadFromFile("Assets/Sounds/mario.wav");
+			break;
+		case 19:
+			ShieldPowerup::texture_ = Game::resource_handler_.
+					add_texture("shield_powerup.png");
 			break;
 		default:
 			change_scene(MENU);

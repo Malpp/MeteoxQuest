@@ -74,7 +74,10 @@ void Bomb::update(const float delta_time, LevelBase* level)
 			break;
 	}
 
-	PowerUp::update(delta_time, level);
+	if(state_ == LAUNCH)
+		NonCharacter::update(delta_time, level);
+	else
+		PowerUp::update(delta_time, level);
 }
 
 void Bomb::handle_collision(GameObject* other, LevelBase* level)

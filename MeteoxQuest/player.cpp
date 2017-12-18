@@ -58,8 +58,6 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 	dash_cooldown_timer_ = 0;
 	dash_ready_ = true;
 	bomb_launched_ = false;
-	shields_.push(new Shield(this));
-	shields_.push(new Shield(this));
 }
 
 Player::~Player()
@@ -187,8 +185,9 @@ void Player::on_death(LevelBase* level)
 {
 }
 
-void Player::add_powerup(const PowerUp::PowerUpType power_up)
+void Player::add_shield_powerup()
 {
+	shields_.push(new Shield(this));
 }
 
 void Player::handle_collision(GameObject* other, LevelBase* level)

@@ -167,6 +167,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClInclude Include="resourcehandler.h" />
     <ClInclude Include="scene.h" />
     <ClInclude Include="shield.h" />
+    <ClInclude Include="shield_powerup.h" />
     <ClInclude Include="stack.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="subject.h" />
@@ -228,6 +229,7 @@ xcopy /y /d /e  "$(ProjectDir)Assets" "$(OutDir)Assets"</Command>
     <ClCompile Include="resourcehandler.cpp" />
     <ClCompile Include="scene.cpp" />
     <ClCompile Include="shield.cpp" />
+    <ClCompile Include="shield_powerup.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

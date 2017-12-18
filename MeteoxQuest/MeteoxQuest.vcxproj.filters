@@ -318,6 +318,9 @@
     <ClInclude Include="transition.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="shield_powerup.h">
+      <Filter>Header Files\Game\projectiles\powerups</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -487,6 +490,9 @@
     </ClCompile>
     <ClCompile Include="explosive_projectile.cpp">
       <Filter>Source Files\Game\projectiles</Filter>
+    </ClCompile>
+    <ClCompile Include="shield_powerup.cpp">
+      <Filter>Source Files\Game\powerups</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
