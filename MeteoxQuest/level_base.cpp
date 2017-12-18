@@ -10,6 +10,7 @@
 #include "meteox3.h"
 #include "meteox2.h"
 #include "meteox4.h"
+#include "cloud9_enemy.h"
 
 const float LevelBase::combo_time_ = 3;
 
@@ -229,6 +230,12 @@ bool LevelBase::load_level(const std::string path)
 				wave->add_enemy(new KenEnemy(
 					sf::Vector2f(posX * Game::GAME_WIDTH,
 					             posY * Game::GAME_HEIGHT),
+					0,
+					GameObject::generate_random_color()));
+			else if (type == "CLOUD9")
+				wave->add_enemy(new Cloud9Enemy(
+					sf::Vector2f(posX * Game::GAME_WIDTH,
+						posY * Game::GAME_HEIGHT),
 					0,
 					GameObject::generate_random_color()));
 			else if(type == "METEOX1")

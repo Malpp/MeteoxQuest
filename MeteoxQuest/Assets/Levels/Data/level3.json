@@ -56,6 +56,11 @@
 			"type": "SMORC",
 			"posX": 1,
 			"posY": 0.75
+		  },
+		  {
+		    "type": "SMORC",
+		    "posX": 1,
+		    "posY": -1
 		  }
 		],
 		"delay": 5

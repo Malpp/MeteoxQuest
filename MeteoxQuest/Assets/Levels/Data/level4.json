@@ -3,14 +3,19 @@
 	  "Wave1": {
 		"enemies_to_spawn": [
 		  {
-			"type": "GC",
+			"type": "SMORC",
 			"posX": 1,
 			"posY": -1
 		  },
 		  {
-			"type": "GC",
+			"type": "SMORC",
 			"posX": 1,
-			"posY": -1
+			"posY": 0.5
+		  },
+		  {
+		    "type": "SMORC",
+		    "posX": 1,
+		    "posY": -1
 		  }
 		],
 		"delay": 0
@@ -18,59 +23,49 @@
 	  "Wave2": {
 		"enemies_to_spawn": [
 		  {
-			"type": "GC",
-			"posX": 1,
-			"posY": -1
+			  "type": "GC",
+			  "posX": 1,
+			  "posY": -1
 		  },
 		  {
-			"type": "GC",
-			"posX": 1,
-			"posY": -1
+			  "type": "SMORC",
+			  "posX": 1,
+			  "posY": -1
 		  },
 		  {
-			"type": "GC",
-			"posX": 1,
-			"posY": -1
+		    "type": "SMORC",
+		    "posX": 1,
+		    "posY": -1
 		  },
 		  {
-			"type": "SMORC",
-			"posX": 1,
-			"posY": 0.5
+		    "type": "SMORC",
+		    "posX": 1,
+		    "posY": -1
+		  },
+		  {
+		    "type": "SMORC",
+		    "posX": 1,
+		    "posY": -1
 		  }
 		],
 		"delay": 15
 	  },
 	  "Wave3": {
 		"enemies_to_spawn": [
+      {
+        "type": "CLOUD9",
+        "posX": 1,
+        "posY": 0.1
+      },
 		  {
-			"type": "GC",
-			"posX": 1,
-			"posY": -1
+		    "type": "KEN",
+		    "posX": 1,
+		    "posY": 0.25
 		  },
 		  {
-			"type": "GC",
-			"posX": 1,
-			"posY": -1
-		  },
-		  {
-			"type": "GC",
-			"posX": 1,
-			"posY": -1
-		  },
-		  {
-			"type": "SMORC",
-			"posX": 1,
-			"posY": 0.25
-		  },
-		  {
-			"type": "SMORC",
-			"posX": 1,
-			"posY": 0.5
-		  },
-		  {
-			"type": "SMORC",
-			"posX": 1,
-			"posY": 0.75
+		    "type": "KEN",
+		    "posX": 1,
+		    "posY": 0.75
 		  }
 		],
 		"delay": 30
