@@ -39,7 +39,7 @@ Player::Player(const sf::Vector2f& pos, const float angle)
 	            COUNT,
 	            frame_delay_,
 	            movespeed_,
-	            base_life_,
+	            Game::get_player_life(),
 	            NONE,
 	            base_damage_,
 	            PLAYER)
@@ -185,6 +185,7 @@ void Player::right()
 
 void Player::on_death(LevelBase* level)
 {
+	Game::set_player_alive(false);
 }
 
 void Player::add_powerup(const PowerUp::PowerUpType power_up)

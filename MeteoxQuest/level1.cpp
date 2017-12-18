@@ -19,5 +19,10 @@ Level1::Level1(sf::RenderWindow* window)
 
 void Level1::update(const float delta_time)
 {
+	// Check if we should go to the next level
+	if (waves_.empty() && nbr_enemies_ == 0)
+	{
+		change_scene(TRANSITION);
+	}
 	LevelBase::update(delta_time);
 }

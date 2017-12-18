@@ -8,9 +8,12 @@
 #include "level3.h"
 #include "level4.h"
 #include "Transition.h"
+#include "end_screen.h"
 
 ResourceHandler Game::resource_handler_;
 sf::Font Game::font;
+bool Game::player_is_alive_ = true;
+int Game::player_life_ = 3;
 
 Game::Game()
 {
@@ -46,22 +49,22 @@ void Game::run()
 			case Scene::LEVEL1:
 				active_scene_ = new Level1(window);
 				current_scene_ = active_scene_->run();
-				last_scene_ = current_scene_;
+				last_scene_ = Scene::LEVEL1;
 				break;
 			case Scene::LEVEL2:
 				active_scene_ = new Level2(window);
 				current_scene_ = active_scene_->run();
-				last_scene_ = current_scene_;
+				last_scene_ = Scene::LEVEL2;
 				break;
 			case Scene::LEVEL3:
 				active_scene_ = new Level3(window);
 				current_scene_ = active_scene_->run();
-				last_scene_ = current_scene_;
+				last_scene_ = Scene::LEVEL3;
 				break;
 			case Scene::LEVEL4:
 				active_scene_ = new Level4(window);
 				current_scene_ = active_scene_->run();
-				last_scene_ = current_scene_;
+				last_scene_ = Scene::LEVEL4;
 				break;
 			case Scene::MENU:
 				active_scene_ = new MainMenu(window);
@@ -75,9 +78,28 @@ void Game::run()
 				active_scene_ = new Transition(window, last_scene_);
 				current_scene_ = active_scene_->run();
 				break;
+			case Scene::END:
+				active_scene_ = new EndScreen(window);
+				current_scene_ = active_scene_->run();
+				break;
 		}
 
 		delete active_scene_;
 		active_scene_ = nullptr;
 	}
+}
+
+int Game::get_player_life()
+{
+	return player_life_;
+}
+
+bool Game::get_player_alive()
+{
+	return player_is_alive_;
+}
+
+void Game::set_player_alive(bool player_is_alive)
+{
+	player_is_alive_ = player_is_alive;
 }

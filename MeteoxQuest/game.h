@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include "resourcehandler.h"
 #include "scene.h"
+#include <cstdbool>
 
 class Game
 {
@@ -14,7 +15,8 @@ private:
 	Scene::Scenes current_scene_;
 	Scene* active_scene_;
 	Scene::Scenes last_scene_;
-
+	static bool player_is_alive_;
+	static int player_life_;
 	//
 	//TEMPLATE STUFF BELOW
 	//
@@ -24,6 +26,9 @@ public:
 	Game();
 	~Game();
 	void run();
+	static int get_player_life();
+	static bool get_player_alive();
+	static void set_player_alive(bool player_is_alive);
 	/// <summary>
 	/// The Game width
 	/// </summary>

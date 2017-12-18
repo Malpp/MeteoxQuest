@@ -35,6 +35,9 @@ void Transition::switch_scene()
 	case LEVEL3:
 		change_scene(LEVEL4);
 		break;
+	case LEVEL4:
+		change_scene(END);
+		break;
 	default:
 		change_scene(MENU);
 		break;
